@@ -3,18 +3,17 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #f8f9fa;
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
 .page_title {
   font-size: 20px;
   font-weight: 600;
 }
 
-/* FILTER SIDEBAR */
 .filter_sidebar {
   background: #fff;
   border-radius: 10px;
@@ -22,7 +21,6 @@ body {
   border: 1px solid #ddd;
 }
 
-/* GROUP */
 .filter_group {
   margin-bottom: 20px;
 }
@@ -32,7 +30,6 @@ body {
   margin-bottom: 8px;
 }
 
-/* BUDGET BUTTON */
 .budget_options {
   display: flex;
   flex-wrap: wrap;
@@ -61,7 +58,6 @@ body {
   border-color: #0d6efd;
 }
 
-/* TIME BUTTON giống budget */
 .time_options {
   display: flex;
   flex-wrap: wrap;
@@ -90,7 +86,6 @@ body {
   border-color: #0d6efd;
 }
 
-/* ACTION BUTTON */
 .filter_action {
   margin-top: 10px;
 }
@@ -101,7 +96,6 @@ body {
   border-radius: 8px;
 }
 
-/* RANGE */
 .range_values {
   display: flex;
   justify-content: space-between;
@@ -109,7 +103,6 @@ body {
   color: #666;
 }
 
-/* CONTENT */
 .content_header {
   background: #fff;
   padding: 10px 15px;
@@ -121,7 +114,6 @@ body {
   max-width: 180px;
 }
 
-/* EMPTY STATE */
 .empty_state {
   background: #fff;
   padding: 40px;
@@ -139,16 +131,12 @@ body {
   color: #666;
 }
 
-/* RESPONSIVE */
-
-/* Tablet */
 @media (max-width: 992px) {
   .filter_sidebar {
     margin-bottom: 20px;
   }
 }
 
-/* Mobile */
 @media (max-width: 576px) {
   .content_header {
     flex-direction: column;
