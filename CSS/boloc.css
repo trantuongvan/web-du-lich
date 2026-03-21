@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.page_title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* FILTER SIDEBAR */
+.filter_sidebar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #ddd;
+}
+
+/* GROUP */
+.filter_group {
+  margin-bottom: 20px;
+}
+
+.filter_label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* BUDGET BUTTON */
+.budget_options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.budget_button {
+  flex: 1 1 calc(50% - 5px);
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.budget_button:hover {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.budget_button.active {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+/* TIME BUTTON giống budget */
+.time_options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time_button {
+  flex: 1 1 calc(50% - 5px);
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time_button:hover {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.time_button.active {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+/* ACTION BUTTON */
+.filter_action {
+  margin-top: 10px;
+}
+
+.search_button {
+  padding: 10px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* RANGE */
+.range_values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+}
+
+/* CONTENT */
+.content_header {
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.sort_select {
+  max-width: 180px;
+}
+
+/* EMPTY STATE */
+.empty_state {
+  background: #fff;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.empty_state h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.empty_state p {
+  color: #666;
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .filter_sidebar {
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .content_header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .sort_select {
+    width: 100%;
+  }
+
+  .filter_sidebar {
+    padding: 12px;
+  }
+}

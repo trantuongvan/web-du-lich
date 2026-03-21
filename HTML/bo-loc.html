@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bộ lọc Tour</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../CSS/boloc.css" />
+  </head>
+  <body>
+    <header class="container py-3">
+      <h1 class="page_title">BỘ LỌC TÌM KIẾM</h1>
+    </header>
+
+    <main class="container">
+      <div class="row">
+        <!-- FILTER SIDEBAR -->
+        <aside class="col-lg-3 col-md-4 mb-4">
+          <section class="filter_sidebar">
+            <!-- Điểm khởi hành -->
+            <div class="filter_group">
+              <h6 class="filter_label">Điểm khởi hành</h6>
+              <select class="form-select" id="departureSelect">
+                <option value="" disabled selected hidden>
+                  Chọn điểm khởi hành
+                </option>
+                <option value="TP.HCM">TP.HCM</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+              </select>
+            </div>
+
+            <!-- Điểm đến -->
+            <div class="filter_group">
+              <h6 class="filter_label">Điểm đến</h6>
+              <select class="form-select" id="destinationSelect">
+                <option value="" disabled selected hidden>Chọn điểm đến</option>
+                <option value="" disabled selected hidden>Chọn điểm đến</option>
+                <option value="Phú Quốc">Phú Quốc</option>
+                <option value="Đà Lạt">Đà Lạt</option>
+                <option value="Nha Trang">Nha Trang</option>
+                <option value="Huế/Đà Nẵng">Miền Trung</option>
+                <option value="Quy Nhơn">Quy Nhơn</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Côn Đảo">Côn Đảo</option>
+                <option value="Phan Thiết">Phan Thiết</option>
+                <option value="Seoul">Hàn Quốc</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Osaka">Nhật Bản</option>
+                <option value="Singapore">Singapore</option>
+              </select>
+            </div>
+
+            <!-- Giá -->
+            <div class="filter_group">
+              <h6 class="filter_label">Ngân sách</h6>
+              <div class="budget_options">
+                <button class="budget_button" data-min="0" data-max="2000000">
+                  Dưới 2 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="2000000"
+                  data-max="5000000"
+                >
+                  2 - 5 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="5000000"
+                  data-max="10000000"
+                >
+                  5 - 10 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="10000000"
+                  data-max="999999999"
+                >
+                  Trên 10 triệu
+                </button>
+              </div>
+            </div>
+
+            <!-- Thời gian -->
+            <div class="filter_group">
+              <h6 class="filter_label">Thời gian</h6>
+
+              <div class="time_options">
+                <button class="time_button" data-value="1-3">2 ngày</button>
+
+                <button class="time_button" data-value="3-5">3 ngày</button>
+
+                <button class="time_button" data-value="5-7">4 ngày</button>
+
+                <button class="time_button" data-value="7+">5+ ngày</button>
+              </div>
+            </div>
+
+            <!-- Tìm tour -->
+            <div class="filter_action">
+              <button
+                id="searchTourBtn"
+                class="btn btn-primary w-100 search_button"
+              >
+                Tìm tour
+              </button>
+            </div>
+          </section>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="col-lg-9 col-md-8">
+          <div
+            class="content_header d-flex justify-content-between align-items-center mb-3"
+          >
+            <span>Sắp xếp:</span>
+            <select class="form-select sort_select" id="sortSelect">
+              <option value="new">Mới nhất</option>
+              <option value="price_asc">Giá tăng dần</option>
+              <option value="price_desc">Giá giảm dần</option>
+            </select>
+          </div>
+
+          <div class="row" id="tourList"></div>
+          <div class="empty_state d-none" id="empty_state">
+            <h4>Rất tiếc khi chúng tôi không tìm thấy tour bạn cần!</h4>
+            <p>
+              Hãy thay đổi nội dung để tìm kiếm các tour khác của Travlia<br />
+              Hoặc để lại thông tin bên dưới Travlia sẽ liên hệ để hỗ trợ thiết
+              kế tour cho bạn.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="../JS/bo-loc.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
