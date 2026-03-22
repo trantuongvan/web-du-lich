@@ -31,17 +31,53 @@ function renderTours(list) {
   emptyState.classList.add("d-none");
 
   list.forEach((tour) => {
+    const days = parseInt(tour.type) || 0;
+    const nights = days > 0 ? days - 1 : 0;
+    const location = getSpec(tour, "location_end");
     tourList.innerHTML += `
-      <div class="col-lg-4 col-md-6">
-        <div class="card h-100">
-          <img src="${tour.images[0].url}" class="card-img-top">
-          <div class="card-body">
-            <h6>${tour.short_name}</h6>
-            <p>${tour.type}</p>
-            <p class="text-primary fw-bold">${tour.price.display}</p>
-          </div>
-        </div>
-      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+                <div class="tour-card">
+                    <div class="tour-image-container">
+                        <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
+                    </div>
+                    
+                    <div class="tour-content">
+                        <h3 class="tour-title">${tour.short_name}</h3>
+                        <p class="tour-rating">
+                            ${tour.rating_summary?.average || "Mới"}
+                            <i class="fa-solid fa-star"></i>
+                            <span class="ms-1">(${tour.rating_summary?.count || 0})</span>
+                        </p>
+                        
+                        <div class="tour-divider"></div>
+                        
+                        <div class="tour-info">
+                            <div class="info-item">
+                                <i class="fa-solid fa-calendar-days info-icon"></i>
+                                <span>${days} Ngày</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa-solid fa-moon info-icon"></i>
+                                <span>${nights} Đêm</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa-solid fa-location-dot info-icon"></i>
+                                <span>${location}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tour-footer">
+                            <div class="price-section">
+                                <span class="price-label">Giá từ</span>
+                                <span class="price-amount">${tour.price.display}</span>
+                            </div>
+                            <a href="detail.html?slug=${tour.slug}" class="btn-view-tour">
+                                Chi tiết
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     `;
   });
 }
@@ -89,6 +125,16 @@ function handleSearch() {
     result.sort((a, b) => a.price.amount - b.price.amount);
   } else if (sortValue === "price_desc") {
     result.sort((a, b) => b.price.amount - a.price.amount);
+  } else if (sortValue === "rating_asc") {
+    result.sort(
+      (a, b) =>
+        (a.rating_summary?.average || 0) - (b.rating_summary?.average || 0),
+    );
+  } else if (sortValue === "rating_desc") {
+    result.sort(
+      (a, b) =>
+        (b.rating_summary?.average || 0) - (a.rating_summary?.average || 0),
+    );
   }
 
   renderTours(result);
