@@ -8,6 +8,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
+/* HEADER */
 nav {
   font-weight: 500;
   min-height: 60px;
@@ -23,6 +24,8 @@ nav {
   transform: scale(1.2);
   background-color: black;
 }
+
+/* MAIN */
 .hero-section {
   position: relative;
 }
@@ -129,6 +132,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   border: none;
   height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 
 .tour-card:hover {
@@ -395,6 +403,7 @@ ul {
     border-top: 1px solid #999;
   }
 
+  /* FOOTER */
   .footer-top,
   .footer-links {
     grid-template-columns: 1fr;

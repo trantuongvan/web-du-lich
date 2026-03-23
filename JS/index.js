@@ -24,7 +24,7 @@ function renderTours(tourList) {
 
         html += `
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="tour-card">
+                <a href="chi-tiet-tour.html?id=${tour._id}" class="tour-card">
                     <div class="tour-image-container">
                         <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
                     </div>
@@ -59,12 +59,10 @@ function renderTours(tourList) {
                                 <span class="price-label">Giá từ</span>
                                 <span class="price-amount">${tour.price.display}</span>
                             </div>
-                            <a href="detail.html?slug=${tour.slug}" class="btn-view-tour">
-                                Chi tiết
-                            </a>
+                            <span class="btn-view-tour">Chi tiết</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         `;
     });
