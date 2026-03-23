@@ -156,7 +156,33 @@ ul {
     border-right: none;
     padding-right: 0;
 }
+.date-selectable.selected {
+      border: 2px solid #000 !important;
+      background-color: #f8f9fa;
+      /* Màu nền nhẹ để phân biệt */
+    }
 
+    /* Biến nút thành màu đen và chữ trắng khi kích hoạt */
+    .btn-activated {
+      background-color: #000 !important;
+      color: #fff !important;
+      border: none !important;
+      opacity: 1 !important;
+    }
+    .modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.55); display: flex; justify-content: center; align-items: center; z-index: 1050;
+}
+.modal-content {
+    background: #fff; width: 95%; max-width: 650px; border-radius: 16px;
+    max-height: 90vh; overflow-y: auto; padding: 10px;
+}
+.form-control:focus {
+    box-shadow: none; background-color: #f1f1f1 !important;
+}
+#btn-confirm-booking.active {
+    background-color: #333 !important; color: #fff !important;
+}
 @media (max-width: 768px) {
     .hero-form-head h1 {
         font-size: 1.5rem;
@@ -187,5 +213,89 @@ ul {
     .social-links {
         display: flex;
         justify-content: center;
+    }
+}
+/* --- RESPONSIVE TRANG CHI TIẾT --- */
+@media (max-width: 768px) {
+    /* 1. Ảnh tour: Thu nhỏ chiều cao để không chiếm hết màn hình đầu tiên */
+    #tour-main-img {
+        height: 250px !important;
+        object-fit: cover;
+        margin-top: 15px !important;
+    }
+
+    /* 2. Nội dung: Xóa bớt khoảng cách lề trái quá rộng (ps-md-5) trên mobile */
+    .col-md-6.p-4.ps-md-5 {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    /* 3. Ô chọn ngày: Chuyển từ chia cột (col-5) sang 1 hàng 1 ô để dễ bấm */
+    #departure-dates .col-5 {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+
+    .date-selectable {
+        padding: 15px !important; /* Làm ô to hơn cho ngón tay dễ chạm */
+    }
+
+    /* 4. Lịch trình (Timeline): Thu nhỏ khoảng thụt lề để chữ không bị quá hẹp */
+    .ms-5.ps-3.border-start {
+        margin-left: 1.5rem !important;
+        padding-left: 1rem !important;
+    }
+
+    /* 5. Tiêu đề tour: Cho chữ nhỏ lại một chút để không bị xuống dòng quá nhiều */
+    #tour-title {
+        font-size: 1.25rem !important;
+    }
+}
+/* --- RESPONSIVE FORM ĐẶT TOUR (MODAL) --- */
+@media (max-width: 576px) {
+    /* 1. Vỏ bọc Modal: Chiếm gần hết chiều ngang, bo sát lề */
+    .modal-content {
+        width: 96% !important;
+        margin: 10px auto;
+        padding: 15px !important;
+        max-height: 92vh; /* Giới hạn chiều cao để không bị mất nút dưới cùng */
+        overflow-y: auto; /* Cho phép cuộn nếu điện thoại quá ngắn */
+        border-radius: 12px !important;
+    }
+
+    /* 2. Tóm tắt tour trong Modal: Thu nhỏ ảnh và chữ */
+    #modal-img {
+        width: 80px !important;
+        height: 60px !important;
+    }
+    #modal-title {
+        font-size: 0.85rem !important;
+        line-height: 1.2;
+    }
+
+    /* 3. Các ô nhập liệu (Input): Cho cao hơn để dễ chạm */
+    .form-control {
+        height: 45px;
+        font-size: 16px !important; /* Ngừa iPhone tự động phóng to khi focus */
+    }
+
+    /* 4. Bộ tăng giảm số lượng (+ -): Làm nút to hơn */
+    .btn-outline-secondary.rounded-circle {
+        width: 35px !important;
+        height: 35px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 5. Tổng tiền và Nút xác nhận: Cho nổi bật và to rõ */
+    #total-amount {
+        font-size: 1.4rem !important;
+        text-align: center; /* Căn giữa tổng tiền trên mobile cho đẹp */
+    }
+    
+    #btn-confirm-booking {
+        padding: 15px !important;
+        font-size: 1.1rem;
     }
 }
