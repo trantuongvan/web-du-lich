@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../CSS/chi-tiet-tour.css">
+  <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-repeat" />
+  <style>
+    .date-selectable.selected {
+      border: 2px solid #000 !important;
+      background-color: #f8f9fa;
+      /* Màu nền nhẹ để phân biệt */
+    }
+
+    /* Biến nút thành màu đen và chữ trắng khi kích hoạt */
+    .btn-activated {
+      background-color: #000 !important;
+      color: #fff !important;
+      border: none !important;
+      opacity: 1 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="../IMG/logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page">Trang chủ <span
+                  class="visually-hidden">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tour</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Về chúng tôi</a>
+            </li>
+          </ul>
+          <form class="d-flex my-2 my-lg-0">
+            <div class="input-group-header border border-black rounded-pill d-flex align-items-center p-1">
+              <input class="form-control me-sm-2 bg-transparent border-0 shadow-none" type="text"
+                placeholder="Search" />
+              <button
+                class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
+                type="submit">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-top: 4px">
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container mt-5 ps-0" style="max-width: 1200px; margin: auto;">
+      <div class="card tour-card border-0 shadow-sm overflow-hidden" style="border-radius: 15px;">
+        <div class="row g-0 align-items-stretch">
+
+          <!-- Cột Trái: Ảnh -->
+          <div class="col-md-6 ps-4">
+            <div class="h-100 d-flex flex-column">
+              <!-- Đặt ID cho ảnh -->
+              <img id="tour-main-img" style="height: 80%;" src="" class="img-fluid object-fit-cover rounded-3 mt-4"
+                alt="">
+              <p id="tour-img-caption" class="text-center text-muted small mt-2 italic"></p>
+            </div>
+          </div>
+
+          <!-- Cột Phải: Nội dung -->
+          <div class="col-md-6 p-4 ps-md-5">
+            <h2 id="tour-title" class="fw-bold mb-1">Đang tải...</h2>
+
+            <div class="mb-3">
+              <span class="text-warning fw-bold small"><span id="tour-rating"></span> ★</span>
+              <span class="text-muted small ms-1">(<span id="tour-rating-count"></span> đánh giá)</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 text-muted small mb-4">
+              <span><i class="fa-solid fa-calendar-days me-2"></i><span id="tour-days"></span> Ngày</span>
+              <span><i class="fa-solid fa-moon me-2"></i><span id="tour-nights"></span> Đêm</span>
+              <span><i class="fa-solid fa-location-dot me-2"></i><span id="tour-location"></span></span>
+            </div>
+
+            <div class="bg-light p-3 rounded-3 mb-4">
+              <p class="small text-muted mb-1">Giá tour:</p>
+              <h3 id="tour-price" class="fw-bold mb-0"></h3>
+            </div>
+
+            <!-- Lịch trình khởi hành (Vùng này sẽ dùng JS để tạo ra các cột) -->
+            <div id="departure-dates" class="row g-2 mb-4">
+              <!-- JS sẽ tự đổ các ô ngày vào đây -->
+            </div>
+
+            <div class="ro">
+              <p class="text-secondary"><i>Lịch trình: <span id="tour-schedule-text"></span></i></p>
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+              <button id="nut-dat-tour" class="btn btn-secondary flex-grow-1 py-2 fw-bold" disabled>Chọn ngày khởi
+                hành</button>
+              <button class="btn btn-outline-dark px-3"><i class="bi bi-heart"></i> Yêu thích</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phần Thông tin chi tiết bên dưới -->
+      <div class="container mt-5 px-4">
+        <section class="mb-5">
+          <h3 class="fw-bold mb-4">Thông tin tour</h3>
+          <ul class="list-unstyled" id="tour-specs-list">
+            <!-- JS sẽ tự render các dòng thông tin như Phương tiện, Khách sạn... -->
+          </ul>
+        </section>
+      </div>
+    </div>
+    <div class="container mt-5 px-4 mx-auto" style="max-width: 1200px;">
+      <!-- 2. Điểm tập trung -->
+      <section class="mb-5">
+        <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Điểm tập trung</h3>
+        <div class="d-flex align-items-start">
+          <div class="ms-2">
+            <p class="fw-bold mb-0">
+              <i class="fa-solid fa-location-dot me-3 text-secondary"></i>
+              <span id="pickup-name">Đang tải...</span>
+            </p>
+            <p id="pickup-address" class="text-muted small ps-4">Địa chỉ...</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-5 text-muted opacity-25">
+
+      <!-- 3. Lịch trình tour (Timeline) -->
+      <section class="mb-5">
+        <h3 class="fw-bold mb-5" style="font-size: 1.4rem;">Lịch trình tour</h3>
+        <!-- Container này sẽ chứa toàn bộ các ngày (Ngày 1, 2, 3...) -->
+        <div id="tour-itinerary-container">
+          <!-- JS sẽ tự render nội dung vào đây -->
+        </div>
+      </section>
+
+
+      <div class="container mt-5 px-4" style="max-width: 1200px; margin: auto;">
+        <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Chính sách tour</h3>
+
+        <div class="row">
+          <!-- Cột 1: Bao gồm -->
+          <div class="col-md-6">
+            <h5 class="fw-bold mb-4" style="color: #28a745; padding-left: 10px;">Bao gồm</h5>
+            <ul id="tour-included-list" class="list-unstyled">
+              <!-- JS sẽ tự đổ các dòng vé máy bay, khách sạn... vào đây -->
+            </ul>
+          </div>
+
+          <!-- Cột 2: Không bao gồm -->
+          <div class="col-md-6 ps-md-5">
+            <h5 class="fw-bold mb-4" style="color: #dc3545; padding-left: 10px;">Không bao gồm</h5>
+            <ul id="tour-excluded-list" class="list-unstyled">
+              <!-- JS sẽ tự đổ các dòng chi phí cá nhân... vào đây -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-content">
+          <img src="../IMG/logo-white.png" alt="logo" />
+          <p>
+            Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
+            nghiệm.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Liên kết</h4>
+            <ul>
+              <li><a href="">Trang chủ</a></li>
+              <li><a href="">Tour</a></li>
+              <li><a href="">Về chúng tôi</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Hỗ trợ</h4>
+            <ul>
+              <li><a href="./404.html">Liên hệ chúng tôi</a></li>
+              <li><a href="">Câu hỏi thường gặp</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Kết nối với chúng tôi</h4>
+            <div class="social-links">
+              <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Điều khoản sử dụng</a>
+          <a href="#">Chính sách riêng tư</a>
+          <a href="#">Chính sách bản quyền</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../JS/chi-tiet-tour.js"></script>
+  <script src="../JS/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
