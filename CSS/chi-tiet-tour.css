@@ -16,6 +16,12 @@ nav {
     transform: scale(1.2);
     background-color: black;
 }
+body {
+    background-color: #f9f9f9 !important;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Hoặc font bạn đang dùng */
+}
 
 .footer {
     background: linear-gradient(#000000d9, #000000d9), url("../IMG/footer.png");
@@ -156,33 +162,91 @@ ul {
     border-right: none;
     padding-right: 0;
 }
-.date-selectable.selected {
-      border: 2px solid #000 !important;
-      background-color: #f8f9fa;
-      /* Màu nền nhẹ để phân biệt */
-    }
 
-    /* Biến nút thành màu đen và chữ trắng khi kích hoạt */
-    .btn-activated {
-      background-color: #000 !important;
-      color: #fff !important;
-      border: none !important;
-      opacity: 1 !important;
-    }
-    .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.55); display: flex; justify-content: center; align-items: center; z-index: 1050;
+/* Trạng thái khi được chọn: Viền đen đậm và nền xám nhẹ */
+.date-selectable.selected {
+    border: 2px solid #000 !important;
+    background-color: #f8f9fa !important;
+    /* Thêm !important ở đây */
 }
+
+/* Nút đặt tour khi được kích hoạt */
+.btn-activated {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: none !important;
+    opacity: 1 !important;
+}
+
+/* Lớp nền mờ bao quanh Modal */
+.modal-overlay {
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6) !important; /* Làm nền tối hơn để nổi bật Form */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999; /* Đảm bảo nó nằm trên cùng tất cả mọi thứ */
+}
+
+/* Nội dung chính của Form - Phải ĐẶC màu trắng */
 .modal-content {
-    background: #fff; width: 95%; max-width: 650px; border-radius: 16px;
-    max-height: 90vh; overflow-y: auto; padding: 10px;
+    background-color: #ffffff !important; /* PHẢI là màu trắng đặc, không dùng trong suốt */
+    width: 95%; 
+    max-width: 850px; 
+    border-radius: 15px; 
+    padding: 25px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Thêm bóng đổ để tách biệt với nền */
+    max-height: 90vh; 
+    overflow-y: auto;
+    position: relative;
+    color: #333; /* Đảm bảo chữ màu tối trên nền trắng */
 }
-.form-control:focus {
-    box-shadow: none; background-color: #f1f1f1 !important;
+
+/* Các ô input nhập liệu */
+.form-control {
+    background-color: #f8f9fa !important; /* Màu xám cực nhạt cho ô nhập */
+    border: 1px solid #dee2e6 !important;
+    color: #333 !important;
 }
+
+/* Nút xác nhận đặt tour */
 #btn-confirm-booking.active {
-    background-color: #333 !important; color: #fff !important;
+    background-color: #000 !important;
+    color: #fff !important;
 }
+/* Style cho nút vuông bo góc nhẹ */
+.qty-btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* Viền mờ như ảnh */
+    border-radius: 8px; /* Bo góc nhẹ */
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+}
+
+/* Con số ở giữa */
+.qty-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 25px;
+    text-align: center;
+    color: #000;
+}
+
+
 @media (max-width: 768px) {
     .hero-form-head h1 {
         font-size: 1.5rem;
@@ -215,8 +279,10 @@ ul {
         justify-content: center;
     }
 }
+
 /* --- RESPONSIVE TRANG CHI TIẾT --- */
 @media (max-width: 768px) {
+
     /* 1. Ảnh tour: Thu nhỏ chiều cao để không chiếm hết màn hình đầu tiên */
     #tour-main-img {
         height: 250px !important;
@@ -237,7 +303,8 @@ ul {
     }
 
     .date-selectable {
-        padding: 15px !important; /* Làm ô to hơn cho ngón tay dễ chạm */
+        padding: 15px !important;
+        /* Làm ô to hơn cho ngón tay dễ chạm */
     }
 
     /* 4. Lịch trình (Timeline): Thu nhỏ khoảng thụt lề để chữ không bị quá hẹp */
@@ -251,15 +318,19 @@ ul {
         font-size: 1.25rem !important;
     }
 }
+
 /* --- RESPONSIVE FORM ĐẶT TOUR (MODAL) --- */
 @media (max-width: 576px) {
+
     /* 1. Vỏ bọc Modal: Chiếm gần hết chiều ngang, bo sát lề */
     .modal-content {
         width: 96% !important;
         margin: 10px auto;
         padding: 15px !important;
-        max-height: 92vh; /* Giới hạn chiều cao để không bị mất nút dưới cùng */
-        overflow-y: auto; /* Cho phép cuộn nếu điện thoại quá ngắn */
+        max-height: 92vh;
+        /* Giới hạn chiều cao để không bị mất nút dưới cùng */
+        overflow-y: auto;
+        /* Cho phép cuộn nếu điện thoại quá ngắn */
         border-radius: 12px !important;
     }
 
@@ -268,6 +339,7 @@ ul {
         width: 80px !important;
         height: 60px !important;
     }
+
     #modal-title {
         font-size: 0.85rem !important;
         line-height: 1.2;
@@ -276,7 +348,8 @@ ul {
     /* 3. Các ô nhập liệu (Input): Cho cao hơn để dễ chạm */
     .form-control {
         height: 45px;
-        font-size: 16px !important; /* Ngừa iPhone tự động phóng to khi focus */
+        font-size: 16px !important;
+        /* Ngừa iPhone tự động phóng to khi focus */
     }
 
     /* 4. Bộ tăng giảm số lượng (+ -): Làm nút to hơn */
@@ -291,9 +364,10 @@ ul {
     /* 5. Tổng tiền và Nút xác nhận: Cho nổi bật và to rõ */
     #total-amount {
         font-size: 1.4rem !important;
-        text-align: center; /* Căn giữa tổng tiền trên mobile cho đẹp */
+        text-align: center;
+        /* Căn giữa tổng tiền trên mobile cho đẹp */
     }
-    
+
     #btn-confirm-booking {
         padding: 15px !important;
         font-size: 1.1rem;
