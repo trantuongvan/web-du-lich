@@ -8,6 +8,21 @@ async function loadDetail() {
 
     const response = await fetch('../data/tours.json');
     const tours = await response.json();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+    // Sửa lỗi: dùng tourId thay vì id để khớp với khai báo bên trên
+>>>>>>> f81e156 (feat(chi-tiet-tour): form đăng kí tour + responsive thử lần 1)
+=======
+
+    // Sửa lỗi: dùng tourId thay vì id để khớp với khai báo bên trên
+=======
+>>>>>>> ec458a58243c04030863b9b7fe6b8bcfe4e15ee8
+>>>>>>> 55712eaa7306bd55da052ed863af2a06dcdfa9c9
+>>>>>>> 3ab4ab391830665cb3157413718bd93c21eeea35
     const tour = tours.find(t => t._id === tourId);
 
     if (tour) {
