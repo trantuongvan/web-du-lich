@@ -38,7 +38,7 @@ function renderTours(list) {
       <div class="col-12 col-md-6 col-lg-4">
                 <div class="tour-card">
                     <div class="tour-image-container">
-                        <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
+                        <img src="../${tour.images[0].url}" class="tour-image" alt="${tour.name}">
                     </div>
                     
                     <div class="tour-content">
