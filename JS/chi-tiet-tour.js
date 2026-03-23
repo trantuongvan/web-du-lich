@@ -150,10 +150,10 @@ async function loadDetail() {
         const itineraryContainer = document.getElementById('tour-itinerary-container');
         let itineraryHtml = '';
         if (tour.itinerary && tour.itinerary.length > 0) {
-                    tour.itinerary.forEach((item, index) => {
-            const isLast = index === tour.itinerary.length - 1;
-            
-            itineraryHtml += `
+            tour.itinerary.forEach((item, index) => {
+                const isLast = index === tour.itinerary.length - 1;
+
+                itineraryHtml += `
                 <div class="position-relative pb-4">
                     <!-- 1. Đường kẻ dọc dính liền: Chạy từ tâm nút này xuống tâm nút sau -->
                     ${!isLast ? `
@@ -187,8 +187,8 @@ async function loadDetail() {
                     </div>
                 </div>
             `;
-        });
-        itineraryContainer.innerHTML = itineraryHtml;
+            });
+            itineraryContainer.innerHTML = itineraryHtml;
 
         }
 
@@ -208,39 +208,63 @@ async function loadDetail() {
         // --- 7. Xử lý Click chọn ngày & Mở Modal Đặt Tour ---
         const dateCards = document.querySelectorAll('.date-selectable');
         const orderBtn = document.getElementById('nut-dat-tour');
+        const bookingModal = document.getElementById('bookingModal');
 
         dateCards.forEach(card => {
             card.addEventListener('click', function () {
                 dateCards.forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
-                orderBtn.disabled = false;
-                orderBtn.classList.add('btn-activated');
-                orderBtn.innerText = "Đặt ngay";
+
+                if (orderBtn) {
+                    orderBtn.disabled = false;
+                    orderBtn.classList.add('btn-activated');
+                    orderBtn.innerText = "Đặt ngay";
+                }
             });
         });
 
-        orderBtn.addEventListener('click', function () {
-            const selectedDiv = document.querySelector('.date-selectable.selected');
-            if (!selectedDiv) return;
+        if (orderBtn) {
+            orderBtn.onclick = function () {
+                const selectedDiv = document.querySelector('.date-selectable.selected');
+                if (!selectedDiv) return;
 
-            // Đổ dữ liệu vào Modal từ tour và ô đã chọn
-            document.getElementById('modal-img').src = tour.images[0].url;
-            document.getElementById('modal-title').innerText = tour.name;
-            document.getElementById('modal-date').innerText = selectedDiv.querySelector('.fw-bold').innerText;
-            document.getElementById('modal-day').innerText = selectedDiv.querySelector('.text-muted').innerText.split('•')[0];
+                try {
+                    // Lấy thông tin từ ô đã chọn (Sửa từ .text-muted thành .text-secondary)
+                    const dateTxt = selectedDiv.querySelector('.fw-bold').innerText;
+                    const subInfo = selectedDiv.querySelector('.text-secondary').innerText; // Chỗ này quan trọng
 
-            currentAdultPrice = tour.price.amount;
-            currentMaxSeats = parseInt(selectedDiv.querySelector('.text-muted').innerText.match(/\d+/)[0]);
+                    // Đổ dữ liệu vào Modal
+                    document.getElementById('modal-img').src = tour.images[0].url;
+                    document.getElementById('modal-title').innerText = tour.name;
+                    document.getElementById('modal-date').innerText = dateTxt;
+                    document.getElementById('modal-day').innerText = subInfo.split('•')[0].trim();
 
-            document.getElementById('modal-price-unit').innerText = tour.price.display;
-            document.getElementById('adult-price-txt').innerText = tour.price.display;
-            document.getElementById('child-price-txt').innerText = (currentAdultPrice * 0.7).toLocaleString() + " VNĐ";
-            document.getElementById('modal-seats-left').innerText = currentMaxSeats;
-            document.getElementById('max-seats').innerText = currentMaxSeats;
+                    currentAdultPrice = tour.price.amount;
+                    // Trích xuất số chỗ còn lại
+                    const seatsMatch = subInfo.match(/\d+/);
+                    currentMaxSeats = seatsMatch ? parseInt(seatsMatch[0]) : 10;
 
-            document.getElementById('bookingModal').style.display = 'flex';
-            updateTotal();
-        });
+                    document.getElementById('modal-price-unit').innerText = tour.price.display;
+                    document.getElementById('adult-price-txt').innerText = tour.price.display;
+                    document.getElementById('child-price-txt').innerText = (currentAdultPrice * 0.7).toLocaleString() + " VNĐ";
+                    document.getElementById('modal-seats-left').innerText = currentMaxSeats;
+                    document.getElementById('max-seats').innerText = currentMaxSeats;
+
+                    // HIỆN MODAL
+                    if (bookingModal) {
+                        bookingModal.style.display = 'flex';
+                        // Reset số lượng về 1 người lớn, 0 trẻ em khi mở mới
+                        document.getElementById('qty-adult').innerText = "1";
+                        document.getElementById('qty-child').innerText = "0";
+                        updateTotal();
+                    }
+                } catch (err) {
+                    console.error("Lỗi khi đổ dữ liệu vào Modal:", err);
+                    alert("Có lỗi xảy ra, vui lòng thử lại!");
+                }
+            };
+        }
+
         const nameInput = document.getElementById('cus-name');
         const phoneInput = document.getElementById('cus-phone');
         const cccdInput = document.getElementById('cus-cccd');
