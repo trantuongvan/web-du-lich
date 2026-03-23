@@ -1,5 +1,5 @@
 let tours = [];
-
+let selectedTourTypes = [];
 async function loadTours() {
   try {
     const response = await fetch("../data/tours.json");
@@ -94,30 +94,40 @@ function handleSearch() {
   const min = budgetBtn ? +budgetBtn.dataset.min : 0;
   const max = budgetBtn ? +budgetBtn.dataset.max : Infinity;
 
-  const timeValue = timeBtn ? timeBtn.dataset.value : null;
+  const daysValue = timeBtn ? timeBtn.dataset.days : null;
+
+  const tourTypes = selectedTourTypes;
 
   const result = tours.filter((tour) => {
     const price = tour.price.amount;
     const start = getSpec(tour, "location_start");
     const end = getSpec(tour, "location_end");
     const days = parseInt(tour.type);
-
     let matchTime = true;
-    if (timeValue) {
-      if (timeValue === "7+") {
+    if (daysValue) {
+      if (daysValue === "5+") {
         matchTime = days >= 5;
       } else {
-        const [minD, maxD] = timeValue.split("-").map(Number);
-        matchTime = days >= minD && days <= maxD;
+        matchTime = days === +daysValue;
       }
     }
-
+    let matchType = true;
+    if (selectedTourTypes.length > 0) {
+      if (selectedTourTypes[0] === "domestic") {
+        matchType = isDomesticTour(end);
+      } else if (selectedTourTypes[0] === "international") {
+        matchType = !isDomesticTour(end);
+      }
+    }
     return (
       (!destination || end.includes(destination)) &&
       (!departure || start.includes(departure)) &&
       price >= min &&
       price <= max &&
-      matchTime
+      matchTime &&
+      (tourTypes.length === 0 ||
+        (tourTypes.includes("domestic") && isDomesticTour(end)) ||
+        (tourTypes.includes("international") && !isDomesticTour(end)))
     );
   });
 
@@ -168,4 +178,35 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("sortSelect")
     .addEventListener("change", handleSearch);
+
+  document.querySelectorAll(".tour_type_button").forEach((btn) => {
+    btn.onclick = () => {
+      const type = btn.dataset.type;
+      selectedTourTypes = [type];
+      document
+        .querySelectorAll(".tour_type_button")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      handleSearch();
+    };
+  });
 });
+
+function isDomesticTour(location) {
+  const vietnamPlaces = [
+    "Phú Quốc",
+    "Đà Lạt",
+    "Nha Trang",
+    "Huế",
+    "Đà Nẵng",
+    "Quy Nhơn",
+    "Hà Nội",
+    "Côn Đảo",
+    "Phan Thiết",
+    "Tây Nguyên",
+    "Gia Lai",
+    "Kon Tum",
+    "Buôn Ma Thuột",
+  ];
+  return vietnamPlaces.some((place) => location.includes(place));
+}
