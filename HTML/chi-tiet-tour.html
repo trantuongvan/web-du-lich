@@ -93,7 +93,7 @@
             </div>
 
             <!-- Lịch trình khởi hành (Vùng này sẽ dùng JS để tạo ra các cột) -->
-            <div id="departure-dates" class="row g-2 mb-4 date-selectable" style="cursor: pointer;">
+            <div id="departure-dates" class="row g-2 mb-4 ">
               <!-- JS sẽ tự đổ các ô ngày vào đây -->
             </div>
 
@@ -104,71 +104,73 @@
             <div class="d-flex gap-2 mt-4">
               <button id="nut-dat-tour" class="btn btn-secondary flex-grow-1 py-2 fw-bold" disabled>Chọn ngày khởi
                 hành</button>
-              <button class="btn btn-outline-dark px-3"><i class="bi bi-heart"></i> Yêu thích</button>
+              <button class="btn btn-outline-dark px-3 "><i class="fa-regular fa-heart"></i> Yêu thích</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Phần Thông tin chi tiết bên dưới -->
+        <div class="container mt-5 px-4">
+          <section class="mb-5">
+            <h3 class="fw-bold mb-4">Thông tin tour</h3>
+            <ul class="list-unstyled" id="tour-specs-list">
+              <!-- JS sẽ tự render các dòng thông tin như Phương tiện, Khách sạn... -->
+            </ul>
+          </section>
+        </div>
+      
+      <div class="container mt-5 px-4 mx-auto" style="max-width: 1200px;">
+        <!-- 2. Điểm tập trung -->
+        <section class="mb-5">
+          <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Điểm tập trung</h3>
+          <div class="d-flex align-items-start">
+            <div class="ms-2">
+              <p class="fw-bold mb-0">
+                <i class="fa-solid fa-location-dot me-3 text-secondary"></i>
+                <span id="pickup-name">Đang tải...</span>
+              </p>
+              <p id="pickup-address" class="text-muted small ps-4">Địa chỉ...</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5 text-muted opacity-25">
+
+        <!-- 3. Lịch trình tour (Timeline) -->
+        <section class="mb-5">
+          <h3 class="fw-bold mb-5" style="font-size: 1.4rem;">Lịch trình tour</h3>
+          <!-- Container này sẽ chứa toàn bộ các ngày (Ngày 1, 2, 3...) -->
+          <div id="tour-itinerary-container">
+            <!-- JS sẽ tự render nội dung vào đây -->
+          </div>
+        </section>
+
+
+        <div class="container mt-5 px-4" style="max-width: 1200px; margin: auto;">
+          <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Chính sách tour</h3>
+
+          <div class="row">
+            <!-- Cột 1: Bao gồm -->
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-4" style="color: #28a745; padding-left: 10px;">Bao gồm</h5>
+              <ul id="tour-included-list" class="list-unstyled">
+                <!-- JS sẽ tự đổ các dòng vé máy bay, khách sạn... vào đây -->
+              </ul>
+            </div>
+
+            <!-- Cột 2: Không bao gồm -->
+            <div class="col-md-6 ps-md-5">
+              <h5 class="fw-bold mb-4" style="color: #dc3545; padding-left: 10px;">Không bao gồm</h5>
+              <ul id="tour-excluded-list" class="list-unstyled">
+                <!-- JS sẽ tự đổ các dòng chi phí cá nhân... vào đây -->
+              </ul>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Phần Thông tin chi tiết bên dưới -->
-      <div class="container mt-5 px-4">
-        <section class="mb-5">
-          <h3 class="fw-bold mb-4">Thông tin tour</h3>
-          <ul class="list-unstyled" id="tour-specs-list">
-            <!-- JS sẽ tự render các dòng thông tin như Phương tiện, Khách sạn... -->
-          </ul>
-        </section>
       </div>
     </div>
-    <div class="container mt-5 px-4 mx-auto" style="max-width: 1200px;">
-      <!-- 2. Điểm tập trung -->
-      <section class="mb-5">
-        <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Điểm tập trung</h3>
-        <div class="d-flex align-items-start">
-          <div class="ms-2">
-            <p class="fw-bold mb-0">
-              <i class="fa-solid fa-location-dot me-3 text-secondary"></i>
-              <span id="pickup-name">Đang tải...</span>
-            </p>
-            <p id="pickup-address" class="text-muted small ps-4">Địa chỉ...</p>
-          </div>
-        </div>
-      </section>
-
-      <hr class="my-5 text-muted opacity-25">
-
-      <!-- 3. Lịch trình tour (Timeline) -->
-      <section class="mb-5">
-        <h3 class="fw-bold mb-5" style="font-size: 1.4rem;">Lịch trình tour</h3>
-        <!-- Container này sẽ chứa toàn bộ các ngày (Ngày 1, 2, 3...) -->
-        <div id="tour-itinerary-container">
-          <!-- JS sẽ tự render nội dung vào đây -->
-        </div>
-      </section>
-
-
-      <div class="container mt-5 px-4" style="max-width: 1200px; margin: auto;">
-        <h3 class="fw-bold mb-4" style="font-size: 1.4rem;">Chính sách tour</h3>
-
-        <div class="row">
-          <!-- Cột 1: Bao gồm -->
-          <div class="col-md-6">
-            <h5 class="fw-bold mb-4" style="color: #28a745; padding-left: 10px;">Bao gồm</h5>
-            <ul id="tour-included-list" class="list-unstyled">
-              <!-- JS sẽ tự đổ các dòng vé máy bay, khách sạn... vào đây -->
-            </ul>
-          </div>
-
-          <!-- Cột 2: Không bao gồm -->
-          <div class="col-md-6 ps-md-5">
-            <h5 class="fw-bold mb-4" style="color: #dc3545; padding-left: 10px;">Không bao gồm</h5>
-            <ul id="tour-excluded-list" class="list-unstyled">
-              <!-- JS sẽ tự đổ các dòng chi phí cá nhân... vào đây -->
-            </ul>
-          </div>
-        </div>
-      </div>
-
   </main>
   <footer class="footer">
     <div class="container">
@@ -225,10 +227,12 @@
   <div id="bookingModal" class="modal-overlay" style="display: none;">
     <div class="modal-content shadow-lg border-0">
       <!-- Header -->
-      <div class="modal-header border-0 pb-0">
+      <div class="modal-header border-bottom pb-3 mb-4 d-flex justify-content-between align-items-center">
         <h5 class="fw-bold mb-0">Đặt Tour Du Lịch</h5>
-        <button type="button" class="btn-close" id="closeModal"></button>
+        <!-- Nút X nằm ở đây -->
+        <button type="button" id="closeModal" class="btn-close" aria-label="Close" style="font-size: 0.8rem;"></button>
       </div>
+
 
       <div class="modal-body">
         <!-- 1. Tóm tắt Tour (Dữ liệu từ JSON) -->
@@ -251,7 +255,8 @@
           </div>
           <div class="col-md-6">
             <label class="small text-muted mb-1">Số điện thoại *</label>
-            <input type="text" id="cus-phone" class="form-control bg-light border-0 py-2" placeholder="0901234567">
+            <input type="text" id="cus-phone" class="form-control bg-light border-0 py-2"
+              placeholder="Nhập số điện thoại">
             <div id="err-phone" class="text-danger small mt-1"></div>
           </div>
         </div>
@@ -278,11 +283,14 @@
               <p id="adult-price-txt" class="text-danger fw-bold mb-0"></p>
             </div>
             <div class="d-flex align-items-center gap-3">
-              <button class="btn btn-sm btn-outline-secondary rounded-circle"
-                onclick="changeQty('adult', -1)">-</button>
-              <span id="qty-adult" class="fw-bold">1</span>
-              <button class="btn btn-sm btn-outline-secondary rounded-circle" onclick="changeQty('adult', 1)">+</button>
+              <!-- Nút Trừ -->
+              <button type="button" class="qty-btn" onclick="changeQty('adult', -1)">-</button>
+              <!-- Số lượng -->
+              <span id="qty-adult" class="qty-value">1</span>
+              <!-- Nút Cộng -->
+              <button type="button" class="qty-btn" onclick="changeQty('adult', 1)">+</button>
             </div>
+
           </div>
           <!-- Trẻ em -->
           <div class="p-3 d-flex justify-content-between align-items-center">
@@ -292,11 +300,14 @@
               <p id="child-price-txt" class="text-danger fw-bold mb-0"></p>
             </div>
             <div class="d-flex align-items-center gap-3">
-              <button class="btn btn-sm btn-outline-secondary rounded-circle"
-                onclick="changeQty('child', -1)">-</button>
-              <span id="qty-child" class="fw-bold">0</span>
-              <button class="btn btn-sm btn-outline-secondary rounded-circle" onclick="changeQty('child', 1)">+</button>
+              <!-- Nút Trừ -->
+              <button type="button" class="qty-btn" onclick="changeQty('child', -1)">-</button>
+              <!-- Số lượng -->
+              <span id="qty-child" class="qty-value">1</span>
+              <!-- Nút Cộng -->
+              <button type="button" class="qty-btn" onclick="changeQty('child', 1)">+</button>
             </div>
+
           </div>
         </div>
 
