@@ -4,7 +4,7 @@ async function loadDetail() {
 
     const response = await fetch('../data/tours.json');
     const tours = await response.json();
-    const tour = tours.find(t => t._id === id);
+    const tour = tours.find(t => t._id === tourId);
 
     if (tour) {
         // --- Đổ dữ liệu phần trên ---
