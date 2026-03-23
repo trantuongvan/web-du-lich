@@ -8,11 +8,6 @@ async function loadDetail() {
 
     const response = await fetch('../data/tours.json');
     const tours = await response.json();
-<<<<<<< HEAD
-
-    // Sửa lỗi: dùng tourId thay vì id để khớp với khai báo bên trên
-=======
->>>>>>> ec458a58243c04030863b9b7fe6b8bcfe4e15ee8
     const tour = tours.find(t => t._id === tourId);
 
     if (tour) {
