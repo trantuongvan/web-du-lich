@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bộ lọc Tour</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-repeat"
+    />
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../CSS/boloc.css" />
+  </head>
+  <body>
+    <header class="container py-3">
+      <h1 class="page_title">BỘ LỌC TÌM KIẾM</h1>
+    </header>
+    <main class="container">
+      <div class="row">
+        <aside class="col-lg-3 col-md-4 mb-4">
+          <section class="filter_sidebar">
+            <div class="filter_group">
+              <h6 class="filter_label">Điểm khởi hành</h6>
+              <select class="form-select" id="departureSelect">
+                <option value="" disabled selected hidden>
+                  Chọn điểm khởi hành
+                </option>
+                <option value="TP.HCM">TP.HCM</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+              </select>
+            </div>
+
+            <div class="filter_group">
+              <h6 class="filter_label">Điểm đến</h6>
+              <select class="form-select" id="destinationSelect">
+                <option value="" disabled selected hidden>Chọn điểm đến</option>
+                <option value="" disabled selected hidden>Chọn điểm đến</option>
+                <option value="Phú Quốc">Phú Quốc</option>
+                <option value="Đà Lạt">Đà Lạt</option>
+                <option value="Nha Trang">Nha Trang</option>
+                <option value="Huế/Đà Nẵng">Miền Trung</option>
+                <option value="Quy Nhơn">Quy Nhơn</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Côn Đảo">Côn Đảo</option>
+                <option value="Phan Thiết">Phan Thiết</option>
+                <option value="Seoul">Hàn Quốc</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Osaka">Nhật Bản</option>
+                <option value="Singapore">Singapore</option>
+              </select>
+            </div>
+
+            <div class="filter_group">
+              <h6 class="filter_label">Ngân sách</h6>
+              <div class="budget_options">
+                <button class="budget_button" data-min="0" data-max="2000000">
+                  Dưới 2 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="2000000"
+                  data-max="5000000"
+                >
+                  2 - 5 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="5000000"
+                  data-max="10000000"
+                >
+                  5 - 10 triệu
+                </button>
+                <button
+                  class="budget_button"
+                  data-min="10000000"
+                  data-max="999999999"
+                >
+                  Trên 10 triệu
+                </button>
+              </div>
+            </div>
+
+            <div class="filter_group">
+              <h6 class="filter_label">Thời gian</h6>
+
+              <div class="time_options">
+                <button class="time_button" data-days="2">2 ngày</button>
+
+                <button class="time_button" data-days="3">3 ngày</button>
+
+                <button class="time_button" data-days="4">4 ngày</button>
+
+                <button class="time_button" data-days="5+">5+ ngày</button>
+              </div>
+            </div>
+
+            <div class="filter_group">
+              <h6 class="filter_label">Loại Tour</h6>
+
+              <div class="tour_type_options">
+                <button class="tour_type_button" data-type="domestic">
+                  Trong nước
+                </button>
+
+                <button class="tour_type_button" data-type="international">
+                  Nước ngoài
+                </button>
+              </div>
+            </div>
+
+            <div class="filter_action">
+              <button
+                id="searchTourBtn"
+                class="btn btn-primary w-100 search_button"
+              >
+                Tìm tour
+              </button>
+            </div>
+          </section>
+        </aside>
+
+        <section class="col-lg-9 col-md-8">
+          <div
+            class="content_header d-flex justify-content-between align-items-center mb-3"
+          >
+            <span>Sắp xếp:</span>
+            <select class="form-select sort_select" id="sortSelect">
+              <option value="new">Tất cả</option>
+              <option value="price_asc">Giá tăng dần</option>
+              <option value="price_desc">Giá giảm dần</option>
+              <option value="rating_asc">Đánh giá tăng dần</option>
+              <option value="rating_desc">Đánh giá giảm dần</option>
+            </select>
+          </div>
+
+          <div class="row" id="tourList"></div>
+          <div class="empty_state d-none" id="empty_state">
+            <h4>Rất tiếc khi chúng tôi không tìm thấy tour bạn cần!</h4>
+            <p>
+              Hãy thay đổi nội dung để tìm kiếm các tour khác của Travlia<br />
+              Hoặc để lại thông tin bên dưới Travlia sẽ liên hệ để hỗ trợ thiết
+              kế tour cho bạn.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="../JS/bo-loc.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
