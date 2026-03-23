@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng Nhập</title>
+    <title>Đăng Ký</title>
 
     <link rel="stylesheet" href="../CSS/dang-nhap.css" />
     <!-- <link rel="stylesheet" href="../CSS/bootstrap.min.css" /> -->
@@ -32,13 +32,13 @@
       /></a>
       <div id="form-container">
         <div id="top">
-          <h2>Chào mừng trở lại</h2>
-          <h3>Hãy đăng nhập để tiếp tục</h3>
+          <h2>Chào mừng</h2>
+          <h3>Hãy điền thông tin để tiếp tục</h3>
         </div>
         <div id="form">
           <form action="" method="post" autocomplete="on">
             <div class="input-group">
-              <label for="username">Email</label>
+              <label for="email">Email</label>
               <br />
               <input
                 type="email"
@@ -70,14 +70,19 @@
                 </button>
               </div>
             </div>
-            <div id="forgot-password-container">
-              <a href="404.html" id="forgot-password">Quên mật khẩu?</a>
+            <div id="tos-container">
+              <input type="checkbox" id="checkbox" required />
+              <p>
+                Tôi đồng ý với các
+                <a href="404.html" id="tos">Điều khoản Dịch vụ</a>
+              </p>
             </div>
-            <div id="error-message" class="show">&nbsp;</div>
-            <button type="button" id="loginBtn">Đăng nhập</button>
+            <div id="error-message">&nbsp;</div>
+            <button type="button" id="signupBtn">Đăng ký</button>
+            <hr />
             <div id="signup-link">
-              <span>Bạn chưa có tài khoản?</span>
-              <a href="dang-ky.html" id="signup">Đăng ký</a>
+              <span>Bạn đã có tài khoản?</span>
+              <a href="dang-nhap.html" id="signup">Đăng nhập</a>
             </div>
           </form>
         </div>
@@ -85,6 +90,5 @@
     </div>
 
     <script src="../JS/background.js"></script>
-    <script src="../JS/dang-nhap.js"></script>
   </body>
 </html>

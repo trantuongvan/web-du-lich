@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Trang Chủ</title>
     <link rel="icon" type="image/x-icon" href="./logo-icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,9 +84,10 @@
                 </div>
               </form>
 
-              <!-- <div class="header-icons d-flex align-items-center gap-2">
+              <div class="header-icons d-flex align-items-center gap-2">
                 <button
-                  class="btn btn-light rounded-circle border border-secondary-subtle d-flex align-items-center justify-content-center"
+                  id="heartBtn"
+                  class="btn-icon"
                   style="width: 42px; height: 42px"
                 >
                   <i class="fa-regular fa-heart fs-5"></i>
@@ -94,7 +95,7 @@
 
                 <div class="user-menu position-relative">
                   <button
-                    class="btn btn-light rounded-circle border border-secondary-subtle d-flex align-items-center justify-content-center"
+                    class="btn-icon"
                     id="userBtn"
                     type="button"
                     style="width: 42px; height: 42px"
@@ -102,44 +103,23 @@
                     <i class="fa-regular fa-user fs-5"></i>
                   </button>
 
-                  <div
-                    id="userDropdown"
-                    class="user-dropdown hidden position-absolute end-0 mt-2 shadow bg-white rounded-3 p-3 border"
-                    style="width: 220px; z-index: 1050"
-                  >
+                  <div id="userDropdown" class="user-dropdown hidden">
                     <div id="loggedOutView" class="d-flex flex-column gap-2">
-                      <button
-                        id="loginBtn"
-                        class="btn btn-dark w-100 rounded-pill"
-                      >
-                        Đăng nhập
-                      </button>
-                      <button
-                        id="signupBtn"
-                        class="btn btn-outline-dark w-100 rounded-pill"
-                      >
-                        Đăng ký
-                      </button>
+                      <button id="loginBtn">Đăng nhập</button>
+                      <button id="signupBtn">Đăng ký</button>
                     </div>
 
                     <div id="loggedInView" class="hidden flex-column gap-2">
                       <p
                         id="userEmail"
                         class="mb-2 text-truncate fw-bold text-center text-primary"
-                      >
-                        nguyenvana@gmail.com
-                      </p>
+                      ></p>
                       <hr class="my-1" />
-                      <button
-                        id="logoutBtn"
-                        class="btn btn-danger btn-sm w-100 rounded-pill mt-2"
-                      >
-                        Đăng xuất
-                      </button>
+                      <button id="logoutBtn">Đăng xuất</button>
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
@@ -319,6 +299,7 @@
       </div>
     </footer>
     <script src="../JS/index.js"></script>
+    <script src="../JS/dropdown.js"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>
