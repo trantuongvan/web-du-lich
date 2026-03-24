@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="icon" type="image/x-icon" href="./logo-icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-repeat" />
+
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/faq.css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="../IMG/logo.png" alt="logo" />
+                </a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.html" aria-current="page">Trang chủ <span
+                                    class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./bo-loc.html">Tour</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./about-us.html">Về chúng tôi</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                        <form class="d-flex">
+                            <div
+                                class="input-group-header border border-black rounded-pill d-flex align-items-center p-1">
+                                <input class="form-control me-sm-2 bg-transparent border-0 shadow-none" type="text"
+                                    placeholder="Tìm tour..." />
+                                <button
+                                    class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
+                                    type="submit">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"
+                                        style="width: 20px; height: 20px; margin-top: 4px">
+                                        <path
+                                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="header-icons d-flex align-items-center gap-2">
+                            <button id="heartBtn" class="btn-icon" style="width: 42px; height: 42px">
+                                <i class="fa-regular fa-heart fs-5"></i>
+                            </button>
+
+                            <div class="user-menu position-relative">
+                                <button class="btn-icon" id="userBtn" type="button" style="width: 42px; height: 42px">
+                                    <i class="fa-regular fa-user fs-5"></i>
+                                </button>
+
+                                <div id="userDropdown" class="user-dropdown hidden">
+                                    <div id="loggedOutView" class="d-flex flex-column gap-2">
+                                        <button id="loginBtn">Đăng nhập</button>
+                                        <button id="signupBtn">Đăng ký</button>
+                                    </div>
+
+                                    <div id="loggedInView" class="hidden flex-column gap-2">
+                                        <p id="userEmail" class="mb-2 text-truncate fw-bold text-center text-primary">
+                                        </p>
+                                        <hr class="my-1" />
+                                        <button id="logoutBtn">Đăng xuất</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <section class="faq-section">
+            <div class="container my-5">
+                <h2>Câu Hỏi Thường Gặp (FAQ)</h2>
+
+                <details>
+                    <summary>Tôi có thể đặt tour trực tuyến bằng cách nào?</summary>
+                    <div class="faq-content">
+                        Bạn chỉ cần chọn tour yêu thích, nhấn nút "Đặt ngay", điền thông tin cá nhân và số lượng người
+                        đi. Hệ thống sẽ gửi email xác nhận và nhân viên tư vấn sẽ gọi điện lại cho bạn trong vòng 15-30
+                        phút.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Giá tour đã bao gồm vé máy bay và bảo hiểm chưa?</summary>
+                    <div class="faq-content">
+                        <strong>Có, chắc chắn rồi!</strong> Giá tour hiển thị trên website là giá <strong>trọn
+                            gói</strong>, đã bao gồm vé máy bay khứ hồi và bảo hiểm du lịch mức cao nhất. Bạn hoàn toàn
+                        có thể yên tâm đặt tour mà không lo phát sinh thêm các chi phí vận chuyển cơ bản này.
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Chính sách hoàn/hủy tour quy định thế nào?</summary>
+                    <div class="faq-content">
+                        - Hủy trước 30 ngày: Hoàn tiền 100%.<br>
+                        - Hủy từ 15-29 ngày: Phí hủy là 50% tổng giá trị tour.<br>
+                        - Hủy trong vòng 7 ngày: Không được hoàn phí.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Công ty có hỗ trợ làm Visa cho khách không?</summary>
+                    <div class="faq-content">
+                        Có, chúng tôi có đội ngũ chuyên làm Visa cho các tour quốc tế. Tỷ lệ đậu Visa rất cao và chúng
+                        tôi sẽ hướng dẫn bạn chuẩn bị hồ sơ từ A-Z.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tôi đi một mình thì có phải đóng thêm phí không?</summary>
+                    <div class="faq-content">
+                        Nếu bạn đi một mình và muốn ở phòng riêng, bạn sẽ đóng thêm "Phụ thu phòng đơn". Nếu bạn đồng ý
+                        ghép phòng với khách khác, bạn sẽ không mất phí này.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tôi có thể thanh toán bằng những phương thức nào?</summary>
+                    <div class="faq-content">
+                        Chúng tôi chấp nhận: Chuyển khoản ngân hàng, thanh toán qua thẻ (Visa/Mastercard), ví Momo,
+                        VNPay hoặc tiền mặt tại văn phòng.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Trẻ em đi tour được tính giá như thế nào?</summary>
+                    <div class="faq-content">
+                        Chính sách giá tour cho trẻ em được quy định cụ thể như sau:<br>
+                        - <strong>Người lớn (Từ 12 tuổi trở lên):</strong> Tính 100% giá tour (3.590.000 VNĐ).<br>
+                        - <strong>Trẻ em (Từ 5 - 11 tuổi):</strong> Giá ưu đãi chỉ 2.513.000 VNĐ.<br>
+                        - <strong>Dưới 5 tuổi:</strong> Vui lòng liên hệ hotline để được tư vấn chính sách miễn phí hoặc
+                        phụ thu tùy theo dịch vụ đi kèm.
+                    </div>
+                </details>
+                </details>
+                <details>
+                    <summary>Nếu tôi muốn thay đổi ngày đi tour thì sao?</summary>
+                    <div class="faq-content">
+                        Vui lòng báo trước ít nhất 10 ngày. Việc đổi ngày phụ thuộc vào tình trạng chỗ trống và có thể
+                        phát sinh phí chênh lệch giá tại thời điểm đó.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Nếu tôi gặp sự cố hoặc cần hỗ trợ khẩn cấp khi đang đi tour thì liên hệ ai?</summary>
+                    <div class="faq-content">
+                        Bạn có thể liên hệ trực tiếp với Hướng dẫn viên dẫn đoàn. Ngoài ra, chúng tôi luôn có số Hotline
+                        hỗ
+                        trợ 24/7 in trên phiếu xác nhận tour để giải quyết mọi vấn đề phát sinh của bạn ngay lập tức.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tôi cần chuẩn bị giấy tờ gì khi đi tour?</summary>
+                    <div class="faq-content">
+                        - Trong nước: CCCD/CMND bản gốc hoặc Hộ chiếu.<br>
+                        - Quốc tế: Hộ chiếu còn hạn trên 6 tháng tính từ ngày kết thúc tour.
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-content">
+                    <img src="../IMG/logo-white.png" alt="logo" />
+                    <p>
+                        Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
+                        nghiệm.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Liên kết</h4>
+                        <ul>
+                            <li><a href="">Trang chủ</a></li>
+                            <li><a href="">Tour</a></li>
+                            <li><a href="">Về chúng tôi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Hỗ trợ</h4>
+                        <ul>
+                            <li><a href="./404.html">Liên hệ chúng tôi</a></li>
+                            <li><a href="">Câu hỏi thường gặp</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Điều khoản sử dụng</a>
+                    <a href="#">Chính sách riêng tư</a>
+                    <a href="#">Chính sách bản quyền</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="../JS/bootstrap.bundle.min.js"></script>
+
+</html>
