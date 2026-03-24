@@ -8,11 +8,6 @@ async function loadDetail() {
 
     const response = await fetch('../data/tours.json');
     const tours = await response.json();
-<<<<<<< HEAD
-
-    // Sửa lỗi: dùng tourId thay vì id để khớp với khai báo bên trên
-=======
->>>>>>> ec458a58243c04030863b9b7fe6b8bcfe4e15ee8
     const tour = tours.find(t => t._id === tourId);
 
     if (tour) {
@@ -203,3 +198,57 @@ function updateTotal() {
 }
 
 loadDetail();
+// --- XỬ LÝ SỰ KIỆN YÊU THÍCH TOUR ---
+
+function handleFavorite() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tourId = urlParams.get('id');
+
+    if (!tourId) return;
+
+    const btnFavorite = document.getElementById('btn-favorite');
+    if (!btnFavorite) return;
+
+    // Lấy danh sách tour đã lưu từ LocalStorage (nếu chưa có thì tạo mảng rỗng [])
+    let favoriteTours = JSON.parse(localStorage.getItem('favoriteTours')) || [];
+
+    // Hàm cập nhật giao diện của nút Yêu thích
+    const updateButtonUI = () => {
+        if (favoriteTours.includes(tourId)) {
+            // Đã yêu thích: Đổi icon thành trái tim đặc, nút thành màu đỏ
+            btnFavorite.innerHTML = `<i class="fa-solid fa-heart"></i> Đã lưu`;
+            btnFavorite.classList.remove('btn-outline-danger');
+            btnFavorite.classList.add('btn-danger');
+        } else {
+            // Chưa yêu thích: Trái tim rỗng, nút viền đỏ
+            btnFavorite.innerHTML = `<i class="fa-regular fa-heart"></i> Yêu thích`;
+            btnFavorite.classList.remove('btn-danger');
+            btnFavorite.classList.add('btn-outline-danger');
+        }
+    };
+
+    // Kiểm tra trạng thái lúc vừa load trang
+    updateButtonUI();
+
+    // Bắt sự kiện khi người dùng bấm nút
+    btnFavorite.addEventListener('click', function () {
+        if (favoriteTours.includes(tourId)) {
+            // Nếu đã có -> Xóa khỏi danh sách
+            favoriteTours = favoriteTours.filter(id => id !== tourId);
+            alert("Đã bỏ lưu tour này!");
+        } else {
+            // Nếu chưa có -> Thêm vào danh sách
+            favoriteTours.push(tourId);
+            alert("Đã thêm vào danh sách Tour của tôi!");
+        }
+
+        // Lưu mảng mới cập nhật ngược lại vào LocalStorage
+        localStorage.setItem('favoriteTours', JSON.stringify(favoriteTours));
+
+        // Cập nhật lại giao diện nút
+        updateButtonUI();
+    });
+}
+
+// Gọi hàm khi file chạy
+handleFavorite();
