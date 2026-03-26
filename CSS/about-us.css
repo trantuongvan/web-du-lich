@@ -32,6 +32,7 @@ body{
     font-size: 40px;
     text-transform: uppercase;
     font-weight: 700;
+    color: #000000;
 }
 .first-section-nav{
     display: flex;
@@ -52,6 +53,11 @@ body{
 .first-section-left a{
     text-decoration: none;
     color: black;
+}
+
+.first-section-left i{
+    color: black;
+    font-size: 24px;
 }
 .first-section-right{
     width: 60%;
@@ -91,6 +97,7 @@ body{
 .head-title h1 {
     font-size: 3.25rem;
     font-weight: 900;
+    color: #000000;
 }
 
 .second-section-left img {
@@ -142,10 +149,12 @@ body{
 
 .list-item i {
     font-size: 1.5rem;
+    color: #000000;
 }
 
 .list-text h3 {
     font-size: 1.5rem;
+    color: #000000;
 }
 
 .list-text p {
@@ -189,8 +198,8 @@ body{
     justify-content: space-between;
     background-image: url("../IMG/about-us/couple.png");
     background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 45rem;
+    background-position: right bottom;
+    background-size: 55 rem;
 }
 
 .bg-doodle{
@@ -217,13 +226,12 @@ body{
 }
 .bg-doodle.globe{ 
     top: -2rem; 
-    right: -2rem; 
+    right: 0rem; 
     font-size: 15rem; 
     color: rgba(0,0,0,0.03); 
 }
 .third-section-left {
-    width: 50%;
-    flex: 1;
+    width: 70%;
     position: relative;
     z-index: 2;
     display: flex;
@@ -322,6 +330,7 @@ body{
     font-size: 2.75rem;
     font-weight: 600;
     line-height: 1.1;
+    color: #000000;
 }
 .form-row{
     display: flex;
