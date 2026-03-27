@@ -11,6 +11,7 @@ async function loadTours() {
   }
 }
 
+
 function getSpec(tour, key) {
   return tour.specs.find((s) => s.k === key)?.v || "";
 }
@@ -71,7 +72,7 @@ function renderTours(list) {
                                 <span class="price-label">Giá từ</span>
                                 <span class="price-amount">${tour.price.display}</span>
                             </div>
-                            <a href="detail.html?slug=${tour.slug}" class="btn-view-tour">
+                            <a href="chi-tiet-tour.html?slug=${tour.slug}" class="btn-view-tour">
                                 Chi tiết
                             </a>
                         </div>
