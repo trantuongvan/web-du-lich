@@ -4,7 +4,7 @@ async function loadMyFavoriteTours() {
         const favoriteToursIds = JSON.parse(localStorage.getItem('favoriteTours')) || [];
         const container = document.getElementById('favorite-tour-list');
 
-        // 2. Nếu danh sách trống, dừng lại (đã có sẵn giao diện trống trong HTML)
+        // 2. Nếu danh sách trống, dừng lại (để hiển thị giao diện chưa có tour)
         if (favoriteToursIds.length === 0) {
             return;
         }
@@ -16,7 +16,7 @@ async function loadMyFavoriteTours() {
         // 4. Lọc ra những tour có _id nằm trong mảng favoriteToursIds
         const myTours = allTours.filter(tour => favoriteToursIds.includes(tour._id));
 
-        // 5. Đổ dữ liệu ra HTML (Tái sử dụng lại CSS của trang chủ)
+        // 5. Đổ dữ liệu ra HTML
         let html = '';
         myTours.forEach(tour => {
             const duration = tour.type.match(/\d+/g) || [0, 0];
@@ -26,7 +26,7 @@ async function loadMyFavoriteTours() {
 
             html += `
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="chi-tiet-tour.html?id=${tour._id}" class="tour-card position-relative d-block text-decoration-none">
+                    <div class="tour-card position-relative d-block">
                         
                         <button class="btn btn-light text-danger position-absolute top-0 end-0 m-2 rounded-circle shadow-sm" 
                                 style="z-index: 10; width: 40px; height: 40px;" 
@@ -34,43 +34,46 @@ async function loadMyFavoriteTours() {
                             <i class="fa-solid fa-trash"></i>
                         </button>
 
-                        <div class="tour-image-container">
-                            <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
-                        </div>
-                        
-                        <div class="tour-content">
-                            <h3 class="tour-title text-dark">${tour.short_name}</h3>
-                            <p class="tour-rating">
-                                ${tour.rating_summary?.average || 'Mới'}
-                                <i class="fa-solid fa-star text-warning"></i>
-                                <span class="ms-1 text-muted">(${tour.rating_summary?.count || 0})</span>
-                            </p>
-                            
-                            <div class="tour-divider"></div>
-                            
-                            <div class="tour-info text-dark">
-                                <div class="info-item">
-                                    <i class="fa-solid fa-calendar-days info-icon"></i>
-                                    <span>${days} Ngày</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fa-solid fa-moon info-icon"></i>
-                                    <span>${nights} Đêm</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fa-solid fa-location-dot info-icon"></i>
-                                    <span>${location}</span>
-                                </div>
+                        <a href="chi-tiet-tour.html?id=${tour._id}" class="text-decoration-none" style="color: inherit;">
+                            <div class="tour-image-container">
+                                <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
                             </div>
                             
-                            <div class="tour-footer mt-3">
-                                <div class="price-section">
-                                    <span class="price-label text-muted small">Giá từ</span>
-                                    <span class="price-amount text-danger fw-bold fs-5">${tour.price.display}</span>
+                            <div class="tour-content">
+                                <h3 class="tour-title">${tour.short_name}</h3>
+                                <p class="tour-rating">
+                                    ${tour.rating_summary?.average || 'Mới'}
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="ms-1">(${tour.rating_summary?.count || 0})</span>
+                                </p>
+                                
+                                <div class="tour-divider"></div>
+                                
+                                <div class="tour-info">
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-calendar-days info-icon"></i>
+                                        <span>${days} Ngày</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-moon info-icon"></i>
+                                        <span>${nights} Đêm</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-location-dot info-icon"></i>
+                                        <span>${location}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tour-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Giá từ</span>
+                                        <span class="price-amount">${tour.price.display}</span>
+                                    </div>
+                                    <span class="btn-view-tour">Chi tiết</span>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             `;
         });
@@ -83,9 +86,10 @@ async function loadMyFavoriteTours() {
     }
 }
 
-// Hàm để xóa tour ngay tại trang Tour của tôi
-function removeFavorite(event, tourId) {
-    event.preventDefault(); // Ngăn chặn click nhảy sang trang chi tiết
+// Gắn hàm vào window để HTML có thể gọi được
+window.removeFavorite = function (event, tourId) {
+    event.preventDefault(); // Ngăn chặn chuyển trang
+    event.stopPropagation(); // QUAN TRỌNG: Ngăn chặn click lan ra các thẻ bên dưới
 
     let favoriteTours = JSON.parse(localStorage.getItem('favoriteTours')) || [];
     favoriteTours = favoriteTours.filter(id => id !== tourId);
@@ -93,9 +97,9 @@ function removeFavorite(event, tourId) {
 
     alert("Đã xóa khỏi Tour của tôi!");
 
-    // Load lại trang để cập nhật danh sách
+    // Load lại trang để cập nhật danh sách ngay lập tức
     window.location.reload();
-}
+};
 
 // Chạy hàm khi load file
 loadMyFavoriteTours();
