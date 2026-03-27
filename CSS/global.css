@@ -12,6 +12,10 @@ nav {
   font-weight: 500;
   min-height: 60px;
 }
+.nav-link.active {
+  color: #212529 !important;
+  font-weight: 600;
+}
 .navbar .container {
   display: flex;
   justify-content: space-between;
@@ -50,7 +54,7 @@ nav {
 .user-dropdown {
   position: absolute;
   top: 100%;
-  left: -100px;
+  left: -180px;
   margin-top: 8px;
   background: white;
   border-radius: 6px;

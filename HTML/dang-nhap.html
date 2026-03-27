@@ -27,7 +27,7 @@
   <body>
     <div id="bg"></div>
     <div id="glass-board">
-      <a href="index.html"
+      <a href="./index.html"
         ><img height="70px" src="../IMG/logo-2.webp.svg" id="travlia" alt=""
       /></a>
       <div id="form-container">
@@ -35,56 +35,54 @@
           <h2>Chào mừng trở lại</h2>
           <h3>Hãy đăng nhập để tiếp tục</h3>
         </div>
-        <div id="form">
-          <form action="" method="post" autocomplete="on">
-            <div class="input-group">
-              <label for="username">Email</label>
-              <br />
+        <form id="form" method="post" autocomplete="on">
+          <div class="input-group">
+            <label for="username">Email</label>
+            <br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Nhập email"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Mật khẩu</label>
+            <br />
+            <div class="input-group-password">
               <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Nhập email"
+                type="password"
+                id="password"
+                name="password"
+                aria-describedby="togglePassword"
+                placeholder="Nhập mật khẩu"
                 required
               />
+              <button
+                type="button"
+                id="togglePassword"
+                aria-label="showPassword"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
             </div>
-            <div class="input-group">
-              <label for="password">Mật khẩu</label>
-              <br />
-              <div class="input-group-password">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  aria-describedby="togglePassword"
-                  placeholder="Nhập mật khẩu"
-                  required
-                />
-                <button
-                  type="button"
-                  id="togglePassword"
-                  aria-label="showPassword"
-                  aria-pressed="false"
-                >
-                  <i class="fa-solid fa-eye"></i>
-                </button>
-              </div>
-            </div>
-            <div id="forgot-password-container">
-              <a href="404.html" id="forgot-password">Quên mật khẩu?</a>
-            </div>
-            <div id="error-message" class="show">&nbsp;</div>
-            <button type="button" id="loginBtn">Đăng nhập</button>
-            <div id="signup-link">
-              <span>Bạn chưa có tài khoản?</span>
-              <a href="dang-ky.html" id="signup">Đăng ký</a>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div id="forgot-password-container">
+            <a href="404.html" id="forgot-password">Quên mật khẩu?</a>
+          </div>
+          <div id="error-message" class="show">&nbsp;</div>
+          <button type="submit" id="loginBtn">Đăng nhập</button>
+          <div id="signup-link">
+            <span>Bạn chưa có tài khoản?</span>
+            <a href="./dang-ky.html" id="signup">Đăng ký</a>
+          </div>
+        </form>
       </div>
     </div>
 
     <script src="../JS/background.js"></script>
-    <script src="../JS/dang-nhap.js"></script>
+    <script type="module" src="../JS/dang-nhap.js"></script>
   </body>
 </html>

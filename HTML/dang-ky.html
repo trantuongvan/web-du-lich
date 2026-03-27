@@ -35,60 +35,59 @@
           <h2>Chào mừng</h2>
           <h3>Hãy điền thông tin để tiếp tục</h3>
         </div>
-        <div id="form">
-          <form action="" method="post" autocomplete="on">
-            <div class="input-group">
-              <label for="email">Email</label>
-              <br />
+        <form novalidate id="form" action="" method="post" autocomplete="on">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Nhập email"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Mật khẩu</label>
+            <br />
+            <div class="input-group-password">
               <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Nhập email"
+                type="password"
+                id="password"
+                name="password"
+                aria-describedby="togglePassword"
+                placeholder="Nhập mật khẩu"
                 required
               />
+              <button
+                type="button"
+                id="togglePassword"
+                aria-label="showPassword"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
             </div>
-            <div class="input-group">
-              <label for="password">Mật khẩu</label>
-              <br />
-              <div class="input-group-password">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  aria-describedby="togglePassword"
-                  placeholder="Nhập mật khẩu"
-                  required
-                />
-                <button
-                  type="button"
-                  id="togglePassword"
-                  aria-label="showPassword"
-                  aria-pressed="false"
-                >
-                  <i class="fa-solid fa-eye"></i>
-                </button>
-              </div>
-            </div>
-            <div id="tos-container">
-              <input type="checkbox" id="checkbox" required />
-              <p>
-                Tôi đồng ý với các
-                <a href="404.html" id="tos">Điều khoản Dịch vụ</a>
-              </p>
-            </div>
-            <div id="error-message">&nbsp;</div>
-            <button type="button" id="signupBtn">Đăng ký</button>
-            <hr />
-            <div id="signup-link">
-              <span>Bạn đã có tài khoản?</span>
-              <a href="dang-nhap.html" id="signup">Đăng nhập</a>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div id="tos-container">
+            <input type="checkbox" id="checkbox" required />
+            <p>
+              Tôi đồng ý với các
+              <a href="./404.html" id="tos">Điều khoản Dịch vụ</a>
+            </p>
+          </div>
+          <div id="error-message">&nbsp;</div>
+          <button type="submit" id="signupBtn">Đăng ký</button>
+          <hr />
+          <div id="signup-link">
+            <span>Bạn đã có tài khoản?</span>
+            <a href="./dang-nhap.html" id="signup">Đăng nhập</a>
+          </div>
+        </form>
       </div>
     </div>
 
+    <script type="module" src="../JS/dang-ky.js"></script>
     <script src="../JS/background.js"></script>
   </body>
 </html>
