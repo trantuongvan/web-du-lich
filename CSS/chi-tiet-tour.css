@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 nav {
     font-weight: 500;
     min-height: 60px;
@@ -20,7 +25,7 @@ body {
     background-color: #f9f9f9 !important;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif; /* Hoặc font bạn đang dùng */
+    font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .footer {
@@ -164,10 +169,26 @@ ul {
 }
 
 /* Trạng thái khi được chọn: Viền đen đậm và nền xám nhẹ */
-.date-selectable.selected {
-    border: 2px solid #000 !important;
+/* .date-selectable.selected {
+    border: 2px solid #0e0e0e !important;
     background-color: #f8f9fa !important;
-    /* Thêm !important ở đây */
+} */
+
+.date-selectable{
+    transition: all 0.3s ease;
+    border: 1px solid #e4e4e4 !important;
+}
+.date-selectable:hover{
+    border: 1px solid #888888 !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.date-selectable.selected{
+    border: 1px solid #000!important;
+    background-color: #f8f9fa!important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12)!important;
+    transform: translateY(-3px);
 }
 
 /* Nút đặt tour khi được kích hoạt */
@@ -176,6 +197,31 @@ ul {
     color: #fff !important;
     border: none !important;
     opacity: 1 !important;
+}
+
+#nut-dat-tour, .btn-outline-dark{
+    transition: all 0.3s ease !important;
+}
+#nut-dat-tour.btn-activated:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+    background-color: #333333 !important;
+}
+
+#nut-dat-tour.btn-activated:active {
+    transform: translateY(0);
+    box-shadow: none!important;
+}
+
+/* Nút Yêu thích */
+.btn-outline-dark:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-dark:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 /* Lớp nền mờ bao quanh Modal */
@@ -210,11 +256,32 @@ ul {
     border: 1px solid #dee2e6 !important;
     color: #333 !important;
 }
+.form-control:hover {
+    background-color: #f1f3f5 !important;
+    border-color: #bfc5cb !important;
+}
+
+.form-control:focus{
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 0.25rem rgba(253, 216, 53, 0.4) !important;
+    outline: none !important;
+}
+textarea.form-control{
+    resize: none !important;
+}
 
 /* Nút xác nhận đặt tour */
 #btn-confirm-booking.active {
     background-color: #000 !important;
     color: #fff !important;
+}
+#btn-confirm-booking {
+    transition: all 0.3s ease !important;
+}
+#btn-confirm-booking.active:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+    background-color: #333333 !important;
 }
 /* Style cho nút vuông bo góc nhẹ */
 .qty-btn {
@@ -245,6 +312,7 @@ ul {
     text-align: center;
     color: #000;
 }
+
 
 
 @media (max-width: 768px) {
