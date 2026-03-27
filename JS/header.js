@@ -1,9 +1,9 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
+let currentPath = window.location.pathname.split("/").pop();
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
-  let currentPath = window.location.pathname.split("/").pop();
   if (currentPath === "") {
     currentPath = "index.html";
   }
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const userBtn = document.getElementById("userBtn");
+const heartBtn = document.getElementById("heartBtn");
 const dropdown = document.getElementById("userDropdown");
 
 const loggedOutView = document.getElementById("loggedOutView");
@@ -29,6 +30,20 @@ const signupBtn = document.getElementById("signupBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
 const btnIcons = document.querySelectorAll(".btn-icon");
+
+//Xu lý sự kiện click vào nút yêu thích
+heartBtn.addEventListener("click", () => {
+  if (auth.currentUser) {
+    window.location.href = "./tour-yeu-thich.html";
+  } else {
+    window.location.href = "./dang-nhap.html";
+  }
+});
+if (currentPath === "tour-yeu-thich.html") {
+  heartBtn.classList.add("active");
+} else {
+  heartBtn.classList.remove("active");
+}
 
 //Xử lý hiển thị dropdown
 userBtn.addEventListener("click", (e) => {
