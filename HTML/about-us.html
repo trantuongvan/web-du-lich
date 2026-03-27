@@ -1,315 +1,270 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Về chúng tôi</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="../CSS/about-us.css" />
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
-    <link rel="stylesheet" href="../CSS/global.css" />
-  </head>
-  <body>
-    <header>
-      <nav
-        class="navbar navbar-expand-lg navbar-light bg-light container-fluid"
-      >
-        <div class="container">
-          <a class="navbar-brand" href="./index.html">
-            <img src="../IMG/logo.png" alt="logo" />
-          </a>
-          <button
-            class="navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  href="./index.html"
-                  aria-current="page"
-                  >Trang chủ <span class="visually-hidden">(current)</span></a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./bo-loc.html">Tour</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./about-us.html">Về chúng tôi</a>
-              </li>
-            </ul>
-            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-              <form class="d-flex">
-                <div
-                  class="input-group-header border border-black rounded-pill d-flex align-items-center p-1"
-                >
-                  <input
-                    class="form-control me-sm-2 bg-transparent border-0 shadow-none"
-                    type="text"
-                    placeholder="Tìm tour..."
-                  />
-                  <button
-                    class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
-                    type="submit"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="width: 20px; height: 20px; margin-top: 4px"
-                    >
-                      <path
-                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-              </form>
 
-              <div class="header-icons d-flex align-items-center gap-2">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Về chúng tôi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../CSS/about-us.css" />
+  <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="../CSS/global.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">
+          <img src="../IMG/logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html" aria-current="page">Trang chủ <span
+                  class="visually-hidden">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./bo-loc.html">Tour</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./about-us.html">Về chúng tôi</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <form class="d-flex">
+              <div class="input-group-header border border-black rounded-pill d-flex align-items-center p-1">
+                <input class="form-control me-sm-2 bg-transparent border-0 shadow-none" type="text"
+                  placeholder="Tìm tour..." />
                 <button
-                  id="heartBtn"
-                  class="btn-icon"
-                  style="width: 42px; height: 42px"
-                >
+                  class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
+                  type="submit">
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-top: 4px">
+                    <path
+                      d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <div class="header-icons d-flex align-items-center gap-2">
+              <a href="tour-cua-toi.html"><button id="heartBtn" class="btn-icon" style="width: 42px; height: 42px">
                   <i class="fa-regular fa-heart fs-5"></i>
+                </button></a>
+
+              <div class="user-menu position-relative">
+                <button class="btn-icon" id="userBtn" type="button" style="width: 42px; height: 42px">
+                  <i class="fa-regular fa-user fs-5"></i>
                 </button>
 
-                <div class="user-menu position-relative">
-                  <button
-                    class="btn-icon"
-                    id="userBtn"
-                    type="button"
-                    style="width: 42px; height: 42px"
-                  >
-                    <i class="fa-regular fa-user fs-5"></i>
-                  </button>
+                <div id="userDropdown" class="user-dropdown hidden">
+                  <div id="loggedOutView" class="d-flex flex-column gap-2">
+                    <button id="loginBtn">Đăng nhập</button>
+                    <button id="signupBtn">Đăng ký</button>
+                  </div>
 
-                  <div id="userDropdown" class="user-dropdown hidden">
-                    <div id="loggedOutView" class="d-flex flex-column gap-2">
-                      <button id="loginBtn">Đăng nhập</button>
-                      <button id="signupBtn">Đăng ký</button>
-                    </div>
-
-                    <div id="loggedInView" class="hidden flex-column gap-2">
-                      <p
-                        id="userEmail"
-                        class="mb-2 text-truncate fw-bold text-center text-primary"
-                      ></p>
-                      <hr class="my-1" />
-                      <button id="logoutBtn">Đăng xuất</button>
-                    </div>
+                  <div id="loggedInView" class="hidden flex-column gap-2">
+                    <p id="userEmail" class="mb-2 text-truncate fw-bold text-center text-primary"></p>
+                    <hr class="my-1" />
+                    <button id="logoutBtn">Đăng xuất</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
-    <section class="first-section">
-      <div class="first-section-left">
-        <h1>Về chúng tôi</h1>
-        <div class="first-section-nav">
-          <a href="../HTML/index.html">TRANG CHỦ</a>
-          <i class="fa-solid fa-chevron-right"></i>
-          <a href="../HTML/about-us.html">Về chúng tôi</a>
+      </div>
+    </nav>
+  </header>
+  <section class="first-section">
+    <div class="first-section-left">
+      <h1>Về chúng tôi</h1>
+      <div class="first-section-nav">
+        <a href="../HTML/index.html">TRANG CHỦ</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="../HTML/about-us.html">Về chúng tôi</a>
+      </div>
+    </div>
+    <div class="first-section-right">
+      <img src="../IMG/about-us/Mask Group.svg" alt="image" />
+    </div>
+  </section>
+  <section class="second-section">
+    <div class="second-section-left">
+      <div class="head-title">
+        <span>Công ty Du Lịch</span>
+        <h1>Khám phá xung quanh</h1>
+      </div>
+      <img src="../IMG/about-us/girl-travel.avif" alt="travel" />
+    </div>
+
+    <div class="second-section-right">
+      <div class="content">
+        <div class="description">
+          <p>
+            Tạm gác lại những bộn bề của cuộc sống thường nhật, hãy để
+            Travilia đồng hành cùng bạn trên những hành trình khám phá mới.
+          </p>
+          <p>
+            Chúng tôi tự hào mang đến những trải nghiệm du lịch trọn vẹn, an
+            toàn và mang đậm dấu ấn cá nhân của từng du khách.
+          </p>
+          <p>
+            Với đội ngũ hướng dẫn viên tận tâm, mọi điểm đến dù xa lạ cũng sẽ
+            trở nên gần gũi và thú vị hơn bao giờ hết.
+          </p>
+          <p>
+            Khám phá ngay các gói tour lân cận hấp dẫn nhất của chúng tôi và
+            bắt đầu chuyến đi trong mơ của bạn!
+          </p>
         </div>
-      </div>
-      <div class="first-section-right">
-        <img src="../IMG/about-us/Mask Group.svg" alt="image" />
-      </div>
-    </section>
-    <section class="second-section">
-      <div class="second-section-left">
-        <div class="head-title">
-          <span>Công ty Du Lịch</span>
-          <h1>Khám phá xung quanh</h1>
-        </div>
-        <img src="../IMG/about-us/girl-travel.avif" alt="travel" />
-      </div>
-
-      <div class="second-section-right">
-        <div class="content">
-          <div class="description">
-            <p>
-              Tạm gác lại những bộn bề của cuộc sống thường nhật, hãy để
-              Travilia đồng hành cùng bạn trên những hành trình khám phá mới.
-            </p>
-            <p>
-              Chúng tôi tự hào mang đến những trải nghiệm du lịch trọn vẹn, an
-              toàn và mang đậm dấu ấn cá nhân của từng du khách.
-            </p>
-            <p>
-              Với đội ngũ hướng dẫn viên tận tâm, mọi điểm đến dù xa lạ cũng sẽ
-              trở nên gần gũi và thú vị hơn bao giờ hết.
-            </p>
-            <p>
-              Khám phá ngay các gói tour lân cận hấp dẫn nhất của chúng tôi và
-              bắt đầu chuyến đi trong mơ của bạn!
-            </p>
-          </div>
-          <div class="bottom-layout">
-            <div class="list">
-              <div class="list-item">
-                <i class="fa-solid fa-plane-up"></i>
-                <div class="list-text">
-                  <h3>Đối tác hàng không uy tín</h3>
-                  <p>
-                    Liên kết với các hãng bay hàng đầu trong nước và quốc tế,
-                    đảm bảo mang đến cho bạn những chuyến đi an toàn và chất
-                    lượng nhất.
-                  </p>
-                </div>
-              </div>
-
-              <div class="list-item">
-                <i class="fa-solid fa-car"></i>
-                <div class="list-text">
-                  <h3>Chuyến đi thiết kế riêng dành cho bạn</h3>
-                  <p>
-                    Tự do tùy chỉnh lịch trình để tận hưởng những hành trình độc
-                    đáo, linh hoạt và mang đậm dấu ấn cá nhân của chính bạn.
-                  </p>
-                </div>
-              </div>
-
-              <button class="button" id="btnLearnMore">TÌM HIỂU THÊM</button>
-            </div>
-            <div class="suitcase-box">
-              <img src="../IMG/about-us/suicase.png" alt="suitcase" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="third-section">
-      <i class="fa-solid fa-anchor bg-doodle anchor"></i>
-      <i class="fa-solid fa-camera bg-doodle camera"></i>
-      <i class="fa-regular fa-star bg-doodle star"></i>
-      <i class="fa-solid fa-earth-americas bg-doodle globe"></i>
-      <div class="third-section-left">
-        <div class="banner">
-          <p class="subtitle">Ưu đãi đặc biệt</p>
-          <span class="text-blue">Tận hưởng</span><br />
-          <span class="text-blue">kỳ nghỉ của bạn</span><br />
-          <span class="text-black">cùng chúng tôi</span>
-
-          <div class="discount-badge">
-            <p>Giảm giá lên đến</p>
-            <strong>50%</strong>
-          </div>
-        </div>
-        <img
-          src="../IMG/about-us/view.avif"
-          alt="view traveling"
-          class="travel-image"
-        />
-      </div>
-
-      
-    </section>
-
-    <section class="brand-section">
-      <h3 class="brand-title">
-        Được tin tưởng bởi các đội ngũ xuất sắc nhất tại
-      </h3>
-
-      <div class="marquee-container">
-        <div class="marquee-track">
-          <img src="../IMG/about-us/Logo_NIKE.svg" alt="nike" />
-          <img src="../IMG/about-us/Sony_logo.svg" alt="sony" />
-          <img src="../IMG/about-us/Adidas_Logo.svg" alt="adidas" />
-          <img src="../IMG/about-us/Apple_logo_black.svg" alt="apple" />
-          <img src="../IMG/about-us/Heineken_logo.svg" alt="heineken" />
-          <img src="../IMG/about-us/PlayStation_logo.svg" alt="playStation" />
-          <img src="../IMG/about-us/Steam_icon_logo.svg" alt="steam" />
-          <img src="../IMG/about-us/Nintendo.svg" alt="nintendo" />
-          <img src="../IMG/about-us/Logo_NIKE.svg" alt="nike" />
-          <img src="../IMG/about-us/Sony_logo.svg" alt="sony" />
-          <img src="../IMG/about-us/Adidas_Logo.svg" alt="adidas" />
-          <img src="../IMG/about-us/Apple_logo_black.svg" alt="apple" />
-          <img src="../IMG/about-us/Heineken_logo.svg" alt="heineken" />
-          <img src="../IMG/about-us/PlayStation_logo.svg" alt="playStation" />
-          <img src="../IMG/about-us/Steam_icon_logo.svg" alt="steam" />
-          <img src="../IMG/about-us/Nintendo.svg" alt="nintendo" />
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-content">
-            <img src="../IMG/logo-white.png" alt="logo" />
-            <p>
-              Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
-              nghiệm.
-            </p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>Liên kết</h4>
-              <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li><a href="">Tour</a></li>
-                <li><a href="">Về chúng tôi</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-column">
-              <h4>Hỗ trợ</h4>
-              <ul>
-                <li><a href="./404.html">Liên hệ chúng tôi</a></li>
-                <li><a href="">Câu hỏi thường gặp</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-column">
-              <h4>Kết nối với chúng tôi</h4>
-              <div class="social-links">
-                <a href="#" class="social-icon"
-                  ><i class="fa-brands fa-facebook"></i
-                ></a>
-                <a href="#" class="social-icon"
-                  ><i class="fa-brands fa-twitter"></i
-                ></a>
-                <a href="#" class="social-icon"
-                  ><i class="fa-brands fa-linkedin-in"></i
-                ></a>
+        <div class="bottom-layout">
+          <div class="list">
+            <div class="list-item">
+              <i class="fa-solid fa-plane-up"></i>
+              <div class="list-text">
+                <h3>Đối tác hàng không uy tín</h3>
+                <p>
+                  Liên kết với các hãng bay hàng đầu trong nước và quốc tế,
+                  đảm bảo mang đến cho bạn những chuyến đi an toàn và chất
+                  lượng nhất.
+                </p>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="footer-bottom">
-          <div class="copyright">
-            <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+            <div class="list-item">
+              <i class="fa-solid fa-car"></i>
+              <div class="list-text">
+                <h3>Chuyến đi thiết kế riêng dành cho bạn</h3>
+                <p>
+                  Tự do tùy chỉnh lịch trình để tận hưởng những hành trình độc
+                  đáo, linh hoạt và mang đậm dấu ấn cá nhân của chính bạn.
+                </p>
+              </div>
+            </div>
+
+            <button class="button" id="btnLearnMore">TÌM HIỂU THÊM</button>
           </div>
-          <div class="footer-legal">
-            <a href="#">Điều khoản sử dụng</a>
-            <a href="#">Chính sách riêng tư</a>
-            <a href="#">Chính sách bản quyền</a>
+          <div class="suitcase-box">
+            <img src="../IMG/about-us/suicase.png" alt="suitcase" />
           </div>
         </div>
       </div>
-    </footer>
-    <script src="../JS/bootstrap.bundle.min.js"></script>
-    <script src="../JS/dropdown.js"></script>
-    <script src="../JS/about-us.js"></script>
-  </body>
+    </div>
+  </section>
+
+  <section class="third-section">
+    <i class="fa-solid fa-anchor bg-doodle anchor"></i>
+    <i class="fa-solid fa-camera bg-doodle camera"></i>
+    <i class="fa-regular fa-star bg-doodle star"></i>
+    <i class="fa-solid fa-earth-americas bg-doodle globe"></i>
+    <div class="third-section-left">
+      <div class="banner">
+        <p class="subtitle">Ưu đãi đặc biệt</p>
+        <span class="text-blue">Tận hưởng</span><br />
+        <span class="text-blue">kỳ nghỉ của bạn</span><br />
+        <span class="text-black">cùng chúng tôi</span>
+
+        <div class="discount-badge">
+          <p>Giảm giá lên đến</p>
+          <strong>50%</strong>
+        </div>
+      </div>
+      <img src="../IMG/about-us/view.avif" alt="view traveling" class="travel-image" />
+    </div>
+
+
+  </section>
+
+  <section class="brand-section">
+    <h3 class="brand-title">
+      Được tin tưởng bởi các đội ngũ xuất sắc nhất tại
+    </h3>
+
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <img src="../IMG/about-us/Logo_NIKE.svg" alt="nike" />
+        <img src="../IMG/about-us/Sony_logo.svg" alt="sony" />
+        <img src="../IMG/about-us/Adidas_Logo.svg" alt="adidas" />
+        <img src="../IMG/about-us/Apple_logo_black.svg" alt="apple" />
+        <img src="../IMG/about-us/Heineken_logo.svg" alt="heineken" />
+        <img src="../IMG/about-us/PlayStation_logo.svg" alt="playStation" />
+        <img src="../IMG/about-us/Steam_icon_logo.svg" alt="steam" />
+        <img src="../IMG/about-us/Nintendo.svg" alt="nintendo" />
+        <img src="../IMG/about-us/Logo_NIKE.svg" alt="nike" />
+        <img src="../IMG/about-us/Sony_logo.svg" alt="sony" />
+        <img src="../IMG/about-us/Adidas_Logo.svg" alt="adidas" />
+        <img src="../IMG/about-us/Apple_logo_black.svg" alt="apple" />
+        <img src="../IMG/about-us/Heineken_logo.svg" alt="heineken" />
+        <img src="../IMG/about-us/PlayStation_logo.svg" alt="playStation" />
+        <img src="../IMG/about-us/Steam_icon_logo.svg" alt="steam" />
+        <img src="../IMG/about-us/Nintendo.svg" alt="nintendo" />
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-content">
+          <img src="../IMG/logo-white.png" alt="logo" />
+          <p>
+            Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
+            nghiệm.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Liên kết</h4>
+            <ul>
+              <li><a href="">Trang chủ</a></li>
+              <li><a href="">Tour</a></li>
+              <li><a href="">Về chúng tôi</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Hỗ trợ</h4>
+            <ul>
+              <li><a href="./404.html">Liên hệ chúng tôi</a></li>
+              <li><a href="">Câu hỏi thường gặp</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Kết nối với chúng tôi</h4>
+            <div class="social-links">
+              <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Điều khoản sử dụng</a>
+          <a href="#">Chính sách riêng tư</a>
+          <a href="#">Chính sách bản quyền</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../JS/bootstrap.bundle.min.js"></script>
+  <script src="../JS/dropdown.js"></script>
+  <script src="../JS/about-us.js"></script>
+</body>
+
 </html>
