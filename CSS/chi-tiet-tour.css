@@ -1,171 +1,171 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 nav {
-    font-weight: 500;
-    min-height: 60px;
+  font-weight: 500;
+  min-height: 60px;
 }
 
 .navbar .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .input-group-header button {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .input-group-header button:hover {
-    transform: scale(1.2);
-    background-color: black;
+  transform: scale(1.2);
+  background-color: black;
 }
 body {
-    background-color: #f9f9f9 !important;
-    margin: 0;
-    padding: 0;
-    font-family: "Be Vietnam Pro", sans-serif;
+  background-color: #f9f9f9 !important;
+  margin: 0;
+  padding: 0;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .footer {
-    background: linear-gradient(#000000d9, #000000d9), url("../IMG/footer.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-top: 9.375rem;
-    padding: 6.25rem 0 3.125rem;
+  background: linear-gradient(#000000d9, #000000d9), url("../IMG/footer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 9.375rem;
+  padding: 6.25rem 0 3.125rem;
 }
 
 .footer .container {
-    display: flex;
-    flex-direction: column;
-    gap: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6.25rem;
 }
 
 .footer-top {
-    display: grid;
-    /* justify-content: space-between;
+  display: grid;
+  /* justify-content: space-between;
   flex-wrap: nowrap; */
-    grid-template-columns: 1fr 2fr;
-    gap: 2.5rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 2.5rem;
 }
 
 .footer-links {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* justify-content: flex-end; */
-    gap: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* justify-content: flex-end; */
+  gap: 2.5rem;
 }
 
 .footer-column h4 {
-    /* font-size: 1.25rem; */
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+  /* font-size: 1.25rem; */
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .footer-column ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer-column ul li {
-    margin-bottom: 0.875rem;
+  margin-bottom: 0.875rem;
 }
 
 .footer-column ul li a {
-    display: inline-block;
-    color: white;
-    text-decoration: none;
-    position: relative;
-    font-size: 1.125rem;
-    transition: all 0.3s ease;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
 }
 
 .footer-column ul li a::before {
-    content: ">";
-    position: absolute;
-    left: -15px;
-    opacity: 0;
-    color: #fad71b;
-    font-weight: 700;
-    transition: all 0.3s ease;
+  content: ">";
+  position: absolute;
+  left: -15px;
+  opacity: 0;
+  color: #fad71b;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
 .footer-column ul li a:hover {
-    color: #fad71b;
-    transform: translateX(10px);
+  color: #fad71b;
+  transform: translateX(10px);
 }
 
 .footer-column ul li a:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 .social-links {
-    display: flex;
-    gap: 0.875rem;
+  display: flex;
+  gap: 0.875rem;
 }
 
 .social-icon {
-    padding: 1rem;
-    background-color: #1a1a1a;
-    border: 1px solid #262626;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.25rem;
-    transition: 0.3s;
-    text-decoration: none;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.25rem;
+  transition: 0.3s;
+  text-decoration: none;
 }
 
 .social-icon:hover {
-    border-color: #fad71b;
-    color: #fad71b;
+  border-color: #fad71b;
+  color: #fad71b;
 }
 
 .footer-content img {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .footer-content p {
-    font-size: 1.125rem;
+  font-size: 1.125rem;
 }
 
 .footer-bottom {
-    padding-top: 1.5rem;
-    border-top: 1px solid #262626;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* color: var(--text-sub); */
-    font-size: 1.125rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #262626;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* color: var(--text-sub); */
+  font-size: 1.125rem;
 }
 
 .footer-legal {
-    display: flex;
-    gap: 1.25rem;
+  display: flex;
+  gap: 1.25rem;
 }
 
 .footer-legal a {
-    color: var(--text-sub);
-    text-decoration: none;
-    padding-right: 1.25rem;
-    border-right: 1px solid #262626;
-    transition: 0.3s;
+  color: var(--text-sub);
+  text-decoration: none;
+  padding-right: 1.25rem;
+  border-right: 1px solid #262626;
+  transition: 0.3s;
 }
 
 .footer-legal a:hover {
-    color: #fad71b;
+  color: #fad71b;
 }
 
 .footer-legal a:last-child {
-    border-right: none;
-    padding-right: 0;
+  border-right: none;
+  padding-right: 0;
 }
 
 /* Trạng thái khi được chọn: Viền đen đậm và nền xám nhẹ */
@@ -174,47 +174,48 @@ ul {
     background-color: #f8f9fa !important;
 } */
 
-.date-selectable{
-    transition: all 0.3s ease;
-    border: 1px solid #e4e4e4 !important;
+.date-selectable {
+  transition: all 0.3s ease;
+  border: 1px solid #e4e4e4 !important;
 }
-.date-selectable:hover{
-    border: 1px solid #888888 !important;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-    transform: translateY(-3px);
+.date-selectable:hover {
+  border: 1px solid #888888 !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
 }
 
-.date-selectable.selected{
-    border: 1px solid #000!important;
-    background-color: #f8f9fa!important;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12)!important;
-    transform: translateY(-3px);
+.date-selectable.selected {
+  border: 1px solid #000 !important;
+  background-color: #f8f9fa !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-3px);
 }
 
 /* Nút đặt tour khi được kích hoạt */
 .btn-activated {
-    background-color: #000 !important;
-    color: #fff !important;
-    border: none !important;
-    opacity: 1 !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  opacity: 1 !important;
 }
 
-#nut-dat-tour, .btn-outline-dark{
-    transition: all 0.3s ease !important;
+#nut-dat-tour,
+.btn-outline-dark {
+  transition: all 0.3s ease !important;
 }
 #nut-dat-tour.btn-activated:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
-    background-color: #333333 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+  background-color: #333333 !important;
 }
 
 #nut-dat-tour.btn-activated:active {
-    transform: translateY(0);
-    box-shadow: none!important;
+  transform: translateY(0);
+  box-shadow: none !important;
 }
 
 /* Nút Yêu thích */
-.btn-outline-dark:hover {
+/* .btn-outline-dark:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
@@ -222,222 +223,229 @@ ul {
 .btn-outline-dark:active {
     transform: translateY(0);
     box-shadow: none;
+} */
+#favBtn {
+  border: none;
+  font-size: 24px;
+  transition: all 0.3s ease !important;
 }
-
 /* Lớp nền mờ bao quanh Modal */
 .modal-overlay {
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6) !important; /* Làm nền tối hơn để nổi bật Form */
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    z-index: 9999; /* Đảm bảo nó nằm trên cùng tất cả mọi thứ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ) !important; /* Làm nền tối hơn để nổi bật Form */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Đảm bảo nó nằm trên cùng tất cả mọi thứ */
 }
 
 /* Nội dung chính của Form - Phải ĐẶC màu trắng */
 .modal-content {
-    background-color: #ffffff !important; /* PHẢI là màu trắng đặc, không dùng trong suốt */
-    width: 95%; 
-    max-width: 850px; 
-    border-radius: 15px; 
-    padding: 25px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Thêm bóng đổ để tách biệt với nền */
-    max-height: 90vh; 
-    overflow-y: auto;
-    position: relative;
-    color: #333; /* Đảm bảo chữ màu tối trên nền trắng */
+  background-color: #ffffff !important; /* PHẢI là màu trắng đặc, không dùng trong suốt */
+  width: 95%;
+  max-width: 850px;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ để tách biệt với nền */
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  color: #333; /* Đảm bảo chữ màu tối trên nền trắng */
 }
 
 /* Các ô input nhập liệu */
 .form-control {
-    background-color: #f8f9fa !important; /* Màu xám cực nhạt cho ô nhập */
-    border: 1px solid #dee2e6 !important;
-    color: #333 !important;
+  background-color: #f8f9fa !important; /* Màu xám cực nhạt cho ô nhập */
+  border: 1px solid #dee2e6 !important;
+  color: #333 !important;
 }
 .form-control:hover {
-    background-color: #f1f3f5 !important;
-    border-color: #bfc5cb !important;
+  background-color: #f1f3f5 !important;
+  border-color: #bfc5cb !important;
 }
 
-.form-control:focus{
-    background-color: #ffffff !important;
-    box-shadow: 0 0 0 0.25rem rgba(253, 216, 53, 0.4) !important;
-    outline: none !important;
+.form-control:focus {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(253, 216, 53, 0.4) !important;
+  outline: none !important;
 }
-textarea.form-control{
-    resize: none !important;
+textarea.form-control {
+  resize: none !important;
 }
 
 /* Nút xác nhận đặt tour */
 #btn-confirm-booking.active {
-    background-color: #000 !important;
-    color: #fff !important;
+  background-color: #000 !important;
+  color: #fff !important;
 }
 #btn-confirm-booking {
-    transition: all 0.3s ease !important;
+  transition: all 0.3s ease !important;
 }
 #btn-confirm-booking.active:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
-    background-color: #333333 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+  background-color: #333333 !important;
 }
 /* Style cho nút vuông bo góc nhẹ */
 .qty-btn {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0; /* Viền mờ như ảnh */
-    border-radius: 8px; /* Bo góc nhẹ */
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.2s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0; /* Viền mờ như ảnh */
+  border-radius: 8px; /* Bo góc nhẹ */
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .qty-btn:hover {
-    background-color: #f8f9fa;
-    border-color: #bbb;
+  background-color: #f8f9fa;
+  border-color: #bbb;
 }
 
 /* Con số ở giữa */
 .qty-value {
-    font-weight: bold;
-    font-size: 1.1rem;
-    min-width: 25px;
-    text-align: center;
-    color: #000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-width: 25px;
+  text-align: center;
+  color: #000;
 }
 
-
-
 @media (max-width: 768px) {
-    .hero-form-head h1 {
-        font-size: 1.5rem;
-    }
+  .hero-form-head h1 {
+    font-size: 1.5rem;
+  }
 
-    .input-group-hero {
-        flex-direction: column;
-        border-radius: 20px;
-        margin: 2rem auto;
-    }
+  .input-group-hero {
+    flex-direction: column;
+    border-radius: 20px;
+    margin: 2rem auto;
+  }
 
-    .input-group {
-        flex-direction: column;
-        width: 100%;
-    }
+  .input-group {
+    flex-direction: column;
+    width: 100%;
+  }
 
-    .input-group .date {
-        border-left: none;
-        border-top: 1px solid #999;
-    }
+  .input-group .date {
+    border-left: none;
+    border-top: 1px solid #999;
+  }
 
-    .footer-top,
-    .footer-links {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+  .footer-top,
+  .footer-links {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-    .social-links {
-        display: flex;
-        justify-content: center;
-    }
+  .social-links {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* --- RESPONSIVE TRANG CHI TIẾT --- */
 @media (max-width: 768px) {
+  /* 1. Ảnh tour: Thu nhỏ chiều cao để không chiếm hết màn hình đầu tiên */
+  #tour-main-img {
+    height: 250px !important;
+    object-fit: cover;
+    margin-top: 15px !important;
+  }
 
-    /* 1. Ảnh tour: Thu nhỏ chiều cao để không chiếm hết màn hình đầu tiên */
-    #tour-main-img {
-        height: 250px !important;
-        object-fit: cover;
-        margin-top: 15px !important;
-    }
+  /* 2. Nội dung: Xóa bớt khoảng cách lề trái quá rộng (ps-md-5) trên mobile */
+  .col-md-6.p-4.ps-md-5 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
 
-    /* 2. Nội dung: Xóa bớt khoảng cách lề trái quá rộng (ps-md-5) trên mobile */
-    .col-md-6.p-4.ps-md-5 {
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-    }
+  /* 3. Ô chọn ngày: Chuyển từ chia cột (col-5) sang 1 hàng 1 ô để dễ bấm */
+  #departure-dates .col-5 {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
 
-    /* 3. Ô chọn ngày: Chuyển từ chia cột (col-5) sang 1 hàng 1 ô để dễ bấm */
-    #departure-dates .col-5 {
-        width: 100% !important;
-        margin-bottom: 10px;
-    }
+  .date-selectable {
+    padding: 15px !important;
+    /* Làm ô to hơn cho ngón tay dễ chạm */
+  }
 
-    .date-selectable {
-        padding: 15px !important;
-        /* Làm ô to hơn cho ngón tay dễ chạm */
-    }
+  /* 4. Lịch trình (Timeline): Thu nhỏ khoảng thụt lề để chữ không bị quá hẹp */
+  .ms-5.ps-3.border-start {
+    margin-left: 1.5rem !important;
+    padding-left: 1rem !important;
+  }
 
-    /* 4. Lịch trình (Timeline): Thu nhỏ khoảng thụt lề để chữ không bị quá hẹp */
-    .ms-5.ps-3.border-start {
-        margin-left: 1.5rem !important;
-        padding-left: 1rem !important;
-    }
-
-    /* 5. Tiêu đề tour: Cho chữ nhỏ lại một chút để không bị xuống dòng quá nhiều */
-    #tour-title {
-        font-size: 1.25rem !important;
-    }
+  /* 5. Tiêu đề tour: Cho chữ nhỏ lại một chút để không bị xuống dòng quá nhiều */
+  #tour-title {
+    font-size: 1.25rem !important;
+  }
 }
 
 /* --- RESPONSIVE FORM ĐẶT TOUR (MODAL) --- */
 @media (max-width: 576px) {
+  /* 1. Vỏ bọc Modal: Chiếm gần hết chiều ngang, bo sát lề */
+  .modal-content {
+    width: 96% !important;
+    margin: 10px auto;
+    padding: 15px !important;
+    max-height: 92vh;
+    /* Giới hạn chiều cao để không bị mất nút dưới cùng */
+    overflow-y: auto;
+    /* Cho phép cuộn nếu điện thoại quá ngắn */
+    border-radius: 12px !important;
+  }
 
-    /* 1. Vỏ bọc Modal: Chiếm gần hết chiều ngang, bo sát lề */
-    .modal-content {
-        width: 96% !important;
-        margin: 10px auto;
-        padding: 15px !important;
-        max-height: 92vh;
-        /* Giới hạn chiều cao để không bị mất nút dưới cùng */
-        overflow-y: auto;
-        /* Cho phép cuộn nếu điện thoại quá ngắn */
-        border-radius: 12px !important;
-    }
+  /* 2. Tóm tắt tour trong Modal: Thu nhỏ ảnh và chữ */
+  #modal-img {
+    width: 80px !important;
+    height: 60px !important;
+  }
 
-    /* 2. Tóm tắt tour trong Modal: Thu nhỏ ảnh và chữ */
-    #modal-img {
-        width: 80px !important;
-        height: 60px !important;
-    }
+  #modal-title {
+    font-size: 0.85rem !important;
+    line-height: 1.2;
+  }
 
-    #modal-title {
-        font-size: 0.85rem !important;
-        line-height: 1.2;
-    }
+  /* 3. Các ô nhập liệu (Input): Cho cao hơn để dễ chạm */
+  .form-control {
+    height: 45px;
+    font-size: 16px !important;
+    /* Ngừa iPhone tự động phóng to khi focus */
+  }
 
-    /* 3. Các ô nhập liệu (Input): Cho cao hơn để dễ chạm */
-    .form-control {
-        height: 45px;
-        font-size: 16px !important;
-        /* Ngừa iPhone tự động phóng to khi focus */
-    }
+  /* 4. Bộ tăng giảm số lượng (+ -): Làm nút to hơn */
+  .btn-outline-secondary.rounded-circle {
+    width: 35px !important;
+    height: 35px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    /* 4. Bộ tăng giảm số lượng (+ -): Làm nút to hơn */
-    .btn-outline-secondary.rounded-circle {
-        width: 35px !important;
-        height: 35px !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  /* 5. Tổng tiền và Nút xác nhận: Cho nổi bật và to rõ */
+  #total-amount {
+    font-size: 1.4rem !important;
+    text-align: center;
+    /* Căn giữa tổng tiền trên mobile cho đẹp */
+  }
 
-    /* 5. Tổng tiền và Nút xác nhận: Cho nổi bật và to rõ */
-    #total-amount {
-        font-size: 1.4rem !important;
-        text-align: center;
-        /* Căn giữa tổng tiền trên mobile cho đẹp */
-    }
-
-    #btn-confirm-booking {
-        padding: 15px !important;
-        font-size: 1.1rem;
-    }
+  #btn-confirm-booking {
+    padding: 15px !important;
+    font-size: 1.1rem;
+  }
 }
