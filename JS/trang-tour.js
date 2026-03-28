@@ -7,7 +7,7 @@ async function loadTours() {
 
     console.log(tours);
     renderAllTours();
-    initFilters();
+    // initFilters(); // Đóng tạm hàm này vì chưa được định nghĩa để tránh lỗi đứng script
   } catch (error) {
     console.error("Lỗi tải dữ liệu:", error);
   }
@@ -35,7 +35,7 @@ function renderCarousel(list, containerId) {
 
               return `
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="tour-card">
+                <div class="tour-card" onclick="window.location.href='./chi-tiet-tour.html?id=${tour._id}'" style="cursor: pointer;">
                   <div class="tour-image-container">
                     <img src="../${tour.images?.[0]?.url}" 
                          class="tour-image" 
