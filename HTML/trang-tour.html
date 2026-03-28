@@ -14,11 +14,83 @@
       crossorigin="anonymous"
       referrerpolicy="no-repeat"
     />
+    <link rel="stylesheet" href="../IMG/logo-icon-white.png">
     <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="../CSS/trang-tour.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">
+            <img src="../IMG/logo.png" alt="logo" />
+          </a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="./index.html" aria-current="page">Trang chủ <span
+                    class="visually-hidden">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./trang-tour.html">Tour</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about-us.html">Về chúng tôi</a>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+              <form class="d-flex">
+                <div class="input-group-header border border-black rounded-pill d-flex align-items-center p-1">
+                  <input class="form-control me-sm-2 bg-transparent border-0 shadow-none" type="text"
+                    placeholder="Tìm tour..." />
+                  <button
+                    class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
+                    type="submit">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-top: 4px">
+                      <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+    
+              <div class="header-icons d-flex align-items-center gap-2">
+                <button id="heartBtn" class="btn-icon" style="width: 42px; height: 42px">
+                  <i class="fa-regular fa-heart fs-5"></i>
+                </button>
+    
+                <div class="user-menu position-relative">
+                  <button class="btn-icon" id="userBtn" type="button" style="width: 42px; height: 42px">
+                    <i class="fa-regular fa-user fs-5"></i>
+                  </button>
+    
+                  <div id="userDropdown" class="user-dropdown hidden">
+                    <div id="loggedOutView" class="flex-column gap-2">
+                      <button id="loginBtn">Đăng nhập</button>
+                      <button id="signupBtn">Đăng ký</button>
+                    </div>
+    
+                    <div id="loggedInView" class="hidden flex-column gap-2">
+                      <p id="userEmail" class="mb-2 text-truncate fw-bold text-center text-primary"></p>
+                      <hr class="my-1" />
+                      <button id="logoutBtn">Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
     <div class="container py-5">
       <h2 class="text-center mb-4">Tour du lịch trong nước</h2>
 
@@ -128,6 +200,55 @@
         </button>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-content">
+            <img src="../IMG/logo-white.png" alt="logo" />
+            <p>
+              Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
+              nghiệm.
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Liên kết</h4>
+              <ul>
+                <li><a href="./index.html">Trang chủ</a></li>
+                <li><a href="./trang-tour.html">Tour</a></li>
+                <li><a href="./about-us.html">Về chúng tôi</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Hỗ trợ</h4>
+              <ul>
+                <li><a href="./404.html">Liên hệ chúng tôi</a></li>
+                <li><a href="">Câu hỏi thường gặp</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Kết nối với chúng tôi</h4>
+              <div class="social-links">
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+          </div>
+          <div class="footer-legal">
+            <a href="./404.html">Điều khoản sử dụng</a>
+            <a href="./404.html">Chính sách riêng tư</a>
+            <a href="./404.html">Chính sách bản quyền</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="../JS/trang-tour.js"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
