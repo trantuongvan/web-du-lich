@@ -71,3 +71,29 @@ function renderTours(tourList) {
 }
 
 loadTours();
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const heroForm = document.querySelector(".hero-form");
+
+    if (heroForm) {
+        heroForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const searchInputValue = heroForm.querySelector(".search").value.trim();
+            const dateInputValue = heroForm.querySelector(".date").value;
+            let url = "./bo-loc.html";
+            const params = new URLSearchParams();
+            if (searchInputValue !== "") {
+                params.append("search", searchInputValue);
+            }
+            if (dateInputValue !== "") {
+                params.append("date", dateInputValue);
+            }
+            if (params.toString()) {
+                url += "?" + params.toString();
+            }
+            window.location.href = url;
+        });
+    }
+});
