@@ -1,37 +1,81 @@
 let tours = [];
 let selectedTourTypes = [];
+let currentSearchKeyword = ""; // Biến toàn cục để nhớ từ khóa từ trang chủ
+let currentSearchDate = ""; // Biến toàn cục để nhớ ngày khởi hành từ trang chủ
 
 async function loadTours() {
   try {
     const response = await fetch("../data/tours.json");
     tours = await response.json();
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchKeyword = urlParams.get('search');
 
-    if (searchKeyword) {
+    // === 1. HỨNG VÀ XỬ LÝ TỪ KHÓA + NGÀY THÁNG TỪ URL ===
+    const urlParams = new URLSearchParams(window.location.search);
+    currentSearchKeyword = urlParams.get('search') ? urlParams.get('search').toLowerCase() : "";
+    currentSearchDate = urlParams.get('date') || ""; // Hứng ngày tháng (định dạng YYYY-MM-DD)
+
+    if (currentSearchKeyword) {
       const destinationSelect = document.getElementById("destinationSelect");
       if (destinationSelect) {
         const options = Array.from(destinationSelect.options);
-        const matchOption = options.find(opt => opt.value.toLowerCase().includes(searchKeyword.toLowerCase()));
+        
+        // Tìm option khớp với từ khóa nhưng BẮT BUỘC bỏ qua option rỗng "" (Chọn điểm đến)
+        const matchOption = options.find(opt => 
+            opt.value !== "" && (
+                opt.value.toLowerCase().includes(currentSearchKeyword) || 
+                currentSearchKeyword.includes(opt.value.toLowerCase())
+            )
+        );
         
         if (matchOption) {
-          destinationSelect.value = matchOption.value;
+          destinationSelect.value = matchOption.value; // Tự động điền vào form
+          currentSearchKeyword = ""; // Xóa text keyword vì đã chọn bằng ô Select
+          
+          // Dọn dẹp URL, nhưng vẫn giữ lại tham số date (nếu có)
+          const cleanParams = new URLSearchParams();
+          if (currentSearchDate) cleanParams.append("date", currentSearchDate);
+          const newUrl = cleanParams.toString() ? `${window.location.pathname}?${cleanParams.toString()}` : window.location.pathname;
+          window.history.replaceState({}, document.title, newUrl);
         }
       }
-      handleSearch();
-    } else {
-
-      renderTours(tours); 
     }
+    
+    // Gọi hàm render ra danh sách tour
+    handleSearch();
   } catch (error) {
     console.error("Lỗi tải dữ liệu:", error);
   }
 }
 
+// Hàm lấy thông số của tour an toàn (tránh lỗi null)
 function getSpec(tour, key) {
-  return tour.specs.find((s) => s.k === key)?.v || "";
+  return (tour.specs || []).find((s) => s.k === key)?.v || "";
 }
 
+// === 2. HÀM SO SÁNH ĐỊA ĐIỂM THÔNG MINH ===
+function isMatchLocation(specLocation, filterLocation) {
+  if (!filterLocation) return true; // Nếu người dùng không chọn gì -> pass
+  if (!specLocation) return false;
+  
+  // Đồng bộ các cách gọi khác nhau của Hồ Chí Minh thành "hcm"
+  const a = specLocation.toLowerCase()
+            .replace(/tp\.?\s*hồ chí minh/g, "hcm")
+            .replace(/hồ chí minh/g, "hcm")
+            .replace(/tp\.?\s*hcm/g, "hcm").trim();
+            
+  const b = filterLocation.toLowerCase()
+            .replace(/tp\.?\s*hồ chí minh/g, "hcm")
+            .replace(/hồ chí minh/g, "hcm")
+            .replace(/tp\.?\s*hcm/g, "hcm").trim();
+  
+  // Xử lý các lựa chọn gộp 2 địa điểm (VD: "Huế/Đà Nẵng")
+  if (b.includes('/')) {
+    return b.split('/').some(part => a.includes(part.trim()));
+  }
+  
+  return a.includes(b) || b.includes(a);
+}
+
+// Hàm render thẻ HTML
 function renderTours(list) {
   const tourList = document.getElementById("tourList");
   const emptyState = document.getElementById("empty_state");
@@ -56,13 +100,13 @@ function renderTours(list) {
       <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="tour-card">
               <div class="tour-image-container">
-                  <img src="../${tour.images[0].url}" class="tour-image" alt="${tour.name}">
+                  <img src="../${tour.images && tour.images[0] ? tour.images[0].url : ''}" class="tour-image" alt="${tour.name || 'Tour Image'}">
               </div>
               
               <div class="tour-content">
-                  <h3 class="tour-title">${tour.short_name}</h3>
+                  <h3 class="tour-title">${tour.short_name || tour.name || ''}</h3>
                   <p class="tour-rating">
-                      ${tour.rating_summary?.average || "Mới"}
+                      ${tour.rating_summary?.average || "5.0"}
                       <i class="fa-solid fa-star"></i>
                       <span class="ms-1">(${tour.rating_summary?.count || 0})</span>
                   </p>
@@ -87,9 +131,8 @@ function renderTours(list) {
                   <div class="tour-footer">
                       <div class="price-section">
                           <span class="price-label">Giá từ</span>
-                          <span class="price-amount">${tour.price.display}</span>
+                          <span class="price-amount">${tour.price?.display || 'Liên hệ'}</span>
                       </div>
-                      <!-- Đã sửa link chi tiết tour cho đúng -->
                       <a href="chi-tiet-tour.html?id=${tour._id}" class="btn-view-tour">
                           Chi tiết
                       </a>
@@ -101,6 +144,7 @@ function renderTours(list) {
   });
 }
 
+// === 3. HÀM TÌM KIẾM CHÍNH TỪ SIDEBAR ===
 function handleSearch() {
   const destination = document.getElementById("destinationSelect").value;
   const departure = document.getElementById("departureSelect").value;
@@ -114,10 +158,6 @@ function handleSearch() {
   const daysValue = timeBtn ? timeBtn.dataset.days : null;
   const tourTypes = selectedTourTypes;
 
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const searchKeyword = urlParams.get('search') ? urlParams.get('search').toLowerCase() : "";
-
   const result = tours.filter((tour) => {
     const price = tour.price.amount;
     const start = getSpec(tour, "location_start");
@@ -126,32 +166,46 @@ function handleSearch() {
     
     let matchTime = true;
     if (daysValue) {
-      if (daysValue === "5+") {
-        matchTime = days >= 5;
-      } else {
-        matchTime = days === +daysValue;
-      }
+      if (daysValue === "5+") matchTime = days >= 5;
+      else matchTime = days === +daysValue;
     }
     
+    // So sánh từ khóa nhập tay an toàn hơn
+    const tourNameStr = (tour.name || tour.short_name || "").toLowerCase();
+    const endStr = end.toLowerCase();
+    
+    const matchSearchText = currentSearchKeyword === "" || 
+                            tourNameStr.includes(currentSearchKeyword) || 
+                            endStr.includes(currentSearchKeyword);
 
-    const matchSearchText = searchKeyword === "" || 
-                            tour.name.toLowerCase().includes(searchKeyword) || 
-                            end.toLowerCase().includes(searchKeyword);
+    // Kiểm tra Ngày Khởi Hành (matchDate)
+    let matchDate = true;
+    if (currentSearchDate) {
+      // Nếu tour có mảng upcoming_departures, kiểm tra xem có ngày nào khớp không
+      if (tour.upcoming_departures && tour.upcoming_departures.length > 0) {
+        // Dùng startsWith để bắt được cả chuỗi ngày giờ (VD: "2026-03-05T00:00:00")
+        matchDate = tour.upcoming_departures.some(d => d.date.startsWith(currentSearchDate));
+      } else {
+        // Tour không có lịch khởi hành nào thì loại
+        matchDate = false;
+      }
+    }
 
     return (
-      (!destination || end.includes(destination)) &&
-      (!departure || start.includes(departure)) &&
+      isMatchLocation(end, destination) &&
+      isMatchLocation(start, departure) &&
       price >= min &&
       price <= max &&
       matchTime &&
       matchSearchText &&
+      matchDate && // Thêm điều kiện lọc ngày
       (tourTypes.length === 0 ||
         (tourTypes.includes("domestic") && isDomesticTour(end)) ||
         (tourTypes.includes("international") && !isDomesticTour(end)))
     );
   });
 
-
+  // Xử lý sắp xếp
   if (sortValue === "price_asc") {
     result.sort((a, b) => a.price.amount - b.price.amount);
   } else if (sortValue === "price_desc") {
@@ -165,10 +219,11 @@ function handleSearch() {
   renderTours(result);
 }
 
+// === KHỞI TẠO SỰ KIỆN KHI TRANG VỪA TẢI ===
 document.addEventListener("DOMContentLoaded", () => {
   loadTours();
 
-
+  // Nút Ngân Sách
   document.querySelectorAll(".budget_button").forEach((btn) => {
     btn.onclick = () => {
       if(btn.classList.contains("active")) {
@@ -177,11 +232,10 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".budget_button").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
       }
-      handleSearch();
     };
   });
 
-
+  // Nút Thời Gian
   document.querySelectorAll(".time_button").forEach((btn) => {
     btn.onclick = () => {
       if(btn.classList.contains("active")) {
@@ -190,13 +244,32 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".time_button").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
       }
-      handleSearch();
     };
   });
 
+  // Nếu người dùng chọn Select thủ công, tự động xóa biến tìm kiếm cũ
+  document.getElementById("destinationSelect").addEventListener("change", function() {
+    currentSearchKeyword = "";
+    // Xóa ?search khỏi URL nhưng giữ lại date nếu có
+    const params = new URLSearchParams(window.location.search);
+    params.delete("search");
+    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
+  });
+  
+  document.getElementById("departureSelect").addEventListener("change", function() {
+    currentSearchKeyword = "";
+    const params = new URLSearchParams(window.location.search);
+    params.delete("search");
+    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
+  });
+
+  // Nút Tìm Tour & Select Sắp Xếp
   document.getElementById("searchTourBtn").addEventListener("click", handleSearch);
   document.getElementById("sortSelect").addEventListener("change", handleSearch);
 
+  // Nút Loại Tour
   document.querySelectorAll(".tour_type_button").forEach((btn) => {
     btn.onclick = () => {
       const type = btn.dataset.type;
@@ -209,28 +282,15 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".tour_type_button").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
       }
-      handleSearch();
     };
   });
 });
 
 function isDomesticTour(location) {
   const vietnamPlaces = [
-    "Phú Quốc",
-    "Đà Lạt",
-    "Nha Trang", 
-    "Huế", 
-    "Đà Nẵng", 
-    "Quy Nhơn", 
-    "Hà Nội", 
-    "Côn Đảo", 
-    "Phan Thiết", 
-    "Tây Nguyên", 
-    "Gia Lai", 
-    "Kon Tum", 
-    "Buôn Ma Thuột", 
-    "TP.HCM", 
-    "Sài Gòn"
+    "Phú Quốc", "Đà Lạt", "Nha Trang", "Huế", "Đà Nẵng", 
+    "Quy Nhơn", "Hà Nội", "Côn Đảo", "Phan Thiết", "Tây Nguyên", 
+    "Gia Lai", "Kon Tum", "Buôn Ma Thuột", "TP.HCM", "Sài Gòn", "Hồ Chí Minh"
   ];
   return vietnamPlaces.some((place) => location.includes(place));
 }

@@ -75,25 +75,25 @@ loadTours();
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Lấy form tìm kiếm và ô nhập liệu
     const heroForm = document.querySelector(".hero-form");
-    const searchInput = document.querySelector(".hero-form .search");
 
     if (heroForm) {
-        // Lắng nghe sự kiện "submit" (Bao gồm cả nhấn Enter và click nút Kính lúp)
         heroForm.addEventListener("submit", function (e) {
-            e.preventDefault(); // Ngăn trình duyệt tải lại trang (hành vi mặc định của form)
-
-            const keyword = searchInput.value.trim();
-
-            if (keyword !== "") {
-                // Nếu có chữ: Chuyển hướng sang trang bo-loc.html và gắn từ khóa lên thanh URL
-                // Dùng encodeURIComponent để mã hóa tiếng Việt (Vd: "Đà Lạt" không bị lỗi font)
-                window.location.href = `./bo-loc.html?search=${encodeURIComponent(keyword)}`;
-            } else {
-                // Nếu để trống mà vẫn bấm tìm: Bay sang trang bộ lọc hiển thị tất cả
-                window.location.href = `./bo-loc.html`;
+            e.preventDefault();
+            const searchInputValue = heroForm.querySelector(".search").value.trim();
+            const dateInputValue = heroForm.querySelector(".date").value;
+            let url = "./bo-loc.html";
+            const params = new URLSearchParams();
+            if (searchInputValue !== "") {
+                params.append("search", searchInputValue);
             }
+            if (dateInputValue !== "") {
+                params.append("date", dateInputValue);
+            }
+            if (params.toString()) {
+                url += "?" + params.toString();
+            }
+            window.location.href = url;
         });
     }
 });

@@ -15,6 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.add("active");
     }
   });
+
+  const headerForm = document.querySelector("header form");
+  if (headerForm) {
+    headerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const searchInput = headerForm.querySelector('input[type="text"]');
+      if (searchInput) {
+        const keyword = searchInput.value.trim();
+        if (keyword !== "") {
+          window.location.href = `./bo-loc.html?search=${encodeURIComponent(keyword)}`;
+        } else {
+          window.location.href = `./bo-loc.html`;
+        }
+      }
+    });
+  }
 });
 
 const userBtn = document.getElementById("userBtn");
