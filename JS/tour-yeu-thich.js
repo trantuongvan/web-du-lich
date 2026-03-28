@@ -1,24 +1,50 @@
-async function loadMyFavoriteTours() {
+import { auth, db } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { doc, getDoc, setDoc, arrayRemove } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+const favoriteTourList = document.getElementById('favorite-tour-list');
+const emptySate = favoriteTourList.innerHTML;
+
+onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+        window.location.href = "./dang-nhap.html";
+        return;
+    }
     try {
-        // 1. Lấy danh sách ID các tour đã lưu trong LocalStorage
-        const favoriteToursIds = JSON.parse(localStorage.getItem('favoriteTours')) || [];
-        const container = document.getElementById('favorite-tour-list');
-
-        // 2. Nếu danh sách trống, dừng lại (để hiển thị giao diện chưa có tour)
-        if (favoriteToursIds.length === 0) {
-            return;
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const favoriteToursIds = userData.favorites || [];
+            if (favoriteToursIds.length > 0) {
+                loadMyFavoriteTours(favoriteToursIds, user.uid);
+            } else {
+                favoriteTourList.innerHTML = emptySate;
+            }
+        } else {
+            favoriteTourList.innerHTML = emptySate;
         }
+    } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu người dùng:", error);
+        favoriteTourList.innerHTML = emptySate;
+    }
+});
 
-        // 3. Tải toàn bộ dữ liệu tour từ file JSON
+
+async function loadMyFavoriteTours(favoriteToursIds, uid) {
+    try {
+        favoriteTourList.innerHTML = '<p class="text-center">Đang tải...</p>';
+
+        // Tải toàn bộ dữ liệu tour từ file JSON
         const response = await fetch('../data/tours.json');
         const allTours = await response.json();
 
-        // 4. Lọc ra những tour có _id nằm trong mảng favoriteToursIds
-        const myTours = allTours.filter(tour => favoriteToursIds.includes(tour._id));
-
-        // 5. Đổ dữ liệu ra HTML
+        // Lọc ra những tour có _id nằm trong mảng favoriteToursIds
+        const favoriteTours = allTours.filter(tour => favoriteToursIds.includes(tour._id));
+        
+        //  Đổ dữ liệu ra HTML
         let html = '';
-        myTours.forEach(tour => {
+        favoriteTours.forEach(tour => {
             const duration = tour.type.match(/\d+/g) || [0, 0];
             const days = duration[0];
             const nights = duration[1];
@@ -79,27 +105,34 @@ async function loadMyFavoriteTours() {
         });
 
         // Xóa giao diện trống đi và thay bằng danh sách tour
-        container.innerHTML = html;
+        favoriteTourList.innerHTML = html;
 
     } catch (error) {
         console.error("Lỗi tải dữ liệu tour yêu thích:", error);
     }
 }
 
-// Gắn hàm vào window để HTML có thể gọi được
-window.removeFavorite = function (event, tourId) {
-    event.preventDefault(); // Ngăn chặn chuyển trang
-    event.stopPropagation(); // QUAN TRỌNG: Ngăn chặn click lan ra các thẻ bên dưới
+window.removeFavorite = async function(event, tourId) {
+    event.preventDefault(); 
+    event.stopPropagation();
+    
+    const user = auth.currentUser;
+    if (!user) return;
 
-    let favoriteTours = JSON.parse(localStorage.getItem('favoriteTours')) || [];
-    favoriteTours = favoriteTours.filter(id => id !== tourId);
-    localStorage.setItem('favoriteTours', JSON.stringify(favoriteTours));
+    const btn = event.currentTarget;
+    btn.innerHTML = '<div class="spinner-border spinner-border-sm text-danger" role="status"></div>';
+    btn.disabled = true;
 
-    alert("Đã xóa khỏi Tour của tôi!");
-
-    // Load lại trang để cập nhật danh sách ngay lập tức
-    window.location.reload();
+    try {
+        const userDocRef = doc(db, "users", user.uid);
+        await setDoc(userDocRef, {
+            favorites: arrayRemove(tourId)
+        }, { merge: true });
+        window.location.reload();
+    } catch (error) {
+        console.error("Lỗi khi xóa:", error);
+        alert("Có lỗi xảy ra, không thể xóa tour này!");
+        btn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        btn.disabled = false;
+    }
 };
-
-// Chạy hàm khi load file
-loadMyFavoriteTours();

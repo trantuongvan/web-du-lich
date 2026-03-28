@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../CSS/chi-tiet-tour.css" />
     <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
-    <link rel="icon" href="../IMG/logo-icon-white.png">
+    <link rel="icon" href="../IMG/logo-icon-white.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -101,7 +101,7 @@
                   </button>
 
                   <div id="userDropdown" class="user-dropdown hidden">
-                    <div id="loggedOutView" class="d-flex flex-column gap-2">
+                    <div id="loggedOutView" class="flex-column gap-2">
                       <button id="loginBtn">Đăng nhập</button>
                       <button id="signupBtn">Đăng ký</button>
                     </div>
@@ -109,7 +109,7 @@
                     <div id="loggedInView" class="hidden flex-column gap-2">
                       <p
                         id="userEmail"
-                        class="mb-2 text-truncate fw-bold text-center text-primary"
+                        class="mb-2 text-truncate fw-bold text-center text-black"
                       ></p>
                       <hr class="my-1" />
                       <button id="logoutBtn">Đăng xuất</button>
@@ -201,8 +201,8 @@
                 >
                   Chọn ngày khởi hành
                 </button>
-                <button id="btnFavorite" class="btn btn-outline-dark px-3">
-                  <i class="fa-regular fa-heart"></i> Yêu thích
+                <button id="favBtn" class="btn">
+                  <i class="fa-regular fa-heart"></i>
                 </button>
               </div>
             </div>
@@ -525,8 +525,8 @@
       </div>
     </div>
 
-    <script src="../JS/chi-tiet-tour.js"></script>
     <script type="module" src="../JS/header.js"></script>
+    <script type="module" src="../JS/chi-tiet-tour.js"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

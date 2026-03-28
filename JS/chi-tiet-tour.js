@@ -418,3 +418,69 @@ function updateTotal() {
 }
 
 loadDetail();
+
+//Xử lý nút yêu thích
+import { auth, db } from './firebase.js';
+import { doc, getDoc, setDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+const favBtn = document.getElementById('favBtn');
+const urlParams = new URLSearchParams(window.location.search);
+const tourId = urlParams.get('id');
+
+function updateFavButton(isFav) {
+    if (!favBtn) return;
+    if (isFav) {
+        favBtn.classList.add('favorited');
+        favBtn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+    } else {
+        favBtn.classList.remove('favorited');
+        favBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+    }
+}
+
+onAuthStateChanged(auth, async (user) => {
+    if (user && tourId) {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            const isFav = userData.favorites && userData.favorites.includes(tourId);
+            updateFavButton(isFav);
+        }
+    } 
+});
+
+if (favBtn) {
+    favBtn.addEventListener('click', async () => {
+        const user = auth.currentUser;
+        if (!user) {
+            window.location.href = './dang-nhap.html';
+            return;
+        }
+
+        favBtn.disabled = true;
+        const userDocRef = doc(db, "users", user.uid);
+        const isFav = favBtn.classList.contains('favorited');
+
+        try {
+            if (isFav) {
+                await setDoc(userDocRef, {
+                    favorites: arrayRemove(tourId)
+                }, { merge: true });
+                updateFavButton(false);
+            } else {
+                await setDoc(userDocRef, {
+                    favorites: arrayUnion(tourId)
+                }, { merge: true });
+                updateFavButton(true);
+            }
+        } catch (error) {
+            console.error("Lỗi cập nhật yêu thích:", error);
+            alert("Có lỗi xảy ra. Vui lòng thử lại!");
+        } finally {
+            favBtn.disabled = false;
+        }
+    });
+}
