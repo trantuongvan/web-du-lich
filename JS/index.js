@@ -71,3 +71,29 @@ function renderTours(tourList) {
 }
 
 loadTours();
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Lấy form tìm kiếm và ô nhập liệu
+    const heroForm = document.querySelector(".hero-form");
+    const searchInput = document.querySelector(".hero-form .search");
+
+    if (heroForm) {
+        // Lắng nghe sự kiện "submit" (Bao gồm cả nhấn Enter và click nút Kính lúp)
+        heroForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Ngăn trình duyệt tải lại trang (hành vi mặc định của form)
+
+            const keyword = searchInput.value.trim();
+
+            if (keyword !== "") {
+                // Nếu có chữ: Chuyển hướng sang trang bo-loc.html và gắn từ khóa lên thanh URL
+                // Dùng encodeURIComponent để mã hóa tiếng Việt (Vd: "Đà Lạt" không bị lỗi font)
+                window.location.href = `./bo-loc.html?search=${encodeURIComponent(keyword)}`;
+            } else {
+                // Nếu để trống mà vẫn bấm tìm: Bay sang trang bộ lọc hiển thị tất cả
+                window.location.href = `./bo-loc.html`;
+            }
+        });
+    }
+});
