@@ -15,9 +15,9 @@
       "count": 89
     },
     "upcoming_departures": [
-      { "date": "2026-01-25T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
-      { "date": "2026-02-01T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
-      { "date": "2026-02-08T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
+      { "date": "2026-04-25T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
+      { "date": "2026-05-01T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
+      { "date": "2026-04-08T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
     ],
     "recurring_schedule": ["Thứ 7 Hàng Tuần"],
     "specs": [
@@ -71,9 +71,9 @@
       "count": 210
     },
     "upcoming_departures": [
-      { "date": "2026-01-23T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 4 },
-      { "date": "2026-01-30T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 12 },
-      { "date": "2026-02-06T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 8 }
+      { "date": "2026-06-23T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 4 },
+      { "date": "2026-04-30T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 12 },
+      { "date": "2026-05-06T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 8 }
     ],
     "recurring_schedule": ["Thứ 5 Tối"],
     "specs": [
@@ -132,9 +132,9 @@
       "count": 120
     },
     "upcoming_departures": [
-        { "date": "2026-01-23T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 20 },
-        { "date": "2026-01-30T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 15 },
-        { "date": "2026-02-06T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 22 }
+        { "date": "2026-07-23T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 20 },
+        { "date": "2026-05-30T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 15 },
+        { "date": "2026-04-06T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 22 }
     ],
     "recurring_schedule": ["Thứ 5 hàng tuần"],
     "specs": [
@@ -177,9 +177,9 @@
       "count": 300
     },
     "upcoming_departures": [
-        { "date": "2026-01-20T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 6 },
-        { "date": "2026-01-27T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 },
-        { "date": "2026-02-03T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 8 }
+        { "date": "2026-04-20T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 6 },
+        { "date": "2026-04-27T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 },
+        { "date": "2026-04-03T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 8 }
     ],
     "recurring_schedule": ["Thứ 2 hàng tuần"],
     "specs": [
@@ -222,9 +222,9 @@
       "count": 67
     },
     "upcoming_departures": [
-      { "date": "2026-01-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 14 },
-      { "date": "2026-02-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
-      { "date": "2026-02-22T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 20 }
+      { "date": "2026-04-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 14 },
+      { "date": "2026-04-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
+      { "date": "2026-05-22T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 20 }
     ],
     "recurring_schedule": ["Thứ 7 cách tuần"],
     "specs": [
@@ -262,9 +262,9 @@
       "display": "2.300.000 VNĐ"
     },
     "upcoming_departures": [
-        { "date": "2026-01-20T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 25 },
-        { "date": "2026-01-27T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
-        { "date": "2026-02-03T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 18 }
+        { "date": "2026-04-20T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 25 },
+        { "date": "2026-05-27T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
+        { "date": "2026-05-03T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 18 }
     ],
     "recurring_schedule": ["Thứ 2 hàng tuần"],
     "specs": [
@@ -306,9 +306,9 @@
         "count": 55
     },
     "upcoming_departures": [
-      { "date": "2026-01-20T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 16 },
-      { "date": "2026-02-03T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
-      { "date": "2026-02-17T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 }
+      { "date": "2026-05-20T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 16 },
+      { "date": "2026-05-03T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
+      { "date": "2026-05-17T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 }
     ],
     "recurring_schedule": ["Thứ 2 cách tuần"],
     "specs": [
@@ -348,9 +348,9 @@
       "display": "2.600.000 VNĐ"
     },
     "upcoming_departures": [
-      { "date": "2026-01-25T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 10 },
-      { "date": "2026-02-01T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
-      { "date": "2026-02-08T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
+      { "date": "2026-04-25T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 10 },
+      { "date": "2026-04-01T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
+      { "date": "2026-04-08T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
     ],
     "recurring_schedule": ["Thứ 7 hàng tuần"],
     "specs": [
@@ -389,9 +389,9 @@
     },
     "rating_summary": { "average": 4.8, "count": 45 },
     "upcoming_departures": [
-      { "date": "2026-01-25T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
-      { "date": "2026-02-08T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
-      { "date": "2026-02-22T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 10 }
+      { "date": "2026-04-25T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
+      { "date": "2026-04-08T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
+      { "date": "2026-04-22T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 10 }
     ],
     "recurring_schedule": ["Thứ 7 cách tuần"],
     "specs": [
@@ -428,9 +428,9 @@
       "display": "1.650.000 VNĐ"
     },
     "upcoming_departures": [
-       { "date": "2026-01-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
-       { "date": "2026-02-01T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 22 },
-       { "date": "2026-02-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 16 }
+       { "date": "2026-05-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
+       { "date": "2026-05-01T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 22 },
+       { "date": "2026-06-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 16 }
     ],
     "recurring_schedule": ["Thứ 7 hàng tuần"],
     "specs": [
@@ -469,7 +469,7 @@
     },
     "rating_summary": { "average": 4.9, "count": 156 },
     "upcoming_departures": [
-      { "date": "2026-03-15T09:00:00Z", "day_of_week": "Chủ Nhật", "seats_left": 10 },
+      { "date": "2026-04-15T09:00:00Z", "day_of_week": "Chủ Nhật", "seats_left": 10 },
       { "date": "2026-03-29T09:00:00Z", "day_of_week": "Chủ Nhật", "seats_left": 14 }
     ],
     "recurring_schedule": ["Chủ Nhật cách tuần"],
@@ -511,8 +511,8 @@
     },
     "rating_summary": { "average": 4.8, "count": 82 },
     "upcoming_departures": [
-      { "date": "2026-02-14T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
-      { "date": "2026-03-07T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
+      { "date": "2026-05-14T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
+      { "date": "2026-05-07T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
     ],
     "recurring_schedule": ["Thứ 7 đầu tháng"],
     "specs": [
@@ -553,7 +553,7 @@
     },
     "rating_summary": { "average": 4.9, "count": 215 },
     "upcoming_departures": [
-      { "date": "2026-03-25T00:30:00Z", "day_of_week": "Thứ 4", "seats_left": 4 },
+      { "date": "2026-04-25T00:30:00Z", "day_of_week": "Thứ 4", "seats_left": 4 },
       { "date": "2026-04-01T00:30:00Z", "day_of_week": "Thứ 4", "seats_left": 8 }
     ],
     "recurring_schedule": ["Thứ 4 hàng tuần (Mùa hoa anh đào)"],
@@ -596,8 +596,8 @@
     },
     "rating_summary": { "average": 4.6, "count": 110 },
     "upcoming_departures": [
-      { "date": "2026-02-10T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 15 },
-      { "date": "2026-02-24T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 20 }
+      { "date": "2026-04-10T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 15 },
+      { "date": "2026-04-24T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 20 }
     ],
     "recurring_schedule": ["Thứ 3 cách tuần"],
     "specs": [
@@ -639,8 +639,8 @@
     },
     "rating_summary": { "average": 4.7, "count": 190 },
     "upcoming_departures": [
-      { "date": "2026-01-23T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 12 },
-      { "date": "2026-01-30T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 18 }
+      { "date": "2026-05-23T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 12 },
+      { "date": "2026-05-30T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 18 }
     ],
     "recurring_schedule": ["Thứ 6 hàng tuần"],
     "specs": [
