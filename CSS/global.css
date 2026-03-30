@@ -74,10 +74,10 @@ nav {
   font-size: 16px;
 }
 
-.user-dropdown button:hover {
+/* .user-dropdown button:hover {
   cursor: pointer;
   color: #fad71b;
-}
+} */
 /* FOOTER  */
 .footer {
   background: linear-gradient(#000000d9, #000000d9), url("../IMG/footer.png");
