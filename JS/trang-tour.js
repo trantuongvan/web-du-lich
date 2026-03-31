@@ -35,50 +35,46 @@ function renderCarousel(list, containerId) {
 
               return `
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="tour-card" onclick="window.location.href='./chi-tiet-tour.html?id=${tour._id}'" style="cursor: pointer;">
-                  <div class="tour-image-container">
-                    <img src="../${tour.images?.[0]?.url}" 
-                         class="tour-image" 
-                         alt="${tour.name}">
-                  </div>
-                  
-                  <div class="tour-content">
-                    <h3 class="tour-title">${tour.short_name || tour.name}</h3>
-
-                    <p class="tour-rating">
-                      ${tour.rating_summary?.average || "Mới"}
-                      <i class="fa-solid fa-star"></i>
-                      <span class="ms-1">(${tour.rating_summary?.count || 0})</span>
-                    </p>
-                    
-                    <div class="tour-divider"></div>
-                    
-                    <div class="tour-info">
-                      <div class="info-item">
-                        <i class="fa-solid fa-calendar-days info-icon"></i>
-                        <span>${days} Ngày</span>
-                      </div>
-                      <div class="info-item">
-                        <i class="fa-solid fa-moon info-icon"></i>
-                        <span>${nights} Đêm</span>
-                      </div>
-                      <div class="info-item">
-                        <i class="fa-solid fa-location-dot info-icon"></i>
-                        <span>${location}</span>
-                      </div>
+                <a href="chi-tiet-tour.html?id=${tour._id}" class="tour-card">
+                    <div class="tour-image-container">
+                        <img src="${tour.images[0].url}" class="tour-image" alt="${tour.name}">
                     </div>
                     
-                    <div class="tour-footer">
-                      <div class="price-section">
-                        <span class="price-label">Giá từ</span>
-                        <span class="price-amount">
-                          ${tour.price?.display || "Liên hệ"}
-                        </span>
-                      </div>
+                    <div class="tour-content">
+                        <h3 class="tour-title">${tour.short_name}</h3>
+                        <p class="tour-rating">
+                            ${tour.rating_summary?.average || 'Mới'}
+                            <i class="fa-solid fa-star"></i>
+                            <span class="ms-1">(${tour.rating_summary?.count || 0})</span>
+                        </p>
+                        
+                        <div class="tour-divider"></div>
+                        
+                        <div class="tour-info">
+                            <div class="info-item">
+                                <i class="fa-solid fa-calendar-days info-icon"></i>
+                                <span>${days} Ngày</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa-solid fa-moon info-icon"></i>
+                                <span>${nights} Đêm</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa-solid fa-location-dot info-icon"></i>
+                                <span>${location}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tour-footer">
+                            <div class="price-section">
+                                <span class="price-label">Giá từ</span>
+                                <span class="price-amount">${tour.price.display}</span>
+                            </div>
+                            <span class="btn-view-tour">Chi tiết</span>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </a>
+            </div>
               `;
             })
             .join("")}
