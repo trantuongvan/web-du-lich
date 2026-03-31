@@ -224,12 +224,7 @@ body{
     right: 5rem; 
     font-size: 3.5rem; 
 }
-.bg-doodle.globe{ 
-    top: -2rem; 
-    right: 0rem; 
-    font-size: 15rem; 
-    color: rgba(0,0,0,0.03); 
-}
+
 .third-section-left {
     width: 70%;
     position: relative;
