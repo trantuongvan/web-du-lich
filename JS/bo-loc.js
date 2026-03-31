@@ -248,6 +248,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   });
+  document.getElementById("delTourBtn").addEventListener("click", () => {
+    document.getElementById("destinationSelect").value = "";
+    document.getElementById("departureSelect").value = "";
+    document.getElementById("sortSelect").value = "new"; 
+    document.querySelectorAll(".budget_button").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".time_button").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".tour_type_button").forEach(btn => btn.classList.remove("active"));
+    selectedTourTypes = [];
+    currentSearchKeyword = "";
+    currentSearchDate = "";
+    window.history.replaceState({}, document.title, window.location.pathname);
+    handleSearch();
+  });
 });
 
 function isDomesticTour(location) {
