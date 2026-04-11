@@ -1,6 +1,18 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    loggedOutView.classList.add("hidden");
+    loggedInView.classList.remove("hidden");
+    userEmail.textContent = user.email;
+  } else {
+    loggedInView.classList.add("hidden");
+    loggedOutView.classList.remove("hidden");
+  }
+});
+
 let currentPath = window.location.pathname.split("/").pop();
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
@@ -45,7 +57,7 @@ const loginBtn = document.getElementById("loginBtn");
 const signupBtn = document.getElementById("signupBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
-const btnIcons = document.querySelectorAll(".btn-icon");
+const bookedBtn = document.getElementById("bookedBtn");
 
 //Xu lý sự kiện click vào nút yêu thích
 heartBtn.addEventListener("click", () => {
@@ -75,15 +87,8 @@ document.addEventListener("click", () => {
 
 dropdown.addEventListener("click", (e) => e.stopPropagation());
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    loggedOutView.classList.add("hidden");
-    loggedInView.classList.remove("hidden");
-    userEmail.textContent = user.email;
-  } else {
-    loggedInView.classList.add("hidden");
-    loggedOutView.classList.remove("hidden");
-  }
+bookedBtn.addEventListener("click", () => {
+    window.location.href = "./tour-da-dat.html";
 });
 
 loginBtn.addEventListener("click", () => {

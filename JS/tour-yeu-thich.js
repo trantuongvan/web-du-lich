@@ -1,6 +1,6 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
-import { doc, getDoc, setDoc, arrayRemove } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { doc, getDoc, setDoc, arrayRemove, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 const favoriteTourList = document.getElementById('favorite-tour-list');
 const emptySate = favoriteTourList.innerHTML;
@@ -35,9 +35,9 @@ async function loadMyFavoriteTours(favoriteToursIds, uid) {
     try {
         favoriteTourList.innerHTML = '<p class="text-center">Đang tải...</p>';
 
-        // Tải toàn bộ dữ liệu tour từ file JSON
-        const response = await fetch('../data/tours.json');
-        const allTours = await response.json();
+       const tourCollection = collection(db, "tours");
+       const tourSnapshot = await getDocs(tourCollection);
+       const allTours = tourSnapshot.docs.map(doc => doc.data());
 
         // Lọc ra những tour có _id nằm trong mảng favoriteToursIds
         const favoriteTours = allTours.filter(tour => favoriteToursIds.includes(tour._id));

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour Đã Đặt</title>
+
+    <link rel="icon" href="../IMG/logo-icon-white.png" />
+    <link rel="icon" type="image/x-icon" href="./logo-icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-repeat"
+    />
+
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+
+    <style>
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6) !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      .modal-content {
+        background-color: #ffffff !important; /* PHẢI là màu trắng đặc, không dùng trong suốt */
+        width: 95%;
+        max-width: 850px;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ để tách biệt với nền */
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        color: #333; /* Đảm bảo chữ màu tối trên nền trắng */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light container-fluid"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">
+            <img src="../IMG/logo.png" alt="logo" />
+          </a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-4">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  href="./index.html"
+                  aria-current="page"
+                  >Trang chủ <span class="visually-hidden">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./trang-tour.html">Tour</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about-us.html">Về chúng tôi</a>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+              <form class="d-flex">
+                <div
+                  class="input-group-header border border-black rounded-pill d-flex align-items-center p-1"
+                >
+                  <input
+                    class="form-control me-sm-2 bg-transparent border-0 shadow-none"
+                    type="text"
+                    placeholder="Tìm tour..."
+                  />
+                  <button
+                    class="btn my-2 my-sm-0 btn-dark border-0 d-flex align-items-center justify-content-center rounded-pill"
+                    type="submit"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      style="width: 20px; height: 20px; margin-top: 4px"
+                    >
+                      <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <div class="header-icons d-flex align-items-center gap-2">
+                <button
+                  id="heartBtn"
+                  class="btn-icon"
+                  style="width: 42px; height: 42px"
+                >
+                  <i class="fa-regular fa-heart fs-5"></i>
+                </button>
+
+                <div class="user-menu position-relative">
+                  <button
+                    class="btn-icon"
+                    id="userBtn"
+                    type="button"
+                    style="width: 42px; height: 42px"
+                  >
+                    <i class="fa-regular fa-user fs-5"></i>
+                  </button>
+
+                  <div id="userDropdown" class="user-dropdown hidden">
+                    <div id="loggedOutView" class="flex-column gap-2">
+                      <button id="loginBtn">Đăng nhập</button>
+                      <button id="signupBtn">Đăng ký</button>
+                    </div>
+
+                    <div id="loggedInView" class="hidden flex-column gap-2">
+                      <button id="bookedBtn">Tour đã đặt</button>
+                      <hr class="mt-2" />
+                      <p
+                        id="userEmail"
+                        class="text-truncate text-center text-black mb-0"
+                      ></p>
+                      <button id="logoutBtn">Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container my-5" style="min-height: 60vh">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Tour của tôi</h2>
+        <div class="d-flex align-items-center gap-2">
+          <span>Lọc theo trạng thái:</span>
+          <select id="statusFilter" class="form-select" style="width: 200px">
+            <option value="ALL">Tất cả</option>
+            <option value="PAID">Đã thanh toán</option>
+            <option value="PENDING">Chờ thanh toán</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="orderCount" class="text-muted small">Tìm thấy 0 đặt tour</p>
+
+      <div id="orderList" class="d-flex flex-column gap-3"></div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-content">
+            <img src="../IMG/logo-white.png" alt="logo" />
+            <p>
+              Khám phá vẻ đẹp thế giới cùng những chuyến đi an toàn và đầy trải
+              nghiệm.
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Liên kết</h4>
+              <ul>
+                <li><a href="./index.html">Trang chủ</a></li>
+                <li><a href="./trang-tour.html">Tour</a></li>
+                <li><a href="./about-us.html">Về chúng tôi</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Hỗ trợ</h4>
+              <ul>
+                <li><a href="./contact-us.html">Liên hệ chúng tôi</a></li>
+                <li><a href="./faq.html">Câu hỏi thường gặp</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Kết nối với chúng tôi</h4>
+              <div class="social-links">
+                <a href="#" class="social-icon"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a href="#" class="social-icon"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+                <a href="#" class="social-icon"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>@2026 Travlia, Bản quyền thuộc về chúng tôi</p>
+          </div>
+          <div class="footer-legal">
+            <a href="./404.html">Điều khoản sử dụng</a>
+            <a href="./404.html">Chính sách riêng tư</a>
+            <a href="./404.html">Chính sách bản quyền</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="orderDetailModal" class="modal-overlay" style="display: none">
+      <div class="modal-content shadow-lg border-0">
+        <div
+          class="modal-header border-bottom pb-3 mb-4 d-flex justify-content-between align-items-center"
+        >
+          <h5 class="fw-bold mb-0">Chi tiết đặt tour</h5>
+          <button
+            type="button"
+            class="btn-close"
+            onclick="closeOrderDetailModal()"
+          ></button>
+        </div>
+
+        <div class="modal-body px-1">
+          <div class="text-center p-4 rounded-3 border mb-4 bg-light">
+            <h4 id="detail-status" class="fw-bold mb-3">...</h4>
+            <div
+              class="d-flex justify-content-center flex-wrap gap-4 small text-muted"
+            >
+              <span
+                >Mã đặt chỗ: <b id="detail-id" class="text-dark">...</b></span
+              >
+              <span
+                >Ngày đặt:
+                <b id="detail-created" class="text-dark">...</b></span
+              >
+              <span
+                >Tổng tiền:
+                <b id="detail-total-top" class="text-danger fw-bold fs-6"
+                  >...</b
+                ></span
+              >
+            </div>
+          </div>
+
+          <h6 class="fw-bold border-bottom pb-2 mb-3">
+            <i class="fa-solid fa-umbrella-beach me-2"></i>Thông tin Tour đã đặt
+          </h6>
+          <div class="border rounded-3 p-3 mb-4">
+            <p id="detail-tour-name" class="fw-bold mb-3">...</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="d-flex align-items-center bg-light p-2 rounded">
+                  <i class="fa-regular fa-calendar text-muted me-3 fs-5"></i>
+                  <div>
+                    <small class="text-muted d-block">Ngày khởi hành</small>
+                    <strong id="detail-tour-date">...</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center bg-light p-2 rounded">
+                  <i class="fa-solid fa-money-bills text-muted me-3 fs-5"></i>
+                  <div>
+                    <small class="text-muted d-block">Chi phí dự kiến</small>
+                    <strong id="detail-tour-price">... / khách</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h6 class="fw-bold border-bottom pb-2 mb-3">
+            <i class="fa-solid fa-user-group me-2"></i>Thông tin hành khách
+          </h6>
+          <div class="border rounded-3 p-3 mb-4">
+            <p class="fw-bold small mb-2">
+              <i class="fa-solid fa-user text-muted me-2"></i>Người đại diện
+            </p>
+            <div class="row g-2 mb-4 text-center">
+              <div class="col-md-4">
+                <div class="bg-light p-2 rounded">
+                  <small class="text-muted d-block">Họ tên</small
+                  ><strong id="detail-cus-name">...</strong>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="bg-light p-2 rounded">
+                  <small class="text-muted d-block">Điện thoại</small
+                  ><strong id="detail-cus-phone">...</strong>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="bg-light p-2 rounded">
+                  <small class="text-muted d-block">CCCD</small
+                  ><strong id="detail-cus-cccd">...</strong>
+                </div>
+              </div>
+            </div>
+
+            <p class="fw-bold small mb-2">
+              <i class="fa-solid fa-users text-muted me-2"></i>Tổng số người
+              tham gia
+            </p>
+            <div class="d-flex justify-content-between mb-1">
+              <span class="text-muted">Người lớn</span
+              ><strong id="detail-qty-adult">x0</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Trẻ em</span
+              ><strong id="detail-qty-child">x0</strong>
+            </div>
+            <div class="d-flex justify-content-between border-top pt-2">
+              <span class="fw-bold">Tổng cộng</span
+              ><strong id="detail-qty-total">0 người</strong>
+            </div>
+
+            <div class="mt-3 bg-light p-2 rounded text-muted small">
+              <i class="fa-solid fa-comment-dots me-2"></i>Ghi chú:
+              <span id="detail-notes">Không có ghi chú</span>
+            </div>
+          </div>
+
+          <h6 class="fw-bold border-bottom pb-2 mb-3">
+            <i class="fa-solid fa-money-check-dollar me-2"></i>Chi tiết thanh
+            toán
+          </h6>
+          <div class="border rounded-3 p-3 mb-4">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Chi phí Tour</span
+              ><strong id="detail-amount-sub">...</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <span class="text-muted">Giảm giá</span><strong>0 đ</strong>
+            </div>
+            <div class="d-flex justify-content-between border-top pt-3">
+              <span class="fw-bold fs-5">Tổng cộng</span
+              ><strong id="detail-amount-total" class="text-danger fs-5 fw-bold"
+                >...</strong
+              >
+            </div>
+          </div>
+
+          <div
+            id="detail-qr-section"
+            class="border border-warning rounded-3 p-4 mb-4 bg-light text-center"
+            style="display: none"
+          >
+            <h6 class="text-warning fw-bold mb-3">
+              <i class="fa-solid fa-clock me-2"></i>Vui lòng hoàn tất thanh toán
+              để xác nhận tour
+            </h6>
+            <div class="bg-white p-3 rounded d-inline-block border">
+              <img
+                id="detail-qr-img"
+                src=""
+                alt="Mã QR"
+                style="max-width: 200px"
+              />
+            </div>
+            <p class="small text-muted mt-3 mb-0">
+              Quét mã bằng App Ngân hàng hoặc MoMo. Nội dung CK:
+              <b id="detail-qr-code" class="text-danger">...</b>
+            </p>
+            <button
+              id="btn-recheck-payment"
+              class="btn btn-warning mt-3 fw-bold w-100"
+            >
+              <i class="fa-solid fa-rotate me-2"></i>Tôi đã chuyển khoản (Kiểm
+              tra lại)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../JS/header.js"></script>
+    <script type="module" src="../JS/tour-da-dat.js"></script>
+  </body>
+</html>
