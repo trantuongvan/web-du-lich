@@ -60,21 +60,6 @@ body {
   height: 100vh;
 }
 
-#glass-board {
-  background-image: url(../images/glassboard.svg);
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  min-height: 100svh;
-  padding: 1.5rem;
-}
-
 #glass-board::before {
   content: "";
   position: absolute;
@@ -98,21 +83,6 @@ body {
   transition: all 0.3s ease;
   filter: drop-shadow(0 0 8px #fad71b);
   margin-bottom: 0px;
-}
-
-#form-container {
-  width: min(90vw, 500px);
-  aspect-ratio: auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  background: #121212;
-  z-index: 3;
-  color: white;
-  text-align: center;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 h1 {
@@ -195,7 +165,7 @@ label {
 #loginBtn:hover,
 #signupBtn:hover {
   background-color: black;
-  color: #fad71b;
+  color: white;
   transition: all 0.3s ease;
 }
 
@@ -283,68 +253,6 @@ hr {
   margin-right: 8px;
   width: 16px;
   height: 16px;
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: var(--fs-800);
-  }
-
-  h2 {
-    font-size: var(--fs-600);
-  }
-
-  h3 {
-    font-size: var(--fs-300);
-  }
-
-  #travlia {
-    margin-bottom: 0.5rem;
-  }
-
-  #forgot-password-container {
-    text-align: left;
-  }
-
-  #tos-container {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-:root {
-  --fs-100: clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem);
-  --fs-200: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
-  --fs-300: clamp(1rem, 0.95rem + 0.5vw, 1.125rem);
-  --fs-400: clamp(1.125rem, 1.05rem + 0.6vw, 1.25rem);
-
-  --fs-500: clamp(1.25rem, 1.15rem + 0.8vw, 1.5rem);
-  --fs-600: clamp(1.5rem, 1.35rem + 1vw, 1.875rem);
-  --fs-700: clamp(1.875rem, 1.65rem + 1.5vw, 2.5rem);
-  --fs-800: clamp(2.25rem, 2rem + 2vw, 3rem);
-  --fs-900: clamp(3rem, 2.5rem + 3vw, 4rem);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #090909;
-  font-family: "Be Vietnam Pro", sans-serif;
-}
-
-#bg {
-  opacity: 0;
-  backdrop-filter: blur(16px);
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
 }
 
 #glass-board {
@@ -362,31 +270,6 @@ body {
   padding: 1.5rem;
 }
 
-#glass-board::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.25);
-  z-index: -1;
-}
-
-#travlia {
-  width: clamp(16rem, 40vw, 30rem);
-  z-index: 2;
-  margin-bottom: -8px;
-  transition: all 0.3s ease;
-}
-
-#travlia:hover {
-  transform: scale(1.05);
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 8px #fad71b);
-  margin-bottom: 0px;
-}
-
 #form-container {
   width: min(90vw, 500px);
   aspect-ratio: auto;
@@ -401,176 +284,6 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
-}
-
-h1 {
-  font-size: var(--fs-900);
-}
-
-#four {
-  color: #fad71b;
-}
-
-#zero {
-  color: #ffffff;
-}
-
-h2 {
-  font-size: var(--fs-700);
-  padding-bottom: 4px;
-}
-
-#four-zero-four {
-  color: white;
-}
-
-h3 {
-  font-size: var(--fs-400);
-  font-weight: 200;
-  color: #afafaf;
-}
-
-#form {
-  text-align: left;
-  width: 100%;
-  margin-top: auto;
-  max-width: 400px;
-}
-
-label {
-  font-size: var(--fs-400);
-  font-weight: 600;
-}
-
-.input-group input {
-  width: 100%;
-  padding: clamp(0.65rem, 2vw, 0.85rem);
-  margin-top: 8px;
-  margin-bottom: 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: #cdcdcd;
-  color: #181818;
-  font-size: var(--fs-200);
-  transition: all 0.1s ease;
-}
-
-.input-group input:focus {
-  outline: 2px solid #fad71b;
-  transition: all 0.1s ease;
-}
-
-.input-group input:hover {
-  outline: 2px solid #fad71b;
-  transition: all 0.1s ease;
-}
-
-#loginBtn,
-#signupBtn {
-  font-family: "Be Vietnam Pro", sans-serif;
-  width: 100%;
-  padding: clamp(0.65rem, 2vw, 0.85rem);
-  border: none;
-  border-radius: 8px;
-  background-color: #fad71b;
-  color: black;
-  font-weight: 800;
-  font-size: var(--fs-400);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#loginBtn:hover,
-#signupBtn:hover {
-  background-color: black;
-  color: #fad71b;
-  transition: all 0.3s ease;
-}
-
-#signup-link {
-  margin-top: 16px;
-  font-size: var(--fs-200);
-  text-align: center;
-}
-
-#signup {
-  color: #fad71b;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#signup:hover {
-  text-decoration: underline;
-  transition: all 0.3s ease;
-}
-
-#forgot-password-container {
-  text-align: right;
-  margin-top: -8px;
-  margin-bottom: 12px;
-}
-
-#forgot-password {
-  color: #afafaf;
-  text-decoration: none;
-  font-size: var(--fs-200);
-  font-weight: 300;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#forgot-password:hover {
-  text-decoration: underline;
-  transition: all 0.3s ease;
-}
-
-.input-group-password {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-group-password input {
-  width: 100%;
-  padding-right: 2.5rem;
-}
-
-.input-group-password button {
-  position: absolute;
-  right: 1rem;
-  top: 1.4125rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-#tos-container {
-  font-size: var(--fs-100);
-  color: #afafaf;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 16px;
-  display: flex;
-}
-
-#tos {
-  text-decoration: none;
-  color: #fad71b;
-}
-
-hr {
-  height: 1px;
-  margin: 16px 0;
-}
-
-#checkbox {
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
 }
 
 #error-message {
