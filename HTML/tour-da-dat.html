@@ -39,23 +39,23 @@
         z-index: 9999;
       }
       .modal-content {
-        background-color: #ffffff !important; /* PHẢI là màu trắng đặc, không dùng trong suốt */
+        background-color: #ffffff !important;
         width: 95%;
         max-width: 850px;
         border-radius: 15px;
         padding: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ để tách biệt với nền */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         max-height: 90vh;
         overflow-y: auto;
         position: relative;
-        color: #333; /* Đảm bảo chữ màu tối trên nền trắng */
+        color: #333;
       }
     </style>
   </head>
   <body>
-    <header>
+    <header class="position-relative z-3">
       <nav
-        class="navbar navbar-expand-lg navbar-light bg-light container-fluid"
+        class="navbar navbar-expand-lg navbar-light bg-light container-fluid position-fixed"
       >
         <div class="container">
           <a class="navbar-brand" href="./index.html">
