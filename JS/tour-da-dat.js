@@ -54,7 +54,7 @@ function renderOrders(ordersData) {
             <div class="text-center text-muted p-5 border rounded bg-light">
                 <i class="fa-solid fa-box-open fs-1 mb-3"></i>
                 <p>Bạn chưa có đơn đặt tour nào ở trạng thái này.</p>
-                <a href="./index.html" class="btn btn-outline-primary mt-2">Khám phá tour ngay</a>
+                <a href="./index.html" class="btn btn-outline-primary mt-2 btn-index">Khám phá tour ngay</a>
             </div>`;
     return;
   }
