@@ -1,11 +1,14 @@
+import { db } from "./firebase.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
 let tours = [];
 
 async function loadTours() {
   try {
-    const response = await fetch("../data/tours.json");
-    tours = await response.json();
+    const tourCollection = collection(db, "tours");
+    const tourSnapshot = await getDocs(tourCollection);
+    tours = tourSnapshot.docs.map(doc => doc.data());
 
-    console.log(tours);
     renderAllTours();
     // initFilters(); // Đóng tạm hàm này vì chưa được định nghĩa để tránh lỗi đứng script
   } catch (error) {

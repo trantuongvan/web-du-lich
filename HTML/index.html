@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang Chủ</title>
-    <link rel="icon" href="../IMG/logo-icon-white.png">
+    <link rel="icon" href="../IMG/logo-icon-white.png" />
     <link rel="icon" type="image/x-icon" href="./logo-icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -115,11 +115,12 @@
                     </div>
 
                     <div id="loggedInView" class="hidden flex-column gap-2">
+                      <button id="bookedBtn">Tour đã đặt</button>
+                      <hr class="mt-2" />
                       <p
                         id="userEmail"
-                        class="mb-2 text-truncate fw-bold text-center text-black"
+                        class="text-truncate text-center text-black mb-0"
                       ></p>
-                      <hr class="my-1" />
                       <button id="logoutBtn">Đăng xuất</button>
                     </div>
                   </div>
@@ -285,7 +286,7 @@
       </div>
     </footer>
 
-    <script src="../JS/index.js"></script>
+    <script type="module" src="../JS/index.js"></script>
     <script type="module" src="../JS/header.js"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
   </body>

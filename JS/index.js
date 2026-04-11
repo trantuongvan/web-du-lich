@@ -1,7 +1,11 @@
+import { db } from "./firebase.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
 async function loadTours() {
     try {
-        const response = await fetch('../data/tours.json');
-        const tours = await response.json();
+        const tourCollection = collection(db, "tours");
+        const tourSnapshot = await getDocs(tourCollection);
+        const tours = tourSnapshot.docs.map(doc => doc.data());
 
         const tourHot = tours.slice(0, 6);
         

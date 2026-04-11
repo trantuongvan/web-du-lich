@@ -18,7 +18,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-repeat"
     />
-    <link rel="icon" href="../IMG/logo-icon-white.png">
+    <link rel="icon" href="../IMG/logo-icon-white.png" />
     <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="../CSS/trang-tour.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
@@ -114,11 +114,12 @@
                     </div>
 
                     <div id="loggedInView" class="hidden flex-column gap-2">
+                      <button id="bookedBtn">Tour đã đặt</button>
+                      <hr class="mt-2" />
                       <p
                         id="userEmail"
-                        class="mb-2 text-truncate fw-bold text-center text-primary"
+                        class="text-truncate text-center text-black mb-0"
                       ></p>
-                      <hr class="my-1" />
                       <button id="logoutBtn">Đăng xuất</button>
                     </div>
                   </div>
@@ -295,7 +296,7 @@
         </div>
       </div>
     </footer>
-    <script src="../JS/trang-tour.js"></script>
+    <script type="module" src="../JS/trang-tour.js"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
     <script type="module" src="../JS/header.js"></script>
   </body>

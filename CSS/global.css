@@ -73,7 +73,18 @@ nav {
   border-radius: 4px;
   font-size: 16px;
 }
-
+#bookedBtn {
+  background-color: transparent;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: start;
+}
+#bookedBtn:hover {
+  background-color: #fffbea;
+  color: black;
+}
 /* .user-dropdown button:hover {
   cursor: pointer;
   color: #fad71b;
