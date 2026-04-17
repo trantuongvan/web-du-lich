@@ -10,7 +10,7 @@ async function loadTours() {
     tours = tourSnapshot.docs.map(doc => doc.data());
 
     renderAllTours();
-    // initFilters(); // Đóng tạm hàm này vì chưa được định nghĩa để tránh lỗi đứng script
+    // initFilters();   // nếu đứng script thì dùng cái này
   } catch (error) {
     console.error("Lỗi tải dữ liệu:", error);
   }

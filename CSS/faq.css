@@ -1,110 +1,93 @@
- /* 1. Thẻ cha quyết định độ rộng cho toàn bộ nội dung bên trong */
- .faq-section {
-     font-family: "Be Vietnam Pro", sans-serif;
-     max-width: 800px;
-     /* Để 800px cho gọn và đẹp */
-     margin: 0 auto;
-     padding: 0 15px;
-     /* Tránh chạm mép khi xem trên điện thoại */
- }
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+.faq-section {
+    font-family: "Be Vietnam Pro", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.faq-section h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 50px;
+    width: 100%;
+}
+.faq-section details {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #ffd43b;
+    border-radius: 12px;
+    padding: 18px 25px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+.faq-section details:hover {
+    border-color: #fcc419;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 212, 59, 0.2);
+}
+details[open] {
+    background-color: #fff9db;
+    border-color: #fcc419;
+}
+summary {
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+summary::after {
+    content: '+';
+    width: 32px;
+    height: 32px;
+    background-color: #ffd43b;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+details[open] summary::after {
+    transform: rotate(45deg);
+    background-color: #f08c00;
+    color: #fff;
+}
+.faq-content {
+    margin-top: 15px;
+    padding: 15px 10px 5px 10px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+    color: #444;
+    font-size: 15.5px;
+    animation: fadeIn 0.4s ease-out;
+}
+.faq-content strong {
+    color: #000;
+    font-weight: 700;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 
- /* 2. Tiêu đề giờ sẽ căn giữa tuyệt đối trong khung 800px */
- .faq-section h2 {
-     text-align: center;
-     color: #2c3e50;
-     font-weight: 700;
-     margin-bottom: 50px;
-     width: 100%;
-     /* Đảm bảo chiếm hết chiều ngang để căn giữa chuẩn */
- }
-
- /* 3. Các khung details: Bỏ max-width ở đây đi */
- .faq-section details {
-     width: 100%;
-     /* Tự động theo độ rộng của thẻ cha (800px) */
-     margin-bottom: 15px;
-     background-color: #fff;
-     border: 1px solid #ffd43b;
-     border-radius: 12px;
-     padding: 18px 25px;
-     transition: all 0.3s ease;
-     box-sizing: border-box;
-     /* Quan trọng: để padding không làm nở khung */
- }
-
- /* Hiệu ứng Hover và Open giữ nguyên như cũ */
- .faq-section details:hover {
-     border-color: #fcc419;
-     transform: translateY(-2px);
-     box-shadow: 0 5px 15px rgba(255, 212, 59, 0.2);
- }
-
- details[open] {
-     background-color: #fff9db;
-     border-color: #fcc419;
- }
-
- summary {
-     font-weight: 600;
-     font-size: 17px;
-     cursor: pointer;
-     list-style: none;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     outline: none;
- }
-
- summary::after {
-     content: '+';
-     width: 32px;
-     height: 32px;
-     background-color: #ffd43b;
-     color: #000;
-     border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     font-size: 20px;
-     transition: all 0.3s ease;
-     flex-shrink: 0;
- }
-
- details[open] summary::after {
-     transform: rotate(45deg);
-     background-color: #f08c00;
-     color: #fff;
- }
-
- .faq-content {
-     margin-top: 15px;
-     padding: 15px 10px 5px 10px;
-     /* Thêm khoảng trống xung quanh chữ */
-
-     /* Đây là đường kẻ ngăn cách nhẹ nhàng */
-     border-top: 1px dashed rgba(0, 0, 0, 0.1);
-
-     line-height: 1.8;
-     /* Chữ thoáng hơn */
-     color: #444;
-     font-size: 15.5px;
-     animation: fadeIn 0.4s ease-out;
- }
-
- /* Mẹo nhỏ: Bôi đậm những từ khóa quan trọng bên trong nội dung */
- .faq-content strong {
-     color: #000;
-     font-weight: 700;
- }
-
- @keyframes fadeIn {
-     from {
-         opacity: 0;
-         transform: translateY(-10px);
-     }
-
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
