@@ -39,10 +39,10 @@ async function loadMyFavoriteTours(favoriteToursIds, uid) {
        const tourSnapshot = await getDocs(tourCollection);
        const allTours = tourSnapshot.docs.map(doc => doc.data());
 
-        // Lọc ra những tour có _id nằm trong mảng favoriteToursIds
+        // Lọc tour có _id nằm trong mảng favoriteToursIds
         const favoriteTours = allTours.filter(tour => favoriteToursIds.includes(tour._id));
         
-        //  Đổ dữ liệu ra HTML
+        //hiện data
         let html = '';
         favoriteTours.forEach(tour => {
             const duration = tour.type.match(/\d+/g) || [0, 0];
