@@ -4,11 +4,9 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-// Import các Module vừa tách
 import { initFavorite } from "./favorite.js";
 import { processPayment, initPaymentModals } from "./payment.js";
 
-// Khai báo biến toàn cục để các hàm tăng giảm số lượng có thể sử dụng
 let currentAdultPrice = 0;
 let currentMaxSeats = 0;
 let dateCards;
@@ -34,7 +32,7 @@ async function loadDetail() {
 
 function renderTourDetail(tour) {
   if (tour) {
-    // --- 1. Đổ dữ liệu phần Header ---
+    //Đổ dữ liệu phần header
     document.getElementById("tour-title").innerText = tour.name;
     document.getElementById("tour-rating").innerText =
       tour.rating_summary.average;
@@ -54,19 +52,16 @@ function renderTourDetail(tour) {
     document.getElementById("tour-img-caption").innerText =
       tour.images[0].caption;
 
-    // --- 2. Đổ các ô Ngày khởi hành ---
-    // 45. Chuẩn bị vùng chứa
+    //các ô Ngày khởi hành
     const departureArea = document.getElementById("departure-dates");
     let depHtml = "";
 
-    // 46. Vòng lặp tạo nội dung (Chỉ dùng 1 vòng lặp duy nhất)
+    //tạo content
     tour.upcoming_departures.forEach((d) => {
       const dateStr = new Date(d.date).toLocaleDateString("vi-VN");
       const isLow = d.seats_left < 7;
 
       const statusText = isLow ? "Sắp hết" : "Đang nhận";
-
-      // THIẾT LẬP MÀU TƯƠI (Màu nền nhạt, màu chữ đậm tươi)
       const badgeStyle = isLow
         ? "background-color: #fee2e2; color: #dc2626;" // Đỏ tươi (Red 600)
         : "background-color: #dcfce7; color: #16a34a;"; // Xanh lá tươi (Green 600)
@@ -100,14 +95,9 @@ function renderTourDetail(tour) {
                     </div>
                 </div>`;
     });
-
-    // 56. ĐỔ DỮ LIỆU VÀO HTML (CHỈ GỌI 1 LẦN)
     departureArea.innerHTML = depHtml;
-
-    // --- 3. Đổ Specs (Thông tin tour) ---
     const specsList = document.getElementById("tour-specs-list");
-
-    // 1. Bản đồ Icon (Giữ nguyên của bạn)
+    //icon
     const specIcons = {
       transport: "fa-car",
       hotel_rating: "fa-hotel",
@@ -115,7 +105,7 @@ function renderTourDetail(tour) {
       location_end: "fa-location-dot",
     };
 
-    // 2. BỔ SUNG: Bản đồ Tên hiển thị tiếng Việt
+    // map 
     const specLabels = {
       transport: "Phương tiện",
       hotel_rating: "Khách sạn",
@@ -126,9 +116,7 @@ function renderTourDetail(tour) {
     let specsHtml = "";
     tour.specs.forEach((s) => {
       const icon = specIcons[s.k] || "fa-check";
-      const label = specLabels[s.k] || s.k; // Nếu không tìm thấy tên thì mới dùng mã gốc
-
-      // Sửa lại dòng HTML: Dùng biến 'label' thay vì 's.k'
+      const label = specLabels[s.k] || s.k;
       specsHtml += `
         <li class="mb-3 d-flex align-items-center">
             <i class="fa-solid ${icon} me-3 text-dark" style="width: 20px;"></i>
@@ -140,7 +128,7 @@ function renderTourDetail(tour) {
     });
     specsList.innerHTML = specsHtml;
 
-    // --- 4. Điểm tập trung ---
+    //điểm tập trung
     if (tour.pickup_location) {
       document.getElementById("pickup-name").innerText =
         tour.pickup_location.name;
@@ -148,7 +136,7 @@ function renderTourDetail(tour) {
         tour.pickup_location.address;
     }
 
-    // --- 5. Lịch trình tour (Timeline) ---
+    //lịch trình tour
     const itineraryContainer = document.getElementById(
       "tour-itinerary-container",
     );
@@ -199,7 +187,7 @@ function renderTourDetail(tour) {
       itineraryContainer.innerHTML = itineraryHtml;
     }
 
-    // --- 6. Chính sách tour ---
+    //chính sách tour
     const includedList = document.getElementById("tour-included-list");
     if (includedList && tour.policy?.included) {
       includedList.innerHTML = tour.policy.included
@@ -219,7 +207,7 @@ function renderTourDetail(tour) {
         .join("");
     }
 
-    // --- 7. Xử lý Click chọn ngày & Mở Modal Đặt Tour ---
+    //click đặt tour
     const dateCards = document.querySelectorAll(".date-selectable");
     const orderBtn = document.getElementById("nut-dat-tour");
     const bookingModal = document.getElementById("bookingModal");
@@ -248,12 +236,10 @@ function renderTourDetail(tour) {
         if (!selectedDiv) return;
 
         try {
-          // Lấy thông tin từ ô đã chọn (Sửa từ .text-muted thành .text-secondary)
           const dateTxt = selectedDiv.querySelector(".fw-bold").innerText;
           const subInfo =
-            selectedDiv.querySelector(".text-secondary").innerText; // Chỗ này quan trọng
+          selectedDiv.querySelector(".text-secondary").innerText;
 
-          // Đổ dữ liệu vào Modal
           document.getElementById("modal-img").src = tour.images[0].url;
           document.getElementById("modal-title").innerText = tour.name;
           document.getElementById("modal-date").innerText = dateTxt;
@@ -262,7 +248,6 @@ function renderTourDetail(tour) {
             .trim();
 
           currentAdultPrice = tour.price.amount;
-          // Trích xuất số chỗ còn lại
           const seatsMatch = subInfo.match(/\d+/);
           currentMaxSeats = seatsMatch ? parseInt(seatsMatch[0]) : 10;
 
@@ -276,10 +261,9 @@ function renderTourDetail(tour) {
             currentMaxSeats;
           document.getElementById("max-seats").innerText = currentMaxSeats;
 
-          // HIỆN MODAL
+          //hiện modal
           if (bookingModal) {
             bookingModal.style.display = "flex";
-            // Reset số lượng về 1 người lớn, 0 trẻ em khi mở mới
             document.getElementById("qty-adult").innerText = "1";
             document.getElementById("qty-child").innerText = "0";
             updateTotal();
@@ -295,7 +279,7 @@ function renderTourDetail(tour) {
     const phoneInput = document.getElementById("cus-phone");
     const cccdInput = document.getElementById("cus-cccd");
 
-    // --- 1. KIỂM TRA HỌ TÊN NGAY KHI NHẬP ---
+    //validate
     nameInput.addEventListener("input", function () {
       let val = this.value.trim();
       const nameRegex = /^[a-zA-ZÀ-ỹ\s]+\s[a-zA-ZÀ-ỹ\s]+$/;
@@ -309,7 +293,6 @@ function renderTourDetail(tour) {
       validateForm();
     });
 
-    // Tự động viết hoa (Vẫn giữ để làm đẹp dữ liệu khi khách nhấn ra ngoài)
     nameInput.addEventListener("blur", function () {
       let val = this.value.trim();
       if (val.length > 0) {
@@ -321,10 +304,8 @@ function renderTourDetail(tour) {
       }
     });
 
-    // --- 2. KIỂM TRA SỐ ĐIỆN THOẠI (CHO PHÉP NHẬP CHỮ NHƯNG BÁO LỖI ĐỎ) ---
     phoneInput.addEventListener("input", function () {
       const val = this.value.trim();
-      // Regex: Bắt đầu bằng 0, theo sau là 3,5,7,8,9 và đúng 8 chữ số tiếp theo (Tổng 10)
       const phoneRegex = /^(0[3|5|7|8|9])([0-9]{8})$/;
 
       if (!phoneRegex.test(val)) {
@@ -337,10 +318,8 @@ function renderTourDetail(tour) {
       validateForm();
     });
 
-    // --- 3. KIỂM TRA CCCD (CHO PHÉP NHẬP CHỮ NHƯNG BÁO LỖI ĐỎ) ---
     cccdInput.addEventListener("input", function () {
       const val = this.value.trim();
-      // Regex: Đúng 12 con số
       const cccdRegex = /^[0-9]{12}$/;
 
       if (!cccdRegex.test(val)) {
@@ -353,7 +332,7 @@ function renderTourDetail(tour) {
       validateForm();
     });
 
-    // Đóng Modal
+    // đóng Modal
     document.getElementById("closeModal").onclick = () =>
       (bookingModal.style.display = "none");
 
@@ -363,7 +342,6 @@ function renderTourDetail(tour) {
       }
     });
 
-    //Hàm kiểm tra các ô input để cập nhật trạng thái nút "Tiếp tục thanh toán" realtime
     const confirmBtn = document.getElementById("btn-confirm-booking");
     function validateForm() {
       const nameVal = nameInput.value.trim();
@@ -379,7 +357,6 @@ function renderTourDetail(tour) {
 
       confirmBtn.disabled = isEmpty || hasError;
     }
-    // Click nút "Tiếp tục thanh toán"
     if (confirmBtn) {
       confirmBtn.addEventListener("click", function () {
         console.log("clicked", confirmBtn.disabled);
@@ -388,7 +365,6 @@ function renderTourDetail(tour) {
     }
   }
 }
-// --- CÁC HÀM PHỤ (Dán bên ngoài) ---
 window.changeQty = function (type, val) {
   const adultEl = document.getElementById("qty-adult");
   const childEl = document.getElementById("qty-child");
@@ -396,28 +372,22 @@ window.changeQty = function (type, val) {
   let aQty = parseInt(adultEl.innerText);
   let cQty = parseInt(childEl.innerText);
 
-  // Tính toán số lượng dự kiến sau khi bấm
   let nextAdult = type === "adult" ? Math.max(1, aQty + val) : aQty;
   let nextChild = type === "child" ? Math.max(0, cQty + val) : cQty;
 
-  // RÀNG BUỘC: Nếu bấm tăng (+) mà tổng vượt quá chỗ trống thì không làm gì cả
   if (val > 0 && nextAdult + nextChild > currentMaxSeats) {
-    return; // Thoát hàm ngay lập tức, không đổi số
+    return;
   }
 
-  // Nếu hợp lệ thì mới cập nhật số lên màn hình
   adultEl.innerText = nextAdult;
   childEl.innerText = nextChild;
 
-  // Cập nhật giao diện nút (Khóa/Mở nút + -)
   updateButtonStates(nextAdult, nextChild);
   updateTotal();
 };
 function updateButtonStates(aQty, cQty) {
   const total = aQty + cQty;
-  // Tìm tất cả các nút cộng (+) trong modal
   const plusButtons = document.querySelectorAll("button[onclick*=', 1']");
-  // Tìm các nút trừ (-)
   const minusAdult = document.querySelector(
     "button[onclick=\"changeQty('adult', -1)\"]",
   );
@@ -425,7 +395,7 @@ function updateButtonStates(aQty, cQty) {
     "button[onclick=\"changeQty('child', -1)\"]",
   );
 
-  // 1. Nếu tổng người = max, làm mờ và khóa tất cả nút cộng
+//mở khóa nút cộng
   plusButtons.forEach((btn) => {
     if (total >= currentMaxSeats) {
       btn.style.opacity = "0.3";
@@ -436,7 +406,7 @@ function updateButtonStates(aQty, cQty) {
     }
   });
 
-  // 2. Khóa nút trừ người lớn nếu chỉ còn 1 người
+//khóa nút trừ ng lớn
   if (aQty <= 1) {
     minusAdult.style.opacity = "0.3";
     minusAdult.style.cursor = "not-allowed";
@@ -445,7 +415,7 @@ function updateButtonStates(aQty, cQty) {
     minusAdult.style.cursor = "pointer";
   }
 
-  // 3. Khóa nút trừ trẻ em nếu là 0
+//khóa nút trừ trẻ em 
   if (cQty <= 0) {
     minusChild.style.opacity = "0.3";
     minusChild.style.cursor = "not-allowed";

@@ -136,10 +136,9 @@
           style="border-radius: 15px"
         >
           <div class="row g-0 align-items-stretch">
-            <!-- Cột Trái: Ảnh -->
+            <!-- img -->
             <div class="col-md-6 ps-4">
               <div class="h-100 d-flex flex-column">
-                <!-- Đặt ID cho ảnh -->
                 <img
                   id="tour-main-img"
                   style="height: 80%"
@@ -154,7 +153,7 @@
               </div>
             </div>
 
-            <!-- Cột Phải: Nội dung -->
+            <!-- noidung -->
             <div class="col-md-6 p-4 ps-md-5">
               <h2 id="tour-title" class="fw-bold mb-1">Đang tải...</h2>
 
@@ -189,9 +188,8 @@
                 <h3 id="tour-price" class="fw-bold mb-0"></h3>
               </div>
 
-              <!-- Lịch trình khởi hành (Vùng này sẽ dùng JS để tạo ra các cột) -->
+              <!-- lịchkhoihanh -->
               <div id="departure-dates" class="row g-2 mb-4">
-                <!-- JS sẽ tự đổ các ô ngày vào đây -->
               </div>
 
               <div class="ro">
@@ -215,18 +213,16 @@
             </div>
           </div>
 
-          <!-- Phần Thông tin chi tiết bên dưới -->
+          <!-- in4 -->
           <div class="container mt-5 px-4">
             <section class="mb-5">
               <h3 class="fw-bold mb-4">Thông tin tour</h3>
               <ul class="list-unstyled" id="tour-specs-list">
-                <!-- JS sẽ tự render các dòng thông tin như Phương tiện, Khách sạn... -->
               </ul>
             </section>
           </div>
 
           <div class="container mt-5 px-4 mx-auto" style="max-width: 1200px">
-            <!-- 2. Điểm tập trung -->
             <section class="mb-5">
               <h3 class="fw-bold mb-4" style="font-size: 1.4rem">
                 Điểm tập trung
@@ -246,14 +242,12 @@
 
             <hr class="my-5 text-muted opacity-25" />
 
-            <!-- 3. Lịch trình tour (Timeline) -->
+            <!-- timeline -->
             <section class="mb-5">
               <h3 class="fw-bold mb-5" style="font-size: 1.4rem">
                 Lịch trình tour
               </h3>
-              <!-- Container này sẽ chứa toàn bộ các ngày (Ngày 1, 2, 3...) -->
               <div id="tour-itinerary-container">
-                <!-- JS sẽ tự render nội dung vào đây -->
               </div>
             </section>
 
@@ -266,7 +260,6 @@
               </h3>
 
               <div class="row">
-                <!-- Cột 1: Bao gồm -->
                 <div class="col-md-6">
                   <h5
                     class="fw-bold mb-4"
@@ -275,11 +268,9 @@
                     Bao gồm
                   </h5>
                   <ul id="tour-included-list" class="list-unstyled">
-                    <!-- JS sẽ tự đổ các dòng vé máy bay, khách sạn... vào đây -->
                   </ul>
                 </div>
 
-                <!-- Cột 2: Không bao gồm -->
                 <div class="col-md-6 ps-md-5">
                   <h5
                     class="fw-bold mb-4"
@@ -429,7 +420,7 @@
             <div id="err-cccd" class="text-danger small mt-1"></div>
           </div>
 
-          <!-- 3. Số lượng khách (Tính toán JVS) -->
+          <!-- Số lượng khách-->
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold mb-0">Số lượng khách</h6>
             <span class="badge bg-success-subtle text-success py-2 px-3"
@@ -498,14 +489,14 @@
             </div>
           </div>
 
-          <!-- Thông báo tổng hợp -->
+          <!-- notification -->
           <div class="text-center py-2 bg-light rounded-3 mb-4 small">
             Đã chọn: <span id="total-qty" class="fw-bold">1</span> người /
             <span id="max-seats" class="fw-bold"></span>
             chỗ còn trống
           </div>
 
-          <!-- 4. Yêu cầu đặc biệt -->
+          <!-- specical Request -->
           <div class="mb-4">
             <h6 class="fw-bold mb-2">Yêu cầu đặc biệt</h6>
             <textarea
@@ -516,7 +507,7 @@
             ></textarea>
           </div>
 
-          <!-- 5. Tổng cộng -->
+          <!-- sum -->
           <div class="text-end mb-4">
             <h3 id="total-amount" class="fw-bold text-danger mb-0">0 VNĐ</h3>
           </div>
@@ -532,7 +523,7 @@
       </div>
     </div>
 
-    <!-- Modal Thanh Toán -->
+    <!-- modal Thanh Toan -->
     <div
       id="paymentModal"
       class="modal-overlay"
