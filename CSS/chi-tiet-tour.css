@@ -80,25 +80,28 @@ body{
   position: relative;
   color: #333;
 }
- input.form-control, textarea.form-control {
+#bookingModal input.form-control,
+#bookingModal textarea.form-control {
   transition: all 0.3s ease;
   border: 1px solid #e4e4e4 !important;
 }
 
-input.form-control:hover, textarea.form-control:hover {
+#bookingModal input.form-control:hover,
+#bookingModal textarea.form-control:hover {
   border: 1px solid #888888 !important;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
   transform: translateY(-3px);
 }
 
-input.form-control:focus, textarea.form-control:focus {
+#bookingModal input.form-control:focus,
+#bookingModal textarea.form-control:focus {
   border: 1px solid #000 !important;
-  background-color: #f8f9fa !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12) !important;
+  background-color: #f8f9fa !;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
   transform: translateY(-3px);
 }
-textarea.form-control {
-  resize: none !important;
+#bookingModal textarea.form-control {
+  resize: none;
 }
 #btn-confirm-booking.active {
   background-color: #000 !important;
