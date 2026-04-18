@@ -9,7 +9,7 @@ let orderId = null;
 
 // Tạo mã đơn hàng ngẫu nhiên
 function generateOrderId() {
-  return "DH" + Math.random().toString(36).substr(2, 9).toUpperCase();
+  return "DH" + Date.now();
 }
 
 // Hàm chính xử lý thanh toán
@@ -50,12 +50,8 @@ export async function processPayment(tourId, btnConfirm) {
     await setDoc(doc(db, "orders", orderId), orderData);
 
     // HIỂN THỊ MODAL QR CODE
-    const bankID = "BIDV";
-    const stk = "7850727692";
-    const tenChuTK = "BUI THAI VY";
-    const qrUrl = `https://img.vietqr.io/image/${bankID}-${stk}-compact2.png?amount=${totalAmount}&addInfo=${orderId}&accountName=${encodeURIComponent(tenChuTK)}`;
 
-    document.getElementById("qr-code-img").src = qrUrl;
+    document.getElementById("qr-code-img").src = "../IMG/qr.png";
     document.getElementById("pay-amount").innerText =
       totalAmount.toLocaleString() + " VNĐ";
     document.getElementById("pay-order-id").innerText = orderId;
