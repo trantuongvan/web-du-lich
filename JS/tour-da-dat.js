@@ -5,6 +5,8 @@ import {
   query,
   where,
   getDocs,
+  doc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 const orderListEl = document.getElementById("orderList");
@@ -31,7 +33,9 @@ async function fetchMyOrders(uid) {
 
     allOrders = [];
     querySnapshot.forEach((doc) => {
-      allOrders.push(doc.data());
+      const data = doc.data();
+      data.docId = doc.id;
+      allOrders.push(data);
     });
 
     // Sắp xếp
@@ -45,7 +49,6 @@ async function fetchMyOrders(uid) {
   }
 }
 
-// Render ra giao diện
 function renderOrders(ordersData) {
   orderCountEl.innerText = `Tìm thấy ${ordersData.length} đặt tour`;
 
@@ -186,23 +189,46 @@ window.viewOrderDetail = function (orderId) {
   document.getElementById("detail-amount-sub").innerText = totalVND;
   document.getElementById("detail-amount-total").innerText = totalVND;
 
-  // Xử lý hiển thị QR Code khi CHƯA thanh toán
   const qrSection = document.getElementById("detail-qr-section");
   if (!isPaid) {
-    const bankID = "BIDV";
-    const stk = "7850727692";
-    const tenChuTK = "BUI THAI VY";
-    const qrUrl = `https://img.vietqr.io/image/${bankID}-${stk}-compact2.png?amount=${order.totalAmount}&addInfo=${order.orderId}&accountName=${encodeURIComponent(tenChuTK)}`;
+    const bankID = "VIETCOMBANK";
+    const stk = "1052430834";
+    const tenChuTK = "TRAN THI TUONG VAN";
+    const qrUrl = `../IMG/qr.png`;
 
     document.getElementById("detail-qr-img").src = qrUrl;
     document.getElementById("detail-qr-code").innerText = order.orderId;
     qrSection.style.display = "block";
 
-    document.getElementById("btn-recheck-payment").onclick = function () {
-      alert(`Đang xử lý, đợi sau nhé.`);
+    const btnPayment = document.getElementById("btn-recheck-payment");
+    btnPayment.onclick = async function () {
+      try {
+        btnPayment.innerHTML =
+          '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+        btnPayment.disabled = true;
+
+        const orderRef = doc(db, "orders", order.docId);
+
+        await updateDoc(orderRef, {
+          status: "PAID",
+        });
+
+        alert("Xác nhận thanh toán thành công!");
+
+        order.status = "PAID";
+        renderOrders(allOrders);
+
+        closeOrderDetailModal();
+      } catch (error) {
+        console.error("Lỗi khi cập nhật thanh toán:", error);
+        alert("Có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau!");
+
+        btnPayment.innerText = "Tôi đã thanh toán";
+        btnPayment.disabled = false;
+      }
     };
   } else {
-    qrSection.style.display = "none"; // Ẩn QR đi nếu đã trả tiền
+    qrSection.style.display = "none";
   }
 
   document.getElementById("orderDetailModal").style.display = "flex";

@@ -7,12 +7,10 @@ import {
 
 let orderId = null;
 
-// Tạo mã đơn hàng ngẫu nhiên
 function generateOrderId() {
   return "DH" + Date.now();
 }
 
-// Hàm chính xử lý thanh toán
 export async function processPayment(tourId, btnConfirm) {
   const user = auth.currentUser;
   const nameVal = document.getElementById("cus-name").value.trim();
@@ -84,7 +82,7 @@ export function initPaymentModals() {
     if (!orderId) {
       return;
     }
-    this.innerText = "Đang xac nhận...";
+    this.innerText = "Đang xác nhận...";
     this.disabled = true;
 
     try {

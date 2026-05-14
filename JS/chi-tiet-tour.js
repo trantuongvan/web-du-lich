@@ -32,7 +32,6 @@ async function loadDetail() {
 
 function renderTourDetail(tour) {
   if (tour) {
-    //Đổ dữ liệu phần header
     document.getElementById("tour-title").innerText = tour.name;
     document.getElementById("tour-rating").innerText =
       tour.rating_summary.average;
@@ -63,8 +62,8 @@ function renderTourDetail(tour) {
 
       const statusText = isLow ? "Sắp hết" : "Đang nhận";
       const badgeStyle = isLow
-        ? "background-color: #fee2e2; color: #dc2626;" // Đỏ tươi (Red 600)
-        : "background-color: #dcfce7; color: #16a34a;"; // Xanh lá tươi (Green 600)
+        ? "background-color: #fee2e2; color: #dc2626;"
+        : "background-color: #dcfce7; color: #16a34a;";
 
       const seatText = isLow
         ? `Chỉ còn ${d.seats_left} chỗ`
@@ -73,20 +72,20 @@ function renderTourDetail(tour) {
       depHtml += `
                 <div class="col-6 mb-3">
                     <div class="border rounded-3 p-2 px-3 date-selectable d-flex flex-column justify-content-between" 
-                         style="cursor: pointer; min-height: 80px;">
+                         style="cursor: pointer; min-height: 80px;"
+                         data-date="${d.date}" 
+                         data-seats="${d.seats_left}" 
+                         data-day="${d.day_of_week}">
                         
-                        <!-- Hàng 1 -->
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold" style="font-size: 0.95rem; color: #000;">${dateStr}</span>
                             
-                            <!-- Cập nhật style badge tại đây -->
                             <span class="badge border-0 py-1 px-2" 
                                   style="font-size: 0.75rem; font-weight: 600; border-radius: 6px; ${badgeStyle}">
                                 ${statusText}
                             </span>
                         </div>
 
-                        <!-- Hàng 2 -->
                         <div class="d-flex justify-content-between align-items-end">
                             <span class="text-secondary" style="font-size: 0.75rem;">${d.day_of_week}</span>
                             <span class="text-secondary" style="font-size: 0.75rem;">${seatText}</span>
@@ -105,7 +104,7 @@ function renderTourDetail(tour) {
       location_end: "fa-location-dot",
     };
 
-    // map 
+    // map
     const specLabels = {
       transport: "Phương tiện",
       hotel_rating: "Khách sạn",
@@ -237,19 +236,18 @@ function renderTourDetail(tour) {
 
         try {
           const dateTxt = selectedDiv.querySelector(".fw-bold").innerText;
-          const subInfo =
-          selectedDiv.querySelector(".text-secondary").innerText;
+
+          const maxSeats = parseInt(selectedDiv.getAttribute("data-seats"));
+          const dayOfWeek = selectedDiv.getAttribute("data-day");
+          const rawDate = selectedDiv.getAttribute("data-date");
 
           document.getElementById("modal-img").src = tour.images[0].url;
           document.getElementById("modal-title").innerText = tour.name;
           document.getElementById("modal-date").innerText = dateTxt;
-          document.getElementById("modal-day").innerText = subInfo
-            .split("•")[0]
-            .trim();
+          document.getElementById("modal-day").innerText = dayOfWeek;
 
           currentAdultPrice = tour.price.amount;
-          const seatsMatch = subInfo.match(/\d+/);
-          currentMaxSeats = seatsMatch ? parseInt(seatsMatch[0]) : 10;
+          currentMaxSeats = maxSeats;
 
           document.getElementById("modal-price-unit").innerText =
             tour.price.display;
@@ -257,6 +255,7 @@ function renderTourDetail(tour) {
             tour.price.display;
           document.getElementById("child-price-txt").innerText =
             (currentAdultPrice * 0.7).toLocaleString() + " VNĐ";
+
           document.getElementById("modal-seats-left").innerText =
             currentMaxSeats;
           document.getElementById("max-seats").innerText = currentMaxSeats;
@@ -332,7 +331,6 @@ function renderTourDetail(tour) {
       validateForm();
     });
 
-    // đóng Modal
     document.getElementById("closeModal").onclick = () =>
       (bookingModal.style.display = "none");
 
@@ -395,7 +393,6 @@ function updateButtonStates(aQty, cQty) {
     "button[onclick=\"changeQty('child', -1)\"]",
   );
 
-//mở khóa nút cộng
   plusButtons.forEach((btn) => {
     if (total >= currentMaxSeats) {
       btn.style.opacity = "0.3";
@@ -406,7 +403,6 @@ function updateButtonStates(aQty, cQty) {
     }
   });
 
-//khóa nút trừ ng lớn
   if (aQty <= 1) {
     minusAdult.style.opacity = "0.3";
     minusAdult.style.cursor = "not-allowed";
@@ -414,8 +410,6 @@ function updateButtonStates(aQty, cQty) {
     minusAdult.style.opacity = "1";
     minusAdult.style.cursor = "pointer";
   }
-
-//khóa nút trừ trẻ em 
   if (cQty <= 0) {
     minusChild.style.opacity = "0.3";
     minusChild.style.cursor = "not-allowed";
